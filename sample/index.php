@@ -8,28 +8,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <style type="text/css">
-        .header {
-            background-color: #fef230;
-        }
-        .main-content {
-            background-color: #ff0000;
-            margin-left: <?php echo SIDE_NAV_WIDTH; ?>;
-            padding-left: 10px;
-        }
-        .nav-bar {
-            background-color: #ffb3b3;
-            width: <?php echo SIDE_NAV_WIDTH; ?>;
-            position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-            height: 100%; /* Full-height */
-            z-index: 1;  /*Stay on top */
+    <link rel="stylesheet" type="text/css" href="style.php">
 
-        }
-    </style>
+    
+    <?php 
+        function isLoginCredentialsValid($userid, $password){
 
+
+            return true;
+        }
+     ?>
 </head>
 <body>
-    <div class="header" style>
+    <div class="header">
 
         <?php
             // Uses absolute path when no forward slash
@@ -47,7 +38,40 @@
 
     <div class="main-content">
 
-        <h1>YES</h1>
+        <?php
+
+        // REMOVE
+        echo "
+        <h1>
+        HELLO USERNAME
+        </h1>";
+        // REMOVE
+
+        // check if POST request
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            // username and password sent from form 
+        
+
+            $userid   = isset($_POST["u_id"])  ? $_POST["u_id"]  : '0';
+            $password = isset($_POST["u_pwd"]) ? $_POST["u_pwd"] : '0';
+            // check if these elements are available
+            // if not, then use '0' as default value
+
+
+            if (isLoginCredentialsValid($userid, $password )){
+                // if user login is correct
+
+                echo "HELLO, " . $userid . "<br>";
+
+            }
+            else{
+                // redirect to login page
+            }
+
+        }// POST
+
+        ?>
+
     </div>
     
 </body>

@@ -9,11 +9,16 @@
         margin: 0; 
         padding: 0;
 
-        width: <?php echo SIDE_NAV_WIDTH ;?>;
+        width: <?php echo SIDE_NAV_WIDTH . 'px' ;?>;
         }
 
     li a {
         display: block;
+        padding: 6px 8px 6px 8px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        text-align: center;
     }
 
     /* Change the link color on hover */
@@ -22,17 +27,10 @@
         color: white;
     }
 
-    /* Set this value to the correct page
-    in the start code of each page */
-    .active {
-        background-color: #4CAF50;
-        color: white;
-    }
 </style>
 
 <ul>
-  <li><a href="default.asp">Home</a></li>
-  <li><a href="news.asp">News</a></li>
-  <li><a href="contact.asp">Contact</a></li>
-  <li><a href="about.asp">About</a></li>
+  <li><a href="index.php">Profile</a></li>
+  <li><a href="books.php">Books</a></li>
+  
 </ul>
