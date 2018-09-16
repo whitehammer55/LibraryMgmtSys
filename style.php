@@ -7,7 +7,7 @@
     // https://css-tricks.com/css-variables-with-php/
 
     // This line is needed to include PHP variables from global constants
-    require_once 'global_constants.php';
+    require_once 'common/global_constants.php';
 
 
 ?>

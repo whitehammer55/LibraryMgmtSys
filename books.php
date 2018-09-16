@@ -1,13 +1,4 @@
-
-<!-- 
-    This is a template file.
-    When creating a new page,
-    copy this file, and then modify the main-content div
-    as per your needs.
-
- -->
-
-<?php require_once 'global_constants.php'; ?>
+<?php require_once 'common/global_constants.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +17,7 @@
         <?php
             // Uses absolute path when no forward slash
             // Refer: https://stackoverflow.com/a/36577021
-            require_once 'header.php' ; ?>
+            require_once 'common/header.php' ; ?>
 
     </div>
 
@@ -34,17 +25,31 @@
         <?php 
             // Uses absolute path when no forward slash
             // Refer: https://stackoverflow.com/a/36577021
-            require_once 'nav-bar.php' ?>
+            require_once 'common/nav-bar.php' ?>
     </div>
 
     <div class="main-content">
-        <!--
 
+        <?php
 
-            YOUR CONTENT HERE
-
-            
-        -->
+        // TODO: Change this to retreivals from database
+        echo"
+            <table>
+                <tr>
+                    <th>BOOK TITLE</th>
+                    <th>DUE DATE</th>
+                </tr>
+                <tr>
+                    <td>JAMES BOND</td>
+                    <td>19-1-1999</td>
+                </tr>
+                <tr>
+                    <td>CHANANDLER BONG</td>
+                    <td>10-1-1990</td>
+                </tr>
+            </table>
+            ";
+        ?>
 
     </div>
     

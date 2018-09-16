@@ -1,4 +1,4 @@
-<?php require_once 'global_constants.php'; ?>
+<?php require_once 'common/global_constants.php'; ?>
 
 <style type="text/css">
     ul {

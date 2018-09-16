@@ -1,4 +1,4 @@
-<?php require_once 'global_constants.php'; ?>
+<?php require_once 'common/global_constants.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,7 @@
         <?php
             // Uses absolute path when no forward slash
             // Refer: https://stackoverflow.com/a/36577021
-            require_once 'header.php' ; ?>
+            require_once 'common/header.php' ; ?>
 
     </div>
 
@@ -33,7 +33,7 @@
         <?php 
             // Uses absolute path when no forward slash
             // Refer: https://stackoverflow.com/a/36577021
-            require_once 'nav-bar.php' ?>
+            require_once 'common/nav-bar.php' ?>
     </div>
 
     <div class="main-content">
