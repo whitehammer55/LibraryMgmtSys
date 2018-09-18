@@ -59,12 +59,31 @@ def c_table_b_author(filename):
                 cmd = insert_fmt.format(
                     book['ID'], author)
 
-                print(cmd)
+                print('Inserting: {:5d}: {:s}'.format(book['ID'], author))
                 cursor.execute(cmd)
 
     print("COMMIT;")
     conn.commit()
 
+def c_table_users(filename):
+    '''Insert in users table'''
+
+    insert_fmt = \
+    """INSERT INTO Users(UserID, Password, Email, DOB, FirstName, LastName)
+    VALUES ('{}', '{}', '{}', '{}', '{}', '{}');"""
+
+    with open(filename) as f:
+        for user in json.load(f):
+            cmd = insert_fmt.format(
+                user['UserID'], user['Password'],
+                user['Email'], user['DOB'],
+                user['FirstName'], user['LastName'])
+
+            print('Inserting: {:5d}: {:s}'.format(user['UserID'], user['FirstName']))
+            cursor.execute(cmd)
+
+    print("COMMIT;")
+    conn.commit()
 
 def main():
     
@@ -80,9 +99,15 @@ def main():
 
     # INSERT BOOKS
     c_table_books('json/books.json')
+    print()
 
     # INSERT B_AUTHOR
     c_table_b_author('json/books.json')
+    print()
+
+    # INSERT USERS
+    c_table_users('json/users.json')
+    print()
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,26 @@
+[
+    {
+        "UserID": 101,
+        "Password": "password",
+        "Email": "user1@gmail.com",
+        "DOB": "1990-10-01",
+        "FirstName": "Jacob",
+        "LastName": "Black",
+        "Contact": [
+            "1010500500",
+            "1010400400"
+        ]
+    },
+    {
+        "UserID": 102,
+        "Password": "password",
+        "Email": "user2@gmail.com",
+        "DOB": "1990-10-02",
+        "FirstName": "Sirius",
+        "LastName": "Black",
+        "Contact": [
+            "1020500500",
+            "1020400400"
+        ]
+    }
+]
