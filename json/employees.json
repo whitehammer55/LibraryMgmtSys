@@ -1,0 +1,20 @@
+[
+    {
+        "EmployeeID": 201,
+        "Password": "e1_pass",
+        "Post": "Head Librarian",
+        "Email": "emp1@gmail.com",
+        "DOB": "1970-01-01",
+        "FirstName": "Hermione",
+        "LastName": "Granger"
+    },
+    {
+        "EmployeeID": 202,
+        "Password": "e2_pass",
+        "Post": "Assistant Librarian",
+        "Email": "emp2@gmail.com",
+        "DOB": "1974-02-04",
+        "FirstName": "Fleur",
+        "LastName": "Delacour"
+    }
+]

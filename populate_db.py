@@ -107,6 +107,27 @@ def c_table_u_contact(filename):
     conn.commit()
 
 
+def c_table_employees(filename):
+    '''Insert in employees table'''
+
+    insert_fmt = \
+    """INSERT INTO Employees(EmployeeID, Password, Post, Email, DOB, FirstName, LastName)
+    VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}');"""
+
+    with open(filename) as f:
+        for emp in json.load(f):
+            cmd = insert_fmt.format(
+                emp['EmployeeID'], emp['Password'], emp['Post'],
+                emp['Email'], emp['DOB'],
+                emp['FirstName'], emp['LastName'])
+
+            print('Inserting: {:5d}: {:s}'.format(emp['EmployeeID'], emp['FirstName']))
+            cursor.execute(cmd)
+
+    print("COMMIT;")
+    conn.commit()
+
+
 def main():
     
     # CREATE THE DATABASE
@@ -120,22 +141,30 @@ def main():
     print()
 
     # INSERT BOOKS
+    print("INSERT BOOKS:")
     c_table_books('json/books.json')
     print()
 
     # INSERT B_AUTHOR
+    print("INSERT B_AUTHOR:")
     c_table_b_author('json/books.json')
     print()
 
     # INSERT USERS
+    print("INSERT USERS")
     c_table_users('json/users.json')
     print()
 
     # INSERT U_CONTACT
+    print("INSERT U_CONTACT")
     c_table_u_contact('json/users.json')
     print()
 
-    
+    # INSERT EMPLOYEES
+    print("INSERT EMPLOYEES")
+    c_table_employees('json/employees.json')
+    print()
+
 
 if __name__ == '__main__':
     main()
