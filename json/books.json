@@ -1,0 +1,255 @@
+[
+    {
+        "ID": 1,
+        "Title": "Handbook of Clinical Drug Data",
+        "AuthorList": [
+            "Philip Anderson"
+        ],
+        "Year": 2001,
+        "Edition": 1,
+        "ISBN": "0071363629"
+    },
+    {
+        "ID": 14,
+        "Title": "Mathematical models in biology: solution manual",
+        "AuthorList": [
+            "Elizabeth S. Allman",
+            "John A. Rhodes"
+        ],
+        "Year": 2003,
+        "Edition": 1,
+        "ISBN": "0521525861"
+    },
+    {
+        "ID": 42,
+        "Title": "Physics in Biology and Medicine",
+        "AuthorList": [
+            "Paul Davidovits"
+        ],
+        "Year": 2008,
+        "Edition": 3,
+        "ISBN": "0123694116"
+    },
+    {
+        "ID": 43,
+        "Title": "Branching morphogenesis",
+        "AuthorList": [
+            "Jamie Davies"
+        ],
+        "Year": 2006,
+        "Edition": 1,
+        "ISBN": "0387256156"
+    },
+    {
+        "ID": 52,
+        "Title": "Biochemistry",
+        "AuthorList": [
+            "Garrett R.H.",
+            "Grisham C.M."
+        ],
+        "Year": 1999,
+        "Edition": 2,
+        "ISBN": "0030973694"
+    },
+    {
+        "ID": 69,
+        "Title": "Fractal modelling: growth and form in biology",
+        "AuthorList": [
+            "Jaap A. Kaandorp",
+            "P. Prusinkiewicz"
+        ],
+        "Year": 1994,
+        "Edition": 1,
+        "ISBN": "3540566856"
+    },
+    {
+        "ID": 92,
+        "Title": "Mathematical Biology 1: An Introduction",
+        "AuthorList": [
+            "James D. Murray"
+        ],
+        "Year": 2007,
+        "Edition": 3,
+        "ISBN": "0387952233"
+    },
+    {
+        "ID": 102,
+        "Title": "The blank slate: the modern denial of human nature",
+        "AuthorList": [
+            "Steven Pinker"
+        ],
+        "Year": 2002,
+        "Edition": 1,
+        "ISBN": "0670031518"
+    },
+    {
+        "ID": 110,
+        "Title": "Molecular neuroscience",
+        "AuthorList": [
+            "Dr P Revest",
+            "Alan Longstaff"
+        ],
+        "Year": 1998,
+        "Edition": 1,
+        "ISBN": "1859962505"
+    },
+    {
+        "ID": 728,
+        "Title": "Algorithms and theory of computation handbook",
+        "AuthorList": [
+            "Mikhail J. Atallah"
+        ],
+        "Year": 1999,
+        "Edition": 1,
+        "ISBN": "0849326494"
+    },
+    {
+        "ID": 745,
+        "Title": "Introduction to algorithms",
+        "AuthorList": [
+            "Thomas H. Cormen",
+            "Charles E. Leiserson",
+            "Ronald L. Rivest",
+            "Clifford Stein"
+        ],
+        "Year": 2001,
+        "Edition": 2,
+        "ISBN": "0070131511"
+    },
+    {
+        "ID": 766,
+        "Title": "Mathematics for the analysis of algorithms",
+        "AuthorList": [
+            "Daniel H Greene"
+        ],
+        "Year": 1986,
+        "Edition": 2,
+        "ISBN": "376433102X"
+    },
+    {
+        "ID": 782,
+        "Title": "Combinatorial algorithms: generation, enumeration, and search",
+        "AuthorList": [
+            "Donald L. Kreher",
+            "Douglas R. Stinson"
+        ],
+        "Year": 1999,
+        "Edition": 1,
+        "ISBN": "084933988X"
+    },
+    {
+        "ID": 975,
+        "Title": "Computer Algebra Recipes for Mathematical Physics",
+        "AuthorList": [
+            "Richard H. Enns"
+        ],
+        "Year": 2005,
+        "Edition": 1,
+        "ISBN": "0817632239"
+    },
+    {
+        "ID": 985,
+        "Title": "Mathematics for computer algebra",
+        "AuthorList": [
+            "Maurice Mignotte",
+            "C. Mignotte"
+        ],
+        "Year": 1992,
+        "Edition": 1,
+        "ISBN": "0387976752"
+    },
+    {
+        "ID": 1050,
+        "Title": "Computer vision and applications",
+        "AuthorList": [
+            "Bernd Jahne"
+        ],
+        "Year": 2000,
+        "Edition": 1,
+        "ISBN": "0123797772"
+    },
+    {
+        "ID": 1053,
+        "Title": "Concrete and Abstract Voronoi Diagrams",
+        "AuthorList": [
+            "Rolf Klein (auth.)"
+        ],
+        "Year": 1989,
+        "Edition": 1,
+        "ISBN": "0387520554"
+    },
+    {
+        "ID": 1059,
+        "Title": "A blossoming development of splines",
+        "AuthorList": [
+            "Stephen Mann"
+        ],
+        "Year": 2006,
+        "Edition": 1,
+        "ISBN": "1598291165"
+    },
+    {
+        "ID": 1082,
+        "Title": "Implicit objects in computer graphics",
+        "AuthorList": [
+            "Luiz Velho",
+            "Jonas Gomes",
+            "Luiz H. de Figueiredo"
+        ],
+        "Year": 2002,
+        "Edition": 1,
+        "ISBN": "0387984240"
+    },
+    {
+        "ID": 1085,
+        "Title": "Essential Mathematics for Computer Graphics Fast",
+        "AuthorList": [
+            "John Vince"
+        ],
+        "Year": 2001,
+        "Edition": 1,
+        "ISBN": "1852333804"
+    },
+    {
+        "ID": 1256,
+        "Title": "Coding and information theory",
+        "AuthorList": [
+            "Richard W. Hamming"
+        ],
+        "Year": 1986,
+        "Edition": 2,
+        "ISBN": "0131390724"
+    },
+    {
+        "ID": 1297,
+        "Title": "Radiosity and Realistic Image Synthesis ",
+        "AuthorList": [
+            "Michael F. Cohen",
+            "John R. Wallace"
+        ],
+        "Year": 1993,
+        "Edition": 1,
+        "ISBN": "0121782700"
+    },
+    {
+        "ID": 1312,
+        "Title": "Introduction to Statistical Pattern Recognition",
+        "AuthorList": [
+            "Keinosuke Fukunaga"
+        ],
+        "Year": 1990,
+        "Edition": 2,
+        "ISBN": "0122698517"
+    },
+    {
+        "ID": 1532,
+        "Title": "C++ Solutions: companion to C++ programming language",
+        "AuthorList": [
+            "David Vandevoorde",
+            "Bjarne Stroustrup"
+        ],
+        "Year": 1998,
+        "Edition": 3,
+        "ISBN": "0201309653"
+    }
+]
