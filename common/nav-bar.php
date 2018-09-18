@@ -32,6 +32,7 @@
 <ul>
   <li><a href="index.php">Profile</a></li>
   <li><a href="search_for_books.php">Search</a></li>
+
   <?php 
   if(1 == 0){
     // TODO: If student then show this page
@@ -45,6 +46,7 @@
   }
 
   ?>
+  <li><a href="logout.php">Logout</a></li>
 
 
 </ul>

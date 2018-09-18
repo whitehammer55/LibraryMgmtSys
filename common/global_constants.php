@@ -1,5 +1,7 @@
 <?php
-define("SIDE_NAV_WIDTH", 180);
+define("SIDE_NAV_WIDTH", 185);
+
+
 
 
 

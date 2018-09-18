@@ -1,4 +1,7 @@
-<?php require_once 'common/global_constants.php'; ?>
+<?php require_once 'common/global_constants.php'; 
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,10 +15,22 @@
 
     
     <?php 
+        
+       
         function isLoginCredentialsValid($userid, $password){
+             $uid="162040";//static var for testing 
+             $upswd="100";
+            if($uid==$userid and $upswd == $password){
 
+               return true;     
 
-            return true;
+            }
+            else{
+                
+                return false;
+            }
+
+           // return true;
         }
      ?>
 </head>
@@ -54,18 +69,36 @@
 
             $userid   = isset($_POST["u_id"])  ? $_POST["u_id"]  : '0';
             $password = isset($_POST["u_pwd"]) ? $_POST["u_pwd"] : '0';
+
             // check if these elements are available
             // if not, then use '0' as default value
 
 
             if (isLoginCredentialsValid($userid, $password )){
                 // if user login is correct
+                if(isset($_POST['checkbox'])){
+                    setcookie('u_id',$userid, time() + 60*60*7);
+                
+                    setcookie('u_pwd',$password, time() + 60*60*7);
+                       // cookie created
+                }
+                
+                $_SESSION['u_id']=$userid;
+                 session_start();                          // using sessions  to store userId for other uses
+                
+
 
                 echo "HELLO, " . $userid . "<br>";
 
             }
             else{
                 // redirect to login page
+
+                echo "<script>alert('Wrong UID Or Password');
+                window.location.href='login.php';
+                </script>";
+               
+               
             }
 
         }// POST
