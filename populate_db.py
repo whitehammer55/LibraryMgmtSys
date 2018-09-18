@@ -65,6 +65,7 @@ def c_table_b_author(filename):
     print("COMMIT;")
     conn.commit()
 
+
 def c_table_users(filename):
     '''Insert in users table'''
 
@@ -84,6 +85,27 @@ def c_table_users(filename):
 
     print("COMMIT;")
     conn.commit()
+
+
+def c_table_u_contact(filename):
+    '''Insert in u_contact table'''
+
+    insert_fmt = \
+    """INSERT INTO U_Contact(UserID, Contact)
+    VALUES ('{}', '{}');"""
+
+    with open(filename) as f:
+        for user in json.load(f):
+            for contact in user['Contact']:
+                cmd = insert_fmt.format(
+                    user['UserID'], contact)
+
+                print('Inserting: {:5d}: {:s}'.format(user['UserID'], contact))
+                cursor.execute(cmd)
+
+    print("COMMIT;")
+    conn.commit()
+
 
 def main():
     
@@ -108,6 +130,12 @@ def main():
     # INSERT USERS
     c_table_users('json/users.json')
     print()
+
+    # INSERT U_CONTACT
+    c_table_u_contact('json/users.json')
+    print()
+
+    
 
 if __name__ == '__main__':
     main()
