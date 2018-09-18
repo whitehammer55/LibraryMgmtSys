@@ -14,9 +14,6 @@ CREATE TABLE Books(BookID int NOT NULL PRIMARY KEY, ISBN varchar(30), Title varc
 CREATE TABLE B_Author(BookID int REFERENCES Books(BookID), AuthorName varchar(50) UNIQUE);
 """
 
-
-
-
 # Connect
 conn = MySQLdb.connect(host='localhost',
                         user='root', passwd='',
@@ -28,8 +25,9 @@ cursor = conn.cursor()
 #     print(row)
 # conn.close()
 
-# LOAD BOOK JSON
 def c_table_books(filename):
+    '''Insert in books table'''
+
     insert_fmt = \
     """INSERT INTO Books (BookID, ISBN, Title, Edition)
     VALUES ('{}', '{}', '{}', '{}');"""
@@ -47,6 +45,27 @@ def c_table_books(filename):
     print("COMMIT;")
     conn.commit()
 
+
+def c_table_b_author(filename):
+    '''Insert in b_author table'''
+
+    insert_fmt = \
+    """INSERT INTO B_Author(BookID, AuthorName)
+    VALUES ('{}', '{}');"""
+
+    with open(filename) as f:
+        for book in json.load(f):
+            for author in book['AuthorList']:
+                cmd = insert_fmt.format(
+                    book['ID'], author)
+
+                print(cmd)
+                cursor.execute(cmd)
+
+    print("COMMIT;")
+    conn.commit()
+
+
 def main():
     
     # CREATE THE DATABASE
@@ -60,9 +79,10 @@ def main():
     print()
 
     # INSERT BOOKS
-    c_table_books('json/curated-books.json')
+    c_table_books('json/books.json')
 
-
+    # INSERT B_AUTHOR
+    c_table_b_author('json/books.json')
 
 if __name__ == '__main__':
     main()
