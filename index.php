@@ -1,10 +1,8 @@
 <?php require_once 'common/global_constants.php'; 
 ?>
 <?php
-include_once'includes/db.php';
-
-
-session_start(); 
+include_once'includes/db.php';  //  includes the file to connect to the data base
+session_start(); // related to session variable set down
  ?>
 
 
@@ -75,15 +73,15 @@ session_start();
 
             // check if these elements are available
             // if not, then use '0' as default value
-            $conn;
+            $conn;   // connection from db.php stored here
 
-            $empRegX="[2]";
+            $empRegX="[2]";   // using regex to sort out employee ID from user ID
             if(!preg_match($empRegX, $userid)){
 
 
             $Users = "SELECT * FROM users where UserID='$userid' and Password='$password'";
             $result = mysqli_query($conn, $Users);
-            $EMP=false;
+            $EMP=false;  // using boolean to change  between index.php and tempEMP.php
 
             if (mysqli_num_rows($result) > 0) {
                     // output data of each row
@@ -95,9 +93,9 @@ session_start();
                 }
 
                                 
-             }
+             } //2nd if loop
 
-            }//if loop
+            }// 1st if loop
 
             else if(preg_match($empRegX, $userid)){
 
@@ -114,22 +112,23 @@ session_start();
                             
 
                     }
-                    echo $uid,$upswd;
+                    
 
                                     
-                 }
+                 }// if loop end
 
 
 
-            }
+            } //else if loop end
 
 
              else {
-                echo "0 results";
-                    }   
+                    echo "0 results";
+                }   
 
 
-            if (isLoginCredentialsValid($userid, $password, $uid ,$upswd )){
+            if (isLoginCredentialsValid($userid, $password, $uid ,$upswd )){   // userid is the user entered UID /EID
+                // uid is the uid matched from the databse
                 // if user login is correct
                 if(isset($_POST['checkbox'])){
                     setcookie('u_id',$userid, time() + 60*60*7);
@@ -139,11 +138,11 @@ session_start();
                 }  
 
                 if($EMP==true){
-                    header("location:tempEmp.php");
+                    header("location:tempEmp.php"); // displays the emp ID
                 }     
                 
                                                            // using sessions  to store userId for other uses
-                $_SESSION['u_id']=$userid;
+                $_SESSION['u_id']=$userid; //stores emp/ students  id in to session var
 
 
                 echo "HELLO, " . $userid . "<br>";
