@@ -35,7 +35,11 @@
   <li><a href="search_for_books.php">Search</a></li>
 
   <?php 
+<<<<<<< HEAD
   if(isset($_SESSION['user'])){
+=======
+  if(1 == 0){
+>>>>>>> 7c46f8c... Render table for reissue/return books
     // TODO: If student then show this page
     // Use session data to determine if student or teacher
       echo '<li><a href="books.php">Books</a></li>';
