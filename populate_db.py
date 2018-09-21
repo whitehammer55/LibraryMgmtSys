@@ -1,5 +1,6 @@
 import MySQLdb
 import json
+import datetime as dt
 
 ddl_create = """
 DROP TABLE IF EXISTS users ;
@@ -25,14 +26,14 @@ cursor = conn.cursor()
 #     print(row)
 # conn.close()
 
-def c_table_books(filename):
+def c_table_books(json_books, json_users, json_employees):
     '''Insert in books table'''
 
     insert_fmt = \
     """INSERT INTO Books (BookID, ISBN, Title, Edition)
     VALUES ('{}', '{}', '{}', '{}');"""
 
-    with open(filename) as f:
+    with open(json_books) as f:
         for book in json.load(f):
             cmd  = insert_fmt.format(
                 book['ID'],
@@ -41,6 +42,41 @@ def c_table_books(filename):
                 book['Edition'])
             print('Inserting: {:5d}: {:s}'.format(book['ID'], book['Title']))
             cursor.execute(cmd)
+
+    # GET ALL LISTS OF DATA
+    fb = open(json_books)
+    fu = open(json_users)
+    fe = open(json_employees)
+
+    books = json.load(fb)
+    users = json.load(fu)
+    emps  = json.load(fe)
+
+    fb.close()
+    fu.close()
+    fe.close()
+
+    # INSERT WHICH EMPLOYEE INSERTED WHICH BOOK
+    for i, b in enumerate(books):
+        cursor.execute("""UPDATE Books
+            SET EmployeeID = '{}'
+            WHERE BookID = '{}' ;"""
+            .format(emps[i%len(emps)]['EmployeeID'],
+                    b['ID']))
+
+    # INSERT BOOKS AS BORROWED
+    for i in range(4):
+        # insert 2 books each for first 2 users
+        cursor.execute("""UPDATE Books
+            SET DOI = '{}', DOR = '{}', UserID = '{}', reissue_count = '{}'
+            WHERE BookID = '{}';"""
+            .format(dt.datetime.today().strftime('%Y-%m-%d'),
+                    (dt.datetime.today() + dt.timedelta(days=7)).strftime('%Y-%m-%d'),
+                    users[i%len(users)]['UserID'],
+                    0,
+                    books[i]['ID']
+                    ))
+
 
     print("COMMIT;")
     conn.commit()
@@ -142,7 +178,7 @@ def main():
 
     # INSERT BOOKS
     print("INSERT BOOKS:")
-    c_table_books('json/books.json')
+    c_table_books('json/books.json', 'json/users.json', 'json/employees.json')
     print()
 
     # INSERT B_AUTHOR
