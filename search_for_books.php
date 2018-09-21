@@ -32,9 +32,13 @@
     <div class="main-content">
         
         <form name="form_book" method="post">
+            
             <input type="text" name="search_query">
+
             <input type="submit" value="submit"
                 onclick="
+                // THIS ONCLICK VERIFIES THAT INPUTS ARE NOT EMPTY
+
                 if(document.form_book.search_query.value == ''){
                     alert('You need to enter a search query');
                     return false; // to prevent form refresh
@@ -44,38 +48,42 @@
                     alert('Choose a parameter to search from!');
                     return false; // to prevent form refresh
                 }">
+            
             <br>
 
             <?php
+            // Variables created to be used 
+            // 1) as values, and IDs in radio button, 
+            // 2) and in the if else to search for the correct field
+
             $COL_TITLE = "Books.Title";
             $COL_ISBN = "Books.ISBN";
             $COL_BOOKID = "Books.BookID";
-            $COL_DOI = "Books.DOI";
-            $COL_DOR = "Books.DOR";
             $COL_AUTHOR = "B_Author.AuthorName"
             ?>
 
-
+            <input type="radio" name="search_field" value="<?= $COL_BOOKID ?>" id="<?= $COL_BOOKID ?>">BookID
+            <input type="radio" name="search_field" value="<?= $COL_ISBN ?>" id="<?= $COL_ISBN ?>">ISBN
             <input type="radio" name="search_field" value="<?= $COL_TITLE ?>" id="<?= $COL_TITLE ?>">Title
             <input type="radio" name="search_field" value="<?= $COL_AUTHOR ?>" id="<?= $COL_AUTHOR ?>">Author
+
         </form>
 
         <?php 
             if ($_SERVER['REQUEST_METHOD'] === 'POST'
                 && isset($_POST['search_query'])
                 && isset($_POST['search_field']))  {
-
-                // Restore values of input variables
+                // Check if request is post and search variables are set
+                
                 ?>
                 <script type="text/javascript">
+                    // Restore values of input variables
                     document.form_book.search_query.value = '<?= $_POST["search_query"] ?>';
                     document.getElementById('<?= $_POST["search_field"] ?>').checked = true;
                 </script>
 
                 <?php
-
-    
-
+                // Database credentials
                 $dbhost = "localhost";
                 $dbuser = "root";
                 $dbpass = "";
@@ -91,27 +99,40 @@
 
                 $field = $_POST['search_field'];
                 $query = $_POST['search_query'];
-                $sql = "SELECT b.BookID, b.ISBN, b.Title, b.DOI, group_concat(a.authorname separator ', ') as 'authors' FROM Books b JOIN B_Author a ON b.BookID = a.BookID "; 
 
-                if($field == $COL_TITLE){
+                // Create first part of the query where join is done
+                $sql = "SELECT b.BookID, b.ISBN, b.Title, b.DOI, group_concat(a.authorname separator ', ') as 'authors' FROM Books b JOIN B_Author a ON b.BookID = a.BookID "; 
+                // 'authors' is used as key, when printing the data
+
+                // This if else applies the correct query to be searced for
+                if($field == $COL_BOOKID){
+                    $sql .= " WHERE b.BookID LIKE '%" . $query . "%' ";
+                }
+                elseif ($field == $COL_ISBN) {
+                    $sql .= " WHERE b.ISBN LIKE '%" . $query . "%' ";
+                }
+                elseif($field == $COL_TITLE){
                     $sql .= " WHERE b.Title LIKE '%" . $query ."%' ";
-                    
                 }
                 elseif($field == $COL_AUTHOR){
                     $sql .= " WHERE a.AuthorName LIKE '%" . $query . "%' ";
                 }
 
+                // End the query
                 $sql .= " GROUP BY b.BookID;";
 
+                // Actually execute the query
                 $result = $mysqli->query($sql);
 
         ?>     
 
         <style type="text/css">
            table, tr, td, th {
+            /* To get lines for the table, make pretty later */
             border: 1px solid black;
            }
        </style>
+
         <table>
             <tr>
                 <th>BookID</th>
