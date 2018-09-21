@@ -1,6 +1,11 @@
 <?php require_once 'common/global_constants.php'; 
 ?>
+<?php
+include_once'includes/db.php';
 
+
+session_start(); 
+ ?>
 
 
 <!DOCTYPE html>
@@ -15,11 +20,9 @@
 
     
     <?php 
-        
-       
-        function isLoginCredentialsValid($userid, $password){
-             $uid="162040";//static var for testing 
-             $upswd="100";
+
+        function isLoginCredentialsValid($userid, $password, $uid, $upswd){
+         
             if($uid==$userid and $upswd == $password){
 
                return true;     
@@ -72,20 +75,75 @@
 
             // check if these elements are available
             // if not, then use '0' as default value
+            $conn;
+
+            $empRegX="[2]";
+            if(!preg_match($empRegX, $userid)){
 
 
-            if (isLoginCredentialsValid($userid, $password )){
+            $Users = "SELECT * FROM users where UserID='$userid' and Password='$password'";
+            $result = mysqli_query($conn, $Users);
+            $EMP=false;
+
+            if (mysqli_num_rows($result) > 0) {
+                    // output data of each row
+                while($row = mysqli_fetch_assoc($result)) 
+                {
+                        $uid=$row['UserID'];
+                        $upswd=$row['Password'];
+
+                }
+
+                                
+             }
+
+            }//if loop
+
+            else if(preg_match($empRegX, $userid)){
+
+                $emp = "SELECT * FROM employees where EmployeeID='$userid' and Password='$password'";
+                $result = mysqli_query($conn, $emp);
+                $EMP=true;
+                if (mysqli_num_rows($result) > 0) {
+                    // output data of each row
+                    while($row = mysqli_fetch_assoc($result)) 
+                    {
+                            $uid=$row['EmployeeID'];
+
+                            $upswd=$row['Password'];
+                            
+
+                    }
+                    echo $uid,$upswd;
+
+                                    
+                 }
+
+
+
+            }
+
+
+             else {
+                echo "0 results";
+                    }   
+
+
+            if (isLoginCredentialsValid($userid, $password, $uid ,$upswd )){
                 // if user login is correct
                 if(isset($_POST['checkbox'])){
                     setcookie('u_id',$userid, time() + 60*60*7);
                 
                     setcookie('u_pwd',$password, time() + 60*60*7);
                        // cookie created
-                }
+                }  
+
+                if($EMP==true){
+                    header("location:tempEmp.php");
+                }     
                 
+                                                           // using sessions  to store userId for other uses
                 $_SESSION['u_id']=$userid;
-                 session_start();                          // using sessions  to store userId for other uses
-                
 
 
                 echo "HELLO, " . $userid . "<br>";

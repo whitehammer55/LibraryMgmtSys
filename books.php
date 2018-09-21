@@ -1,4 +1,7 @@
 <?php require_once 'common/global_constants.php'; ?>
+<?php
+include_once'includes/db.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,25 +33,44 @@
 
     <div class="main-content">
 
+            <h2>List of Books</h2>
+
         <?php
+        $conn;
 
         // TODO: Change this to retreivals from database
         echo"
-            <table>
+                    <table>
                 <tr>
-                    <th>BOOK TITLE</th>
-                    <th>DUE DATE</th>
+                    <th>BOOK Title</th>
                 </tr>
+
+
+                ";
+       
+
+
+        $books = "SELECT * FROM books ";
+        $result = mysqli_query($conn, $books);
+        while($book_data=mysqli_fetch_row($result)){
+
+
+        
+
+
+            echo"
+            
                 <tr>
-                    <td>JAMES BOND</td>
-                    <td>19-1-1999</td>
+
+                    <td>".$book_data[2]."<br></td>
+                    
                 </tr>
-                <tr>
-                    <td>CHANANDLER BONG</td>
-                    <td>10-1-1990</td>
-                </tr>
+                
             </table>
             ";
+
+        }
+        
         ?>
 
     </div>

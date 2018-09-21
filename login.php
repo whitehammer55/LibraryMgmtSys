@@ -1,9 +1,4 @@
 <?php require 'common/global_constants.php'; ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,15 +28,13 @@
 
     <?php  
 
-if(isset($_COOKIE['u_id']) and isset($_COOKIE['u_pwd'])){
-	$u_id=$_COOKIE['u_id'];
-	$u_pwd=$_COOKIE['u_pwd'];
-	
+        if(isset($_COOKIE['u_id']) and isset($_COOKIE['u_pwd'])){
+	       $u_id=$_COOKIE['u_id'];
+	       $u_pwd=$_COOKIE['u_pwd'];
+	       header("location:index.php");
+}   
 
-	header("location:index.php");
-}
-
-?>
+    ?>
 
 </body>
 </html>
