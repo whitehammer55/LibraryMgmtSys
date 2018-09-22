@@ -10,7 +10,7 @@
         "ISBN": "0071363629"
     },
     {
-        "ID": 14,
+        "ID": 2,
         "Title": "Mathematical models in biology: solution manual",
         "AuthorList": [
             "Elizabeth S. Allman",
@@ -21,7 +21,7 @@
         "ISBN": "0521525861"
     },
     {
-        "ID": 42,
+        "ID": 3,
         "Title": "Physics in Biology and Medicine",
         "AuthorList": [
             "Paul Davidovits"
@@ -31,7 +31,7 @@
         "ISBN": "0123694116"
     },
     {
-        "ID": 43,
+        "ID": 4,
         "Title": "Branching morphogenesis",
         "AuthorList": [
             "Jamie Davies"
@@ -41,7 +41,7 @@
         "ISBN": "0387256156"
     },
     {
-        "ID": 52,
+        "ID": 5,
         "Title": "Biochemistry",
         "AuthorList": [
             "Garrett R.H.",
@@ -52,7 +52,7 @@
         "ISBN": "0030973694"
     },
     {
-        "ID": 69,
+        "ID": 6,
         "Title": "Fractal modelling: growth and form in biology",
         "AuthorList": [
             "Jaap A. Kaandorp",
@@ -63,7 +63,7 @@
         "ISBN": "3540566856"
     },
     {
-        "ID": 92,
+        "ID": 7,
         "Title": "Mathematical Biology 1: An Introduction",
         "AuthorList": [
             "James D. Murray"
@@ -73,7 +73,7 @@
         "ISBN": "0387952233"
     },
     {
-        "ID": 102,
+        "ID": 8,
         "Title": "The blank slate: the modern denial of human nature",
         "AuthorList": [
             "Steven Pinker"
@@ -83,7 +83,7 @@
         "ISBN": "0670031518"
     },
     {
-        "ID": 110,
+        "ID": 9,
         "Title": "Molecular neuroscience",
         "AuthorList": [
             "Dr P Revest",
@@ -94,7 +94,7 @@
         "ISBN": "1859962505"
     },
     {
-        "ID": 728,
+        "ID": 10,
         "Title": "Algorithms and theory of computation handbook",
         "AuthorList": [
             "Mikhail J. Atallah"
@@ -104,7 +104,7 @@
         "ISBN": "0849326494"
     },
     {
-        "ID": 745,
+        "ID": 11,
         "Title": "Introduction to algorithms",
         "AuthorList": [
             "Thomas H. Cormen",
@@ -117,7 +117,7 @@
         "ISBN": "0070131511"
     },
     {
-        "ID": 766,
+        "ID": 12,
         "Title": "Mathematics for the analysis of algorithms",
         "AuthorList": [
             "Daniel H Greene"
@@ -127,7 +127,7 @@
         "ISBN": "376433102X"
     },
     {
-        "ID": 782,
+        "ID": 13,
         "Title": "Combinatorial algorithms: generation, enumeration, and search",
         "AuthorList": [
             "Donald L. Kreher",
@@ -138,7 +138,7 @@
         "ISBN": "084933988X"
     },
     {
-        "ID": 975,
+        "ID": 14,
         "Title": "Computer Algebra Recipes for Mathematical Physics",
         "AuthorList": [
             "Richard H. Enns"
@@ -148,7 +148,7 @@
         "ISBN": "0817632239"
     },
     {
-        "ID": 985,
+        "ID": 15,
         "Title": "Mathematics for computer algebra",
         "AuthorList": [
             "Maurice Mignotte",
@@ -159,7 +159,7 @@
         "ISBN": "0387976752"
     },
     {
-        "ID": 1050,
+        "ID": 16,
         "Title": "Computer vision and applications",
         "AuthorList": [
             "Bernd Jahne"
@@ -169,7 +169,7 @@
         "ISBN": "0123797772"
     },
     {
-        "ID": 1053,
+        "ID": 17,
         "Title": "Concrete and Abstract Voronoi Diagrams",
         "AuthorList": [
             "Rolf Klein (auth.)"
@@ -179,7 +179,7 @@
         "ISBN": "0387520554"
     },
     {
-        "ID": 1059,
+        "ID": 18,
         "Title": "A blossoming development of splines",
         "AuthorList": [
             "Stephen Mann"
@@ -189,7 +189,7 @@
         "ISBN": "1598291165"
     },
     {
-        "ID": 1082,
+        "ID": 19,
         "Title": "Implicit objects in computer graphics",
         "AuthorList": [
             "Luiz Velho",
@@ -201,7 +201,7 @@
         "ISBN": "0387984240"
     },
     {
-        "ID": 1085,
+        "ID": 20,
         "Title": "Essential Mathematics for Computer Graphics Fast",
         "AuthorList": [
             "John Vince"
@@ -211,7 +211,7 @@
         "ISBN": "1852333804"
     },
     {
-        "ID": 1256,
+        "ID": 21,
         "Title": "Coding and information theory",
         "AuthorList": [
             "Richard W. Hamming"
@@ -221,7 +221,7 @@
         "ISBN": "0131390724"
     },
     {
-        "ID": 1297,
+        "ID": 22,
         "Title": "Radiosity and Realistic Image Synthesis ",
         "AuthorList": [
             "Michael F. Cohen",
@@ -232,7 +232,7 @@
         "ISBN": "0121782700"
     },
     {
-        "ID": 1312,
+        "ID": 23,
         "Title": "Introduction to Statistical Pattern Recognition",
         "AuthorList": [
             "Keinosuke Fukunaga"
@@ -242,7 +242,7 @@
         "ISBN": "0122698517"
     },
     {
-        "ID": 1532,
+        "ID": 24,
         "Title": "C++ Solutions: companion to C++ programming language",
         "AuthorList": [
             "David Vandevoorde",
