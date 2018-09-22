@@ -44,6 +44,7 @@
            die;
         }
 
+        // Select the data
         $sql = "SELECT b.BookID, b.Title, b.DOI, b.DOR, b.reissue_count FROM Books b JOIN Users u ON b.UserID = u.UserID ";
 
         $sql .= " WHERE b.UserID = '101'";
@@ -54,13 +55,89 @@
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             // if post then reissue books
+            // ECHO "ffffff";
+            foreach($_POST as $key => $value){
+                echo "Keys: " . $key . " " . $value . "<br>";
+            
+
+                // REISSUE SECTION
+                $book_id = str_replace("reissue_" , "" ,$key, $replace_count);
+                print_r("Reissue RepCount: " . $replace_count);
+                if($replace_count == 1){
+                    // valid reissue post variable
+
+                    // find the book with correct bookid
+                    for($i=0; $i < $result->num_rows; $i++){
+                        $result->data_seek($i);
+                        $row = $result->fetch_assoc();
+
+                        if($row['BookID'] == $book_id){
+                            // correct book found
+                            $correct_book = $row;
+                            break; // quit the loop
+                        }
+                    }
+
+                    print_r("Reissue" . $correct_book['BookID']);
+
+                    // if reissue count < 3
+                    if($correct_book['reissue_count'] < 3){
+
+                        print_r("UPDATE REISSUE");
+                        $update_sql = 
+                        "UPDATE Books " 
+                        . " SET reissue_count = reissue_count + 1, DOR = DATE_ADD(DOR, INTERVAL 7 DAY) "
+                        . " WHERE BookID =  '$book_id' ;";
+
+                        if(!$mysqli->query($update_sql)){
+                            echo "UPDATE failed (" . $mysqli->errno . ") " . $mysqli->error;
+                        }
+                    }
+                }// if valid reissue variable
 
 
-        }
+                // RETURN SECTION
+                $book_id = str_replace("return_", "", $key, $replace_count);
+                print_r("Return RepCount: " . $replace_count);
+
+                if($replace_count == 1){
+                    // valid return variable
+                    // find the book with correct bookid
+                    for($i=0; $i < $result->num_rows; $i++){
+                        $result->data_seek($i);
+                        $row = $result->fetch_assoc();
+
+                        if($row['BookID'] == $book_id){
+                            // correct book found
+                            $correct_book = $row;
+                            break; // quit the loop
+                        }
+                    }
+
+                    $return_sql = 
+                    "UPDATE Books "
+                    . "SET DOI= NULL, DOR = NULL, UserID = NULL "
+                    . " WHERE BookID = '$book_id' ; ";
+                    $mysqli->query($return_sql);
+                }
+
+            }
+        }// if post
+
+
+        // Requery to get the data that was updated in POST
+        $result = $mysqli->query($sql);
+
+
 
 
         ?>
-    <form name="form_issue">
+    <style type="text/css">
+        table, tr, td, th {
+            border: 1px solid black;
+        }
+    </style>
+    <form name="form_issue" method="POST">
         <table>
             <tr>
                 <th>BookID</th>
@@ -78,8 +155,8 @@
                 $result->data_seek($i);
                 $row = $result->fetch_assoc();
 
-                $reissue_id = "reissue_" . $i;
-                $return_id = "return_" . $i;
+                $reissue_id = "reissue_" . $row['BookID'];
+                $return_id = "return_" . $row['BookID'];
                 ?>
 
                 <tr>
@@ -89,8 +166,8 @@
                     <td><?= $row['DOR'] ?></td>
                     <td><?= $row['reissue_count'] ?></td>
                     <td>
-                        <input type="checkbox" name="<?= $reissue_id ?>" value="0"
-                        <?php if ($row['reissue_count'] >= 3
+                        <input type="checkbox" name="<?= $reissue_id ?>" value="1"
+                        <?php if ($row['reissue_count'] == 3
                                  || date("Y-m-d") > $row['DOR']) {
                             // Disable checkbox if reissue_count >= 3
                             // Or if today is past reissue date
@@ -101,13 +178,40 @@
                         >
                     </td>
                     <td>
-                        <input type="checkbox" name="<?= $return_id ?>" value="0"
-                        <?php if(date("Y-m-d") > $row['DOR']){
-                            echo "disabled";
-                        }
+                        <input type="checkbox" name="<?= $return_id ?>" value="1"
+                        <?php
+                        // Commenting this section, since if return date is crossed,
+                        // then employee will take fine and then press return
+                        // Hence, no need to disable the return button
+                        //
+                        //  if(date("Y-m-d") > $row['DOR']){
+                        //     echo "disabled";
+                        // }
                         ?>
                         >
                     </td>
+                    <td>
+                        <?php 
+                        $date_return = new DateTime($row['DOR']);
+                        $date_today = new DateTime(date("Y-m-d"));
+
+                        $interval = $date_return->diff($date_today);
+                        // today - DOR
+
+                        if($interval->invert == 1){
+                            // negative difference
+                            echo "0.0";
+                        } else {
+                            // positive difference ie return date has been passed
+
+                            $fine = $interval->d * 2;
+                            // Rs 2 fine per day after return date
+                            echo $fine . ".0";
+                        }
+
+                        ?>
+                    </td>
+
                 </tr>
 
                 <?php
