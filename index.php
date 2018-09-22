@@ -67,42 +67,44 @@ session_start(); // related to session variable set down
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             // username and password sent from form 
         
-
+            // check if these elements are available
+            // if not, then use '0' as default value
             $userid   = isset($_POST["u_id"])  ? $_POST["u_id"]  : '0';
             $password = isset($_POST["u_pwd"]) ? $_POST["u_pwd"] : '0';
 
-            // check if these elements are available
-            // if not, then use '0' as default value
+            
             $conn;   // connection from db.php stored here
 
-            $empRegX="[2]";   // using regex to sort out employee ID from user ID
-            if(!preg_match($empRegX, $userid)){
+           // $empRegX="[2]";   // using regex to sort out employee ID from user ID
+            $check= mysqli_query($conn, "Select UserID from users where UserID='$userid'");
+
+            if(!mysqli_num_rows($check) == 0){     // if student
 
 
-            $Users = "SELECT * FROM users where UserID='$userid' and Password='$password'";
-            $result = mysqli_query($conn, $Users);
-            $EMP=false;  // using boolean to change  between index.php and tempEMP.php
+                $Users = "SELECT * FROM users where UserID='$userid' and Password='$password'";
+                $result = mysqli_query($conn, $Users);
+                $EMP=false;  // using boolean to change  between index.php and tempEMP.php
 
-            if (mysqli_num_rows($result) > 0) {
-                    // output data of each row
-                while($row = mysqli_fetch_assoc($result)) 
-                {
-                        $uid=$row['UserID'];
-                        $upswd=$row['Password'];
+                if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                    while($row = mysqli_fetch_assoc($result)) 
+                    {
+                            $uid=$row['UserID'];
+                            $upswd=$row['Password'];
 
-                }
+                    }
 
-                                
-             } //2nd if loop
+                                    
+                 } //2nd if loop
 
             }// 1st if loop
 
-            else if(preg_match($empRegX, $userid)){
+            else {
 
                 $emp = "SELECT * FROM employees where EmployeeID='$userid' and Password='$password'";
                 $result = mysqli_query($conn, $emp);
                 $EMP=true;
-                if (mysqli_num_rows($result) > 0) {
+                if (mysqli_num_rows($result) > 0) {    // if employee
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) 
                     {
@@ -122,9 +124,7 @@ session_start(); // related to session variable set down
             } //else if loop end
 
 
-             else {
-                    echo "0 results";
-                }   
+              
 
 
             if (isLoginCredentialsValid($userid, $password, $uid ,$upswd )){   // userid is the user entered UID /EID
@@ -138,10 +138,11 @@ session_start(); // related to session variable set down
                 }  
 
                 if($EMP==true){
-                    header("location:tempEmp.php"); // displays the emp ID
+                     // setting session variable to employee
+                     $_SESSION['E_id']=$userid;// displays the emp ID
                 }     
                 
-                                                           // using sessions  to store userId for other uses
+                    // else student session var gets set
                 $_SESSION['u_id']=$userid; //stores emp/ students  id in to session var
 
 

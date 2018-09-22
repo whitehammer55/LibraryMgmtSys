@@ -1,5 +1,6 @@
 <?php require_once 'common/global_constants.php'; ?>
 
+
 <style type="text/css">
     ul {
         /* Removes the bullets */
@@ -34,7 +35,7 @@
   <li><a href="search_for_books.php">Search</a></li>
 
   <?php 
-  if(1 != 0){
+  if(isset($_SESSION['u_id'])){
     // TODO: If student then show this page
     // Use session data to determine if student or teacher
       echo '<li><a href="books.php">Books</a></li>';
