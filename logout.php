@@ -9,16 +9,10 @@
 		setcookie('u_id',$userid, time() -1);
                 
         setcookie('u_pwd',$password, time() -1);
-}
+	}
+?>
 
-		echo "<script>
+	<script>
 		alert('You Have Successfully Logged Out');
 		window.location.href='login.php';
-	
-
-	</script>";
-	
-	
-
-
-?>
+	</script>

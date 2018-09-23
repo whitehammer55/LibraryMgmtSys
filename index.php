@@ -1,10 +1,5 @@
 <?php require_once 'common/global_constants.php'; 
 ?>
-<?php
-include_once'includes/db.php';  //  includes the file to connect to the data base
-
- ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +11,6 @@ include_once'includes/db.php';  //  includes the file to connect to the data bas
 
     <link rel="stylesheet" type="text/css" href="style.php">
 
-    
-    <?php 
-
-        
-     ?>
 </head>
 <body>
     <div class="header">
