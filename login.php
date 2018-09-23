@@ -8,7 +8,7 @@
     <div class="loginbox">
         <img src="user.png" class="user">
         <h1>Login Here</h1>
-        <form action="index.php" name="form1" method="post">
+        <form action="login_validation.php" name="form1" method="post">
             
             
             <label  >User ID:</label>

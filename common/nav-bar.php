@@ -35,12 +35,12 @@
   <li><a href="search_for_books.php">Search</a></li>
 
   <?php 
-  if(isset($_SESSION['u_id'])){
+  if(isset($_SESSION['user'])){
     // TODO: If student then show this page
     // Use session data to determine if student or teacher
       echo '<li><a href="books.php">Books</a></li>';
   }
-  else {
+  else if(isset($_SESSION['emp'])) {
     // If employee
     echo '<li><a href="issue_books.php">Issue Books</a></li>';
     echo '<li><a href="reissue_return_books.php">Reissue/Return</a></li>';
