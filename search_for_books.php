@@ -131,7 +131,7 @@
             /* To get lines for the table, make pretty later */
             border: 1px solid black;
            }
-       </style>
+        </style>
 
         <table>
             <tr>

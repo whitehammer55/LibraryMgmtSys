@@ -32,15 +32,86 @@
     <div class="main-content">
 
         <?php
+            $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-        // REMOVE
-        echo "
-        <h1>
-        HELLO USERNAME
-        </h1>";
-        // REMOVE
+            if($mysqli->connect_errno){
+               echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+               die;
+            }
 
+
+
+
+            if(isset($_SESSION['user'])){
+                $id = $_SESSION['user'];
+                $sql = "SELECT UserID, FirstName, LastName, Email, DOB FROM Users WHERE UserID ='$id' ";
+            }
+            elseif (isset($_SESSION['emp'])) {
+                $id = $_SESSION['emp'];
+                $sql = "SELECT EmployeeID, Post, FirstName, LastName, Email, DOB FROM Employees WHERE EmployeeID = '$id';";
+            }
+            else{
+                echo "Invalid login";
+                die;
+            }
+
+
+            if(! $result = $mysqli->query($sql)){
+               echo "Query Error!";
+            }
+
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+
+            ?>
+
+            <style type="text/css">
+               table, tr, td, th {
+                /* To get lines for the table, make pretty later */
+                border: 1px solid black;
+               }
+            </style>
         
+            <table>
+                <tr>
+                    <td> ID: </td>
+                    <td> <?= $id ?> </td>
+                </tr>
+
+                <!-- TR for Post -->
+                <?php
+                if(isset($_SESSION['emp'])){
+                ?>
+                    <tr>
+                        <td>Post:</td>
+                        <td> <?= $row['Post']?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+
+
+                <tr>
+                    <td>Full Name:</td>
+                    <td> <?= $row['FirstName'] . " " . $row['LastName'] ?></td>
+                </tr>
+
+                <tr>
+                    <td>Email:</td>
+                    <td> <?= $row['Email']?></td>
+                </tr>
+
+                <tr>
+                    <td>Date of Birth:</td>
+                    <td> <?= $row['DOB']?></td>
+                </tr>
+
+            </table>
+
+
+            
+            <?php
+            $mysqli->close();
         ?>
 
     </div>
