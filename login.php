@@ -24,6 +24,10 @@
             <input type="checkbox" name="checkbox" value="1">Remember Me
 
         </form>
+
+        <div>
+            Don't have an account? <a href="sign_up.php">Sign up</a>
+        </div>
     </div>
 
     <?php  
