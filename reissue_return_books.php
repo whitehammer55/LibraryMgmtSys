@@ -116,7 +116,7 @@
 
                     $return_sql = 
                     "UPDATE Books "
-                    . "SET DOI= NULL, DOR = NULL, UserID = NULL "
+                    . "SET DOI= NULL, DOR = NULL, UserID = NULL ,EmployeeID=NULL"
                     . " WHERE BookID = '$book_id' ; ";
                     $mysqli->query($return_sql);
                 }

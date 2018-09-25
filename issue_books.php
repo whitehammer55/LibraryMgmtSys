@@ -20,6 +20,11 @@
     <link rel="stylesheet" type="text/css" href="style.php">
 
 </head>
+<script type="text/javascript">
+    
+
+
+</script>>
 <body>
     <div class="header">
 
@@ -62,13 +67,13 @@
             <table>
                 <tr>
                     <td>Enter the Book ID :
-                        <input type="text" name="BID">
+                        <input type="text" name="BID" required>
                     </td>
 
                 </tr>
                 <tr>
                     <td>Enter the Student ID :
-                        <input type="text" name="PID">
+                        <input type="text" name="PID" required>
                     </td>
 
                 </tr>
@@ -87,6 +92,7 @@
                     $EMP = $_SESSION['emp'];
                     $date_now = date("Y-m-d");
                     $book_available=false;
+                    $valid_user = false;
                     
                     $result = $mysqli->query("Select BookID from books where BookID= '$BID' and UserId is  NULL");
                     if(!$result){
@@ -96,7 +102,6 @@
 
                         $book_available=true;
                         
-
                         }
                         else{
                             
@@ -104,16 +109,21 @@
                         alert('ERROR');
             
                         </script>";
-
-                     
-
                         }
 
-                     if($book_available){
-                        mysqli_query($mysqli,"update books set UserId ='$PID'  where BookID='$BID'");
-                        mysqli_query($mysqli,"update books set EmployeeID ='$EMP'  where BookID='$BID'");
-                        mysqli_query($mysqli,"update books set DOI ='$date_now'  where BookID='$BID'");
-                        mysqli_query($mysqli,"update books set DOR =DATE_ADD(DOI, INTERVAL 7 DAY)  where BookID='$BID'");
+                        $check_user=$mysqli->query("select employeeID from employees where employeeID=$PID");
+                        if($check_user->num_rows == 0){     
+
+                        $valid_user=true;
+                        
+                        }
+
+
+
+
+                     if(($book_available && $valid_user)== true){
+                        mysqli_query($mysqli,"update books set UserId ='$PID' , EmployeeID ='$EMP',DOI ='$date_now',DOR =DATE_ADD(DOI, INTERVAL 7 DAY)   where BookID='$BID'");
+                        
 
 
                        echo "<script>alert('Book Issued Successfully');
@@ -122,6 +132,11 @@
 
 
 
+                     }else{
+                        echo"<script>
+                        alert('ERROR');
+            
+                        </script>";
                      }
 
                 }
