@@ -30,7 +30,7 @@
         if($result->num_rows != 0){     // if student
                 
                 // if retrieved rows are more than zero, then correct login
-                $_SESSION['user'] = 1;
+                $_SESSION['user'] = $userid;
                 $valid_login = true;
                                 
 
@@ -49,7 +49,7 @@
                 // output data of each row
                 
                 // if retrieved rows are moer than 0, then correct login
-                $_SESSION['emp'] = 1;
+                $_SESSION['emp'] = $userid;
                 $valid_login = true;
                                 
              }// if loop end
