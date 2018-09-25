@@ -32,9 +32,14 @@
 
     <?php  
 
-        if(isset($_COOKIE['u_id']) and isset($_COOKIE['u_pwd'])){
+        if(isset($_COOKIE['u_id']) and isset($_COOKIE['u_pwd']) and isset($_COOKIE['user_type'])){
 	       $u_id=$_COOKIE['u_id'];
 	       $u_pwd=$_COOKIE['u_pwd'];
+
+           $type = $_COOKIE['user_type'];
+
+           $_SESSION[$type] = $u_id;
+
 	       header("location:index.php");
 }   
 

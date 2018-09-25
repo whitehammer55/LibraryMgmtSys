@@ -32,7 +32,8 @@
                 // if retrieved rows are more than zero, then correct login
                 $_SESSION['user'] = $userid;
                 $valid_login = true;
-                                
+                
+                unset($_SESSION['emp']);
 
         }// 1st if loop
 
@@ -51,6 +52,8 @@
                 // if retrieved rows are moer than 0, then correct login
                 $_SESSION['emp'] = $userid;
                 $valid_login = true;
+
+                unset($_SESSION['user']);
                                 
              }// if loop end
 
@@ -84,6 +87,17 @@
             
                 setcookie('u_pwd',$password, time() + 60*60*7);
                    // cookie created
+
+                if(isset($_SESSION['user'])){
+                    $type = 'user';
+                }
+                elseif(isset($_SESSION['emp'])){
+                    $type = 'emp';
+                }
+                // else doesn't come since one of the session variables
+                // is set in the isLoginCredentialsValid function
+
+                setcookie('user_type', $type, time() + 60*60*7);
             }  
 
             echo "HELLO, " . $userid . "<br>";

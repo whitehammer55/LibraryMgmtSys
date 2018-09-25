@@ -9,6 +9,7 @@
 		setcookie('u_id',$userid, time() -1);
                 
         setcookie('u_pwd',$password, time() -1);
+        setcookie('user_type', 'f', time() - 1);
 	}
 ?>
 
