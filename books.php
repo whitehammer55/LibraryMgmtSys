@@ -31,25 +31,68 @@
 
     <div class="main-content">
 
-        <?php
-        // TODO: Change this to retreivals from database
-        echo"
-            <table>
-                <tr>
-                    <th>BOOK TITLE</th>
-                    <th>DUE DATE</th>
-                </tr>
-                <tr>
-                    <td>JAMES BOND</td>
-                    <td>19-1-1999</td>
-                </tr>
-                <tr>
-                    <td>CHANANDLER BONG</td>
-                    <td>10-1-1990</td>
-                </tr>
-            </table>
-            ";
+        <style type="text/css">
+           table, tr, td, th {
+            /* To get lines for the table, make pretty later */
+            border: 1px solid black;
+           }
+        </style>
+
+        <table>
+            <tr>
+                <th>BookID</th>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author(s)</th>
+                <th>DOI</th>
+                <th>DOR</th>
+            </tr>   
+        <?php 
+
+        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+        if($mysqli->connect_errno){
+           echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+           die;
+        }
+
+        $userid = $_SESSION['user'];
+        $sql = "SELECT b.BookID, b.ISBN, b.Title, b.DOI, b.DOR, group_concat(a.authorname separator ', ') as 'authors' FROM Books b JOIN B_Author a ON b.BookID = a.BookID WHERE b.UserID = '$userid';";
+        $result = $mysqli->query($sql);
+
+        if(! $result){
+            echo "Error in query!<br>";
+            echo $sql;
+            die;
+        }
+
+
+        if($result->num_rows == 0){
+            echo "<tr>" . "No Results Found!" . "</tr";
+        }
+
+
+        for($i = 0; $i < $result->num_rows; $i++){
+            $result->data_seek($i);
+            $row = $result->fetch_assoc();
+
         ?>
+            <tr>
+            <td> <?= $row['BookID'] ?> </td>
+            <td> <?= $row['ISBN'] ?> </td>
+            <td> <?= $row['Title'] ?> </td>
+            <td> <?= $row['authors'] ?> </td>
+            <td> <?= $row['DOI'] ?> </td>
+            <td> <?= $row['DOR'] ?></td>
+            </tr>
+
+        <?php  
+        } // end for
+
+        $mysqli->close();
+
+        ?>
+        </table>
 
     </div>
     

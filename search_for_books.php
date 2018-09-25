@@ -167,6 +167,7 @@
         } // end if post
         ?>
 
+        </table>
     </div>
     
 </body>
