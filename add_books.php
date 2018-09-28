@@ -19,7 +19,12 @@
 
     <link rel="stylesheet" type="text/css" href="style.php">
 
-</head>
+</head><style type="text/css">
+	
+	table{
+		border-collapse: collapse;
+	}
+</style>
 <body>
     <div class="header">
 
@@ -40,6 +45,10 @@
     <div class="main-content">
             <?php 
         // Database credentials
+
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    	
         $dbhost = "localhost";
         $dbuser = "root";
         $dbpass = "";
@@ -55,40 +64,7 @@
 
         ?>
 
-         <form name="add_books" method="POST">
-            <table >
-                
-                <tr>
-                    <td>Enter the ISBN of the Book :
-                        <input type="text" name="ISBN" required>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>Enter the Title of the Book :
-                        <input type="text" name="TITLE" required>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>Enter the Author of the Book :
-                        <input type="text" name="AuthorName" required>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>Enter the Edition of the Book :
-                        <input type="text" name="EDITION" required>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <input type="submit" name="submit">
-                    </td>
-
-                </tr>
-            </table>
+         
 
             <?php 
 
@@ -126,6 +102,9 @@
                         if ($check_book->num_rows!=0) {
                             echo"<script>
                                     alert('Error/Book already in the database');
+
+            						window.location.href='add_books.php';
+            	
                             </script>";
                             
                         }
@@ -146,12 +125,86 @@
 
 
                 }
+
             }
 
+            	echo"
 
-             ?>
+
+	            	<table border =1>
+	            		<tr>
+	            			<th>BookID</th>
+	            			<th>ISBN</th>
+	            			<th>Title</th>
+	            			<th>Author Name</th>
+	            			<th>Edition</th>
+	            		</tr>
+
+	            		<tr>
+	            			<td>$new_book</td>
+	            			<td>$ISBN</td>
+	            			<td>$title</td>
+	            			<td>$AuthorName</td>
+	            			<td>$edition</td>
+	            		</tr>
+
+	            		
+	            	</table>
 
 
+
+
+            	";
+
+
+
+
+
+
+
+
+
+             $mysqli->close();
+        } else{
+						?>
+           <form name="add_books" action="<?= $_SERVER['PHP_SELF']?>" method="POST">
+            <table >
+                
+                <tr>
+                    <td>Enter the ISBN of the Book :
+                        <input type="text" name="ISBN" required>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Enter the Title of the Book :
+                        <input type="text" name="TITLE" required>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Enter the Author of the Book :
+                        <input type="text" name="AuthorName" required>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Enter the Edition of the Book :
+                        <input type="text" name="EDITION" required>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="submit">
+                    </td>
+
+                </tr>
+            </table>
+        </form>
+            <?php
+            }
+            ?>
 
 
     </div>
