@@ -57,12 +57,7 @@
 
          <form name="add_books" method="POST">
             <table >
-                <tr>
-                    <td>Enter the Book ID :
-                        <input type="text" name="BookID" required>
-                    </td>
-
-                </tr>
+                
                 <tr>
                     <td>Enter the ISBN of the Book :
                         <input type="text" name="ISBN" required>
@@ -72,6 +67,12 @@
                 <tr>
                     <td>Enter the Title of the Book :
                         <input type="text" name="TITLE" required>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Enter the Author of the Book :
+                        <input type="text" name="AuthorName" required>
                     </td>
 
                 </tr>
@@ -93,10 +94,19 @@
 
                 if(isset($_POST['submit'])){
 
-                    $BID=$_POST['BookID'];
+                    
                     $ISBN=$_POST['ISBN'];
                     $title=$_POST['TITLE'];
+                    $AuthorName=$_POST['AuthorName'];
                     $edition=$_POST['EDITION'];
+                    
+
+
+                     $count= $mysqli->query("select count(BookID) as 'count' from books;");
+                    $count->data_seek(0);
+                    $row=$count->fetch_assoc();
+                    $total_books =$row['count'];
+                    $new_book=$total_books+1;
                     
 
 
@@ -108,7 +118,7 @@
 
                      if($result->num_rows != 0){  
                         
-                         $check_book=$mysqli->query("select BookID from books where BookID='$BID'");
+                         $check_book=$mysqli->query("select ISBN from books where ISBN='$ISBN'");
                         if(!$check_book){
                              echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
 
@@ -123,7 +133,10 @@
                     
                          else if($check_book->num_rows==0){
                         mysqli_query($mysqli," INSERT INTO Books (BookID, ISBN, Title, Edition)
-                                                                VALUES ('$BID', '$ISBN', '$title', '$edition');");
+                                                                VALUES ('$new_book', '$ISBN', '$title', '$edition');");
+
+                        mysqli_query($mysqli," INSERT INTO b_author (BookID, AuthorName)
+                                                                VALUES ('$new_book', '$AuthorName');");
 
                             echo"<script>
                                     alert('Book Added Successfully!');
