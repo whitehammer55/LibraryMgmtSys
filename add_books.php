@@ -94,34 +94,32 @@
 
                      if($result->num_rows != 0){  
                         
-                         $check_book=$mysqli->query("select ISBN from books where ISBN='$ISBN'");
-                        if(!$check_book){
-                             echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
+                        //  $check_book=$mysqli->query("select ISBN from books where ISBN='$ISBN'");
+                        // if(!$check_book){
+                        //      echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
 
-                         }
-                        if ($check_book->num_rows!=0) {
-                            echo"<script>
-                                    alert('Error/Book already in the database');
+                        //  }
+                  //       if ($check_book->num_rows!=0) {
+                  //           echo"<script>
+                  //                   alert('Error/Book already in the database');
 
-            						window.location.href='add_books.php';
+            						// window.location.href='add_books.php';
             	
-                            </script>";
+                  //           </script>";
                             
-                        }
+                  //       }
 
                     
-                         else if($check_book->num_rows==0){
+                          // if($check_book->num_rows==0){
                         mysqli_query($mysqli," INSERT INTO Books (BookID, ISBN, Title, Edition)
                                                                 VALUES ('$new_book', '$ISBN', '$title', '$edition');");
 
                         mysqli_query($mysqli," INSERT INTO b_author (BookID, AuthorName)
                                                                 VALUES ('$new_book', '$AuthorName');");
 
-                            echo"<script>
-                                    alert('Book Added Successfully!');
-                            </script>";
+                            
                          
-                        }
+                        
 
 
                 }
