@@ -72,14 +72,18 @@
             if($result->num_rows != 0){  
                 
                 $r = $mysqli->query("delete from books where bookID='$bookid';");
+                $s = $mysqli->query("delete from b_author where bookID='$bookid';");
                 if(!$r){
+                    echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
+                }
+                if(!$s){
                     echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
                 }
 
                 echo"<script>alert('Book number $bookid successfully deleted');</script>";
 
             } else{
-                echo"<script>alert('Book not in the datababse');</script>";
+                echo"<script>alert('Book number $bookid not in the datababse');</script>";
             }
         }// if post submit set
 
