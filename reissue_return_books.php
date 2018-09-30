@@ -51,6 +51,13 @@
                     // valid reissue post variable
 
                     // print_r("Reissue" . $correct_book['BookID']);
+                    $res = $mysqli->query("SELECT reissue_count FROM Books where BookID = '$book_id'");
+                    if(!$res){
+                        echo "error in getting book";
+                    }
+                    $res->data_seek(0);
+                    $correct_book = $res->fetch_assoc();
+
 
                     // if reissue count < 3
                     if($correct_book['reissue_count'] < 3){
