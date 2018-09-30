@@ -97,7 +97,8 @@
 
 
     <input type="number" id="user_id"><br>
-    <button onclick="
+    <button id="btn_search_books" 
+    onclick="
         var user_id = document.getElementById('user_id').value;
         if(user_id == ''){
             alert('User id can\'t be empty');
@@ -110,6 +111,23 @@
     ">See books</button>
 
     <script>
+        // This block of code will make sure that 
+        // Enter button will click on the button
+        input_user_id = document.getElementById('user_id');
+
+        // https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
+        // Execute a function when the user releases a key on the keyboard
+        input_user_id.addEventListener("keyup", function(event) {
+          // Cancel the default action, if needed
+          event.preventDefault();
+          // Number 13 is the "Enter" key on the keyboard
+          if (event.keyCode === 13) {
+            // Trigger the button element with a click
+            document.getElementById("btn_search_books").click();
+          }
+        });
+
+
     function loadTableRows(user_id){
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
