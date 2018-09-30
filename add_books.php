@@ -78,10 +78,10 @@
                     
 
 
-                     $count= $mysqli->query("select count(BookID) as 'count' from books;");
-                    $count->data_seek(0);
-                    $row=$count->fetch_assoc();
-                    $total_books =$row['count'];
+                     $max= $mysqli->query("select max(BookID) as 'max' from books;");
+                    $max->data_seek(0);
+                    $row=$max->fetch_assoc();
+                    $total_books =$row['max'];
                     $new_book=$total_books+1;
                     
 
@@ -94,33 +94,12 @@
 
                      if($result->num_rows != 0){  
                         
-                        //  $check_book=$mysqli->query("select ISBN from books where ISBN='$ISBN'");
-                        // if(!$check_book){
-                        //      echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
-
-                        //  }
-                  //       if ($check_book->num_rows!=0) {
-                  //           echo"<script>
-                  //                   alert('Error/Book already in the database');
-
-            						// window.location.href='add_books.php';
-            	
-                  //           </script>";
-                            
-                  //       }
-
-                    
-                          // if($check_book->num_rows==0){
+                        
                         mysqli_query($mysqli," INSERT INTO Books (BookID, ISBN, Title, Edition)
                                                                 VALUES ('$new_book', '$ISBN', '$title', '$edition');");
 
                         mysqli_query($mysqli," INSERT INTO b_author (BookID, AuthorName)
                                                                 VALUES ('$new_book', '$AuthorName');");
-
-                            
-                         
-                        
-
 
                 }
 
@@ -170,7 +149,7 @@
                 
                 <tr>
                     <td>Enter the ISBN of the Book :
-                        <input type="text" name="ISBN" required>
+                        <input type="number" name="ISBN" required>
                     </td>
 
                 </tr>

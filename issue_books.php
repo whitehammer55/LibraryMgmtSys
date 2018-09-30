@@ -24,7 +24,7 @@
     
 
 
-</script>>
+</script>
 <body>
     <div class="header">
 
@@ -67,13 +67,13 @@
             <table>
                 <tr>
                     <td>Enter the Book ID :
-                        <input type="text" name="BID" required>
+                        <input type="number" name="BID" required>
                     </td>
 
                 </tr>
                 <tr>
                     <td>Enter the Student ID :
-                        <input type="text" name="PID" required>
+                        <input type="number" name="PID" required>
                     </td>
 
                 </tr>
@@ -106,7 +106,7 @@
                         else{
                             
                         echo"<script>
-                        alert('ERROR');
+                        alert('ERROR: Book has already been issued!');
             
                         </script>";
                         }

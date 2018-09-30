@@ -139,7 +139,6 @@
                 <th>ISBN</th>
                 <th>Title</th>
                 <th>Author(s)</th>
-                <th>DOI</th>
             </tr>   
         <?php 
         if($result->num_rows == 0){
@@ -157,7 +156,7 @@
             <td> <?= $row['ISBN'] ?> </td>
             <td> <?= $row['Title'] ?> </td>
             <td> <?= $row['authors'] ?> </td>
-            <td> <?= $row['DOI'] ?> </td>
+            <!-- <td> <?= $row['DOI'] ?> </td> -->
             </tr>
 
         <?php  

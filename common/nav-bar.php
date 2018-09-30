@@ -46,6 +46,7 @@
     echo '<li><a href="add_books.php">Add Books</a></li>';
     echo '<li><a href="issue_books.php">Issue Books</a></li>';
     echo '<li><a href="reissue_return_books.php">Reissue/Return</a></li>';
+    echo '<li><a href="delete_books.php">Delete Books</a></li>';
   }
 
   ?>
