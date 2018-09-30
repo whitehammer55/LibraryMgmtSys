@@ -30,7 +30,6 @@
 
     <div class="main-content">
     <?php 
-        // Database credentials
         $dbhost = "localhost";
         $dbuser = "root";
         $dbpass = "";
@@ -44,14 +43,6 @@
            die;
         }
 
-        // Select the data
-        $sql = "SELECT b.BookID, b.Title, b.DOI, b.DOR, b.reissue_count FROM Books b JOIN Users u ON b.UserID = u.UserID ";
-
-        $sql .= " WHERE b.UserID = '101'";
-        // TODO: Change 101 to uid from user
-
-
-        $result = $mysqli->query($sql);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             // if post then reissue books
@@ -65,18 +56,6 @@
                 print_r("Reissue RepCount: " . $replace_count);
                 if($replace_count == 1){
                     // valid reissue post variable
-
-                    // find the book with correct bookid
-                    for($i=0; $i < $result->num_rows; $i++){
-                        $result->data_seek($i);
-                        $row = $result->fetch_assoc();
-
-                        if($row['BookID'] == $book_id){
-                            // correct book found
-                            $correct_book = $row;
-                            break; // quit the loop
-                        }
-                    }
 
                     print_r("Reissue" . $correct_book['BookID']);
 
@@ -102,42 +81,83 @@
 
                 if($replace_count == 1){
                     // valid return variable
-                    // find the book with correct bookid
-                    for($i=0; $i < $result->num_rows; $i++){
-                        $result->data_seek($i);
-                        $row = $result->fetch_assoc();
-
-                        if($row['BookID'] == $book_id){
-                            // correct book found
-                            $correct_book = $row;
-                            break; // quit the loop
-                        }
-                    }
-
+                    
                     $return_sql = 
                     "UPDATE Books "
                     . "SET DOI= NULL, DOR = NULL, UserID = NULL ,EmployeeID=NULL"
                     . " WHERE BookID = '$book_id' ; ";
-                    $mysqli->query($return_sql);
+                    if(!$mysqli->query($return_sql)){;
+                        echo "Error in returning query";
+                    }
                 }
 
             }
         }// if post
-
-
-        // Requery to get the data that was updated in POST
-        $result = $mysqli->query($sql);
-
-
-
-
         ?>
+
+
+    <input type="number" id="user_id"><br>
+    <button onclick="
+        var user_id = document.getElementById('user_id').value;
+        if(user_id == ''){
+            alert('User id can\'t be empty');
+            return false;
+        }
+
+        loadTableRows(user_id);
+        // Populate the form_issue.table element with AJAX request
+
+    ">See books</button>
+
+    <script>
+    function loadTableRows(user_id){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var table = document.getElementById("form_for_reissue").firstElementChild;
+                var tbody = table.firstElementChild;
+                var table_head_row_outerHTML = tbody.firstElementChild.outerHTML;
+                // table.firstChild doesn't work because
+                // https://www.reddit.com/r/learnjavascript/comments/55wauv/node_firstchild_text/d8f5mdw
+
+                var table_tr_rows_for_books = this.responseText;
+
+                // First clear the tbody tag so previous data is wiped away
+                tbody.innerHTML = '';
+                tbody.insertAdjacentHTML("afterbegin", table_head_row_outerHTML)
+                // insert as first child
+
+                tbody.insertAdjacentHTML("beforeend", table_tr_rows_for_books);
+                // insert as last child
+           }
+        };
+        xhttp.open("GET", "ajax/get_user_books.php?user_id=" + user_id, true);
+        xhttp.send(); 
+    }
+
+    <?php 
+        if(isset($_SESSION['latest_user_reissued'])){
+            // this variable is set in the ajax/get_user_books.php file
+
+            // restore the input tag with the id of user who searched for the book
+            // and also call loadTableRows() function
+            ?>
+            document.getElementById('user_id').value = <?= $_SESSION['latest_user_reissued'] ?>;
+            loadTableRows(<?= $_SESSION['latest_user_reissued'] ?>);
+            <?php
+        }
+
+    ?>
+    </script>
+
+
     <style type="text/css">
         table, tr, td, th {
             border: 1px solid black;
         }
     </style>
-    <form name="form_issue" method="POST">
+    <form name="form_issue" method="POST" action="<?= $_SERVER['PHP_SELF']?>"
+        id="form_for_reissue">
         <table>
             <tr>
                 <th>BookID</th>
@@ -149,75 +169,8 @@
                 <th>Return?</th>
                 <th>Fine</th>
             </tr>
-        
-        <?php
-            for($i = 0; $i < $result->num_rows; $i++){
-                $result->data_seek($i);
-                $row = $result->fetch_assoc();
 
-                $reissue_id = "reissue_" . $row['BookID'];
-                $return_id = "return_" . $row['BookID'];
-                ?>
-
-                <tr>
-                    <td><?= $row['BookID'] ?></td>
-                    <td><?= $row['Title'] ?></td>
-                    <td><?= $row['DOI'] ?></td>
-                    <td><?= $row['DOR'] ?></td>
-                    <td><?= $row['reissue_count'] ?></td>
-                    <td>
-                        <input type="checkbox" name="<?= $reissue_id ?>" value="1"
-                        <?php if ($row['reissue_count'] == 3
-                                 || date("Y-m-d") > $row['DOR']) {
-                            // Disable checkbox if reissue_count >= 3
-                            // Or if today is past reissue date
-                        
-                            echo "disabled";
-                        }  
-                        ?>
-                        >
-                    </td>
-                    <td>
-                        <input type="checkbox" name="<?= $return_id ?>" value="1"
-                        <?php
-                        // Commenting this section, since if return date is crossed,
-                        // then employee will take fine and then press return
-                        // Hence, no need to disable the return button
-                        //
-                        //  if(date("Y-m-d") > $row['DOR']){
-                        //     echo "disabled";
-                        // }
-                        ?>
-                        >
-                    </td>
-                    <td>
-                        <?php 
-                        $date_return = new DateTime($row['DOR']);
-                        $date_today = new DateTime(date("Y-m-d"));
-
-                        $interval = $date_return->diff($date_today);
-                        // today - DOR
-
-                        if($interval->invert == 1){
-                            // negative difference
-                            echo "0.0";
-                        } else {
-                            // positive difference ie return date has been passed
-
-                            $fine = $interval->d * 2;
-                            // Rs 2 fine per day after return date
-                            echo $fine . ".0";
-                        }
-
-                        ?>
-                    </td>
-
-                </tr>
-
-                <?php
-            }
-        ?>
-
+            <!-- Data is added here via AJAX call -->
         </table>
 
         <input type="submit" value="submit">

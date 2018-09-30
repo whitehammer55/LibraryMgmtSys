@@ -122,7 +122,7 @@
 
 
                      if(($book_available && $valid_user)== true){
-                        mysqli_query($mysqli,"update books set UserId ='$PID' , EmployeeID ='$EMP',DOI ='$date_now',DOR =DATE_ADD(DOI, INTERVAL 7 DAY)   where BookID='$BID'");
+                        mysqli_query($mysqli,"update books set UserId ='$PID' , EmployeeID ='$EMP',DOI ='$date_now',DOR =DATE_ADD(DOI, INTERVAL 7 DAY), reissue_count = 0   where BookID='$BID'");
                         
 
 
