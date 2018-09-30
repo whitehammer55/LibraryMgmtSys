@@ -1,5 +1,4 @@
 <?php
-
 	session_start();
 	session_destroy();
 	if(isset($_COOKIE['u_id']) and isset($_COOKIE['u_pwd'])){
@@ -13,7 +12,7 @@
 	}
 ?>
 
-	<script>
-		alert('You Have Successfully Logged Out');
-		window.location.href='login.php';
-	</script>
+<script>
+	alert('You Have Successfully Logged Out');
+	window.location.href='login.php';
+</script>

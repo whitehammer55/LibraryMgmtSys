@@ -6,20 +6,13 @@
         // Boolean to determine if valid credentials or not
         $valid_login = false;      
         
-        // Prevent SQL injection
-        // $userid = mysqli_real_escape_string($userid);
-        // $password = mysqli_real_escape_string($password);
-
-        // Database credentials
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         if($mysqli->connect_errno){
            echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
            die;
         }
-
-
-          
+ 
         $result = $mysqli->query("Select UserID from users where UserID='$userid' and Password = '$password';");
 
         if(!$result){
@@ -27,39 +20,36 @@
         }
 
 
-        if($result->num_rows != 0){     // if student
+        if($result->num_rows != 0){
+            // if student
                 
-                // if retrieved rows are more than zero, then correct login
-                $_SESSION['user'] = $userid;
-                $valid_login = true;
-                
-                unset($_SESSION['emp']);
+            // if retrieved rows are more than zero, then correct login
+            $_SESSION['user'] = $userid;
+            $valid_login = true;
+            
+            unset($_SESSION['emp']);
 
-        }// 1st if loop
-
+        }// if student
         else {
 
-            
             $result = $mysqli->query(
                     "SELECT * FROM employees where EmployeeID='$userid' and Password='$password';");
             if(!$result){
                 echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
             }
 
-            if ($result->num_rows > 0) {    // if employee
-                // output data of each row
+            if ($result->num_rows > 0) {
+                // if employee
                 
-                // if retrieved rows are moer than 0, then correct login
+                // if retrieved rows are more than 0, then correct login
                 $_SESSION['emp'] = $userid;
                 $valid_login = true;
 
                 unset($_SESSION['user']);
                                 
-             }// if loop end
+             }// if employee
 
-
-
-        } //else if loop end
+        } //else end
 
         echo "$valid_login";
        return $valid_login;
@@ -79,6 +69,7 @@
             // if user login is correct
 
             // One of these will be set when login is valid
+            // and the other will be unset
             // $_SESSION['user']
             // $_SESSION['emp']
             
@@ -111,8 +102,7 @@
 
             <?php
 
-        }
-        else{
+        } else{
             // redirect to login page
 
             echo $valid_login;
@@ -120,9 +110,8 @@
             echo "<script>alert('Wrong UID Or Password');
             window.location.href='login.php';
             </script>";
-           
-           
+
         }
 
-    }// POST
+    }// if POST
 ?>

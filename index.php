@@ -39,9 +39,6 @@
                die;
             }
 
-
-
-
             if(isset($_SESSION['user'])){
                 $id = $_SESSION['user'];
                 $sql = "SELECT UserID, FirstName, LastName, Email, DOB FROM Users WHERE UserID ='$id' ";
@@ -90,7 +87,6 @@
                 }
                 ?>
 
-
                 <tr>
                     <td>Full Name:</td>
                     <td> <?= $row['FirstName'] . " " . $row['LastName'] ?></td>
@@ -108,8 +104,6 @@
 
             </table>
 
-
-            
             <?php
             $mysqli->close();
         ?>

@@ -41,7 +41,7 @@
            $_SESSION[$type] = $u_id;
 
 	       header("location:index.php");
-}   
+        }   
 
     ?>
 

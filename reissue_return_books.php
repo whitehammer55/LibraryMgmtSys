@@ -30,39 +30,32 @@
 
     <div class="main-content">
     <?php 
-        $dbhost = "localhost";
-        $dbuser = "root";
-        $dbpass = "";
-        $dbname = "wdl";
-
-
-        $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         if($mysqli->connect_errno){
            echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
            die;
         }
 
-
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             // if post then reissue books
-            // ECHO "ffffff";
+            
             foreach($_POST as $key => $value){
-                echo "Keys: " . $key . " " . $value . "<br>";
+                // echo "Keys: " . $key . " " . $value . "<br>";
             
 
                 // REISSUE SECTION
                 $book_id = str_replace("reissue_" , "" ,$key, $replace_count);
-                print_r("Reissue RepCount: " . $replace_count);
+                // print_r("Reissue RepCount: " . $replace_count);
                 if($replace_count == 1){
                     // valid reissue post variable
 
-                    print_r("Reissue" . $correct_book['BookID']);
+                    // print_r("Reissue" . $correct_book['BookID']);
 
                     // if reissue count < 3
                     if($correct_book['reissue_count'] < 3){
 
-                        print_r("UPDATE REISSUE");
+                        // print_r("UPDATE REISSUE");
                         $update_sql = 
                         "UPDATE Books " 
                         . " SET reissue_count = reissue_count + 1, DOR = DATE_ADD(DOR, INTERVAL 7 DAY) "
@@ -77,7 +70,7 @@
 
                 // RETURN SECTION
                 $book_id = str_replace("return_", "", $key, $replace_count);
-                print_r("Return RepCount: " . $replace_count);
+                // print_r("Return RepCount: " . $replace_count);
 
                 if($replace_count == 1){
                     // valid return variable
@@ -129,6 +122,8 @@
 
 
     function loadTableRows(user_id){
+        // https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -193,12 +188,10 @@
 
         <input type="submit" value="submit">
     </form>
-        <?php
-
+    <?php
     $mysqli->close();
     ?>
         
-
     </div>
     
 </body>

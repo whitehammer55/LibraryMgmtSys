@@ -7,7 +7,7 @@
     <script type="text/javascript">
         function validateForm() {
             
-            
+            // Check for email
             if(! /[\w]+@[\w]+\.[\w]{3}/.test(document.register_form.Email.value)){
                 // Validate email
                 alert("Please enter a valid email.");
@@ -39,11 +39,11 @@
         $total_users = $row['count'];
         $new_user_id = 100 + $total_users + 1;
 
-        $password = $_POST['Password'];
-        $email = $_POST['Email'];
+        $password   = $_POST['Password'];
+        $email      = $_POST['Email'];
         $first_name = $_POST['FirstName'];
-        $last_name = $_POST['LastName'];
-        $dob = $_POST['DOB'];
+        $last_name  = $_POST['LastName'];
+        $dob        = $_POST['DOB'];
 
         print_r("User ID: " . $new_user_id);
 
@@ -67,6 +67,7 @@
                 window.location = "login.php";
             }
 
+            // https://stackoverflow.com/a/9989343
             var seconds_left = 5;
             document.getElementById('timer-p').innerHTML = 
                     "You will be redirected to the login page in " + (seconds_left) + " seconds!";
@@ -83,13 +84,11 @@
                 }
             }, 1000);
 
-        
         </script>
             
         <?php
-
         $mysqli->close();
-    }
+    } // if post request
     else{    
         ?>
 
@@ -122,7 +121,6 @@
     <?php
     } // if not post request
     ?>
-
-
+    
 </body>
 </html>

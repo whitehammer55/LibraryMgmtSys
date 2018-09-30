@@ -43,108 +43,77 @@
     </div>
 
     <div class="main-content">
-            <?php 
-        // Database credentials
-
-
+    <?php 
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     	
-        $dbhost = "localhost";
-        $dbuser = "root";
-        $dbpass = "";
-        $dbname = "wdl";
+            $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-
-        $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
-
-        if($mysqli->connect_errno){
-           echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-           die;
-        }
-
-        ?>
-
-         
-
-            <?php 
-
-                if(isset($_POST['submit'])){
-
-                    
-                    $ISBN=$_POST['ISBN'];
-                    $title=$_POST['TITLE'];
-                    $AuthorName=$_POST['AuthorName'];
-                    $edition=$_POST['EDITION'];
-                    
-
-
-                     $max= $mysqli->query("select max(BookID) as 'max' from books;");
-                    $max->data_seek(0);
-                    $row=$max->fetch_assoc();
-                    $total_books =$row['max'];
-                    $new_book=$total_books+1;
-                    
-
-
-                     $result = $mysqli->query("Select * from books;");
-                     if(!$result){
-                            echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
-                      }
-
-
-                     if($result->num_rows != 0){  
-                        
-                        
-                        mysqli_query($mysqli," INSERT INTO Books (BookID, ISBN, Title, Edition)
-                                                                VALUES ('$new_book', '$ISBN', '$title', '$edition');");
-
-                        mysqli_query($mysqli," INSERT INTO b_author (BookID, AuthorName)
-                                                                VALUES ('$new_book', '$AuthorName');");
-
-                }
-
+            if($mysqli->connect_errno){
+               echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+               die;
             }
 
-            	echo"
+            $ISBN       = $_POST['ISBN'];
+            $title      = $_POST['TITLE'];
+            $AuthorName = $_POST['AuthorName'];
+            $edition    = $_POST['EDITION'];
+            
+            $max         = $mysqli->query("select max(BookID) as 'max' from books;");
+            $max->data_seek(0);
+            $row         = $max->fetch_assoc();
+            $total_books = $row['max'];
+            $new_book    = $total_books+1;
+            
+            $result = $mysqli->query("Select * from books;");
+            if(!$result){
+                echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
+            }
 
+            if($result->num_rows != 0){  
 
-	            	<table border =1>
-	            		<tr>
-	            			<th>BookID</th>
-	            			<th>ISBN</th>
-	            			<th>Title</th>
-	            			<th>Author Name</th>
-	            			<th>Edition</th>
-	            		</tr>
+                $r = $mysqli->query(
+                    " INSERT INTO Books (BookID, ISBN, Title, Edition) "
+                    . " VALUES ('$new_book', '$ISBN', '$title', '$edition');");
+                if(!$r){
+                    echo "INSERT error";
+                }
 
-	            		<tr>
-	            			<td>$new_book</td>
-	            			<td>$ISBN</td>
-	            			<td>$title</td>
-	            			<td>$AuthorName</td>
-	            			<td>$edition</td>
-	            		</tr>
+                $r = $mysqli->query(
+                    " INSERT INTO b_author (BookID, AuthorName) "
+                    . " VALUES ('$new_book', '$AuthorName');");
+                if(!$r){
+                    echo "INSERT error";
+                }
 
-	            		
-	            	</table>
+            } else {
+                echo "BOOK ALREDY EXISTS!";
+            }
+        
 
+        	?>
+            	<table border =1>
+            		<tr>
+            			<th>BookID</th>
+            			<th>ISBN</th>
+            			<th>Title</th>
+            			<th>Author Name</th>
+            			<th>Edition</th>
+            		</tr>
+            		<tr>
+            			<td><?= $new_book   ?></td>
+            			<td><?= $ISBN       ?></td>
+            			<td><?= $title      ?></td>
+            			<td><?= $AuthorName ?></td>
+            			<td><?= $edition    ?></td>
+            		</tr>	            		
+            	</table>
+        	<?php
+            $mysqli->close();
 
-
-
-            	";
-
-
-
-
-
-
-
-
-
-             $mysqli->close();
-        } else{
-						?>
-           <form name="add_books" action="<?= $_SERVER['PHP_SELF']?>" method="POST">
+        } // if post
+        else{
+			?>
+        <form name="add_books" action="<?= $_SERVER['PHP_SELF']?>" method="POST">
             <table >
                 
                 <tr>
@@ -167,7 +136,7 @@
                 </tr>
                 <tr>
                     <td>Enter the Edition of the Book :
-                        <input type="text" name="EDITION" required>
+                        <input type="number" name="EDITION" required>
                     </td>
 
                 </tr>
@@ -180,10 +149,8 @@
             </table>
         </form>
             <?php
-            }
-            ?>
-
-
+        }// else post
+        ?>
     </div>
     
 </body>

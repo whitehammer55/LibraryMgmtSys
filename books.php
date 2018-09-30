@@ -48,7 +48,6 @@
                 <th>DOR</th>
             </tr>   
         <?php 
-
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         if($mysqli->connect_errno){
@@ -66,17 +65,15 @@
             die;
         }
 
-
         if($result->num_rows == 0){
             echo "<tr>" . "No Results Found!" . "</tr";
         }
 
-
         for($i = 0; $i < $result->num_rows; $i++){
             $result->data_seek($i);
             $row = $result->fetch_assoc();
-
         ?>
+
             <tr>
             <td> <?= $row['BookID'] ?> </td>
             <td> <?= $row['ISBN'] ?> </td>

@@ -31,97 +31,59 @@
 
     <div class="main-content">
         <?php 
-        // Database credentials
 
-
-        
-        
-        $dbhost = "localhost";
-        $dbuser = "root";
-        $dbpass = "";
-        $dbname = "wdl";
-
-
-        $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         if($mysqli->connect_errno){
            echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
            die;
-        }
+        } 
 
-         
-?>
-         
-
-            <?php 
-
-                echo"<form name='delete_books' method='POST'>
+        ?>
+        <form name='delete_books' method='POST'>
              <table >
-                
-                <tr>
-                    <td>Enter the BookID of the book :
-                        <input type='number' name='BookID' required>
-                    </td>
-
-                </tr>
-                
                 <tr>
                     <td>
+                        <label for="BookID">Enter the BookID of the book :</label>
+                    </td>
+                    <td>
+                        <input type='number' name='BookID' required>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2">
                         <input type='submit' name='submit'>
                     </td>
-
                 </tr>
             </table>
+        </form>
+        <?php
 
+        if(isset($_POST['submit'])){
 
-
-        </form>";
-
-
-
-
-
-                if(isset($_POST['submit'])){
-
-                    
-                    $bookid=$_POST['BookID'];
-                    
-
-                    
-
-
-                    //  $max= $mysqli->query("select max(BookID) as 'max' from books;");
-                    // $max->data_seek(0);
-                    // $row=$max->fetch_assoc();
-                    // $total_books =$row['max'];
-                    // $new_book=$total_books+1;
-                    
-
-
-                     $result = $mysqli->query("Select BookID from books where BookID='$bookid';");
-                     if(!$result){
-                            echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
-                      }
-
-
-                     if($result->num_rows != 0){  
-                        
-                        
-                        mysqli_query($mysqli,"delete from books where bookID='$bookid';");
-
-                        echo"<script>alert('Book number $bookid successfully deleted');</script>";
-
-                }else{
-                    echo"<script>alert('Book not in the datababse');</script>";
-
-                }
-
+            $bookid = $_POST['BookID'];
+            
+            $result = $mysqli->query("Select BookID from books where BookID='$bookid';");
+            if(!$result){
+                echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
             }
 
+            if($result->num_rows != 0){  
+                
+                $r = $mysqli->query("delete from books where bookID='$bookid';");
+                if(!$r){
+                    echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
+                }
 
-            ?>
-        
+                echo"<script>alert('Book number $bookid successfully deleted');</script>";
 
+            } else{
+                echo"<script>alert('Book not in the datababse');</script>";
+            }
+        }// if post submit set
+
+        ?>
     </div>
     
 </body>

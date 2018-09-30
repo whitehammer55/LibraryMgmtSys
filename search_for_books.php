@@ -83,14 +83,8 @@
                 </script>
 
                 <?php
-                // Database credentials
-                $dbhost = "localhost";
-                $dbuser = "root";
-                $dbpass = "";
-                $dbname = "wdl";
 
-
-                $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+                $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
                 if($mysqli->connect_errno){
                    echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -152,11 +146,10 @@
 
         ?>
             <tr>
-            <td> <?= $row['BookID'] ?> </td>
-            <td> <?= $row['ISBN'] ?> </td>
-            <td> <?= $row['Title'] ?> </td>
+            <td> <?= $row['BookID']  ?> </td>
+            <td> <?= $row['ISBN']    ?> </td>
+            <td> <?= $row['Title']   ?> </td>
             <td> <?= $row['authors'] ?> </td>
-            <!-- <td> <?= $row['DOI'] ?> </td> -->
             </tr>
 
         <?php  
