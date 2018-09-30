@@ -57,6 +57,10 @@
             $title      = $_POST['TITLE'];
             $AuthorName = $_POST['AuthorName'];
             $edition    = $_POST['EDITION'];
+
+            $AuthorName = str_replace(' ', '', $AuthorName);
+
+            $Auth_Array=explode(',', $AuthorName);
             
             $max         = $mysqli->query("select max(BookID) as 'max' from books;");
             $max->data_seek(0);
@@ -78,12 +82,15 @@
                     echo "INSERT error";
                 }
 
-                $r = $mysqli->query(
-                    " INSERT INTO b_author (BookID, AuthorName) "
-                    . " VALUES ('$new_book', '$AuthorName');");
-                if(!$r){
-                    echo "INSERT error";
-                }
+                foreach($Auth_Array as $item){
+    
+                    $r = $mysqli->query(
+                        " INSERT INTO b_author (BookID, AuthorName) "
+                        . " VALUES ('$new_book', '$item');");
+                    if(!$r){
+                        echo "INSERT error";
+                         }
+            }
 
             } else {
                 echo "BOOK ALREDY EXISTS!";
@@ -92,6 +99,8 @@
 
         	?>
             	<table border =1>
+
+
             		<tr>
             			<th>BookID</th>
             			<th>ISBN</th>
@@ -99,6 +108,7 @@
             			<th>Author Name</th>
             			<th>Edition</th>
             		</tr>
+
             		<tr>
             			<td><?= $new_book   ?></td>
             			<td><?= $ISBN       ?></td>
