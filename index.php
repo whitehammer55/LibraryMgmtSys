@@ -69,7 +69,7 @@
                }
             </style>
         
-            <table>
+            <table class="index">
                 <tr>
                     <td> ID: </td>
                     <td> <?= $id ?> </td>
