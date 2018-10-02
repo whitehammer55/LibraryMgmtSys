@@ -80,6 +80,11 @@
                     echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
                 }
 
+                $r = $mysqli->query("delete from b_author where bookID='$bookid';");
+                if(!$r){
+                    echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
+                }
+
                 echo"<script>alert('Book number $bookid successfully deleted');</script>";
 
             } else{

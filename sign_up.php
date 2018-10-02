@@ -14,6 +14,32 @@
                 return false;
             }
 
+
+            arr = [];
+            s_arr = document.register_form.PhoneNumber.value.split(',');
+            for(var i=0; i < s_arr.length; i++){
+                
+                elem = s_arr[i];
+                elem = elem.trim();
+
+                if(elem){
+                console.log('a' + elem.trim() + 'a\n');
+
+                if(/^[\d]{10,10}$/.test(elem) ){
+                    // valid num
+                    arr.push(elem.trim());
+                } 
+                else {
+                    // invalid num
+                    alert(elem + ' is not valid 10 digit number!');
+                    return false;
+                    }
+                }
+            }
+
+            // Put correct formatted value in input so POST receieves it correctly
+            document.register_form.PhoneNumber.value = arr.join('|');
+
             return true;
         }
     </script>
@@ -44,6 +70,20 @@
         $first_name = $_POST['FirstName'];
         $last_name  = $_POST['LastName'];
         $dob        = $_POST['DOB'];
+        $str_phone  = $_POST['PhoneNumber'];
+
+        $arr_phone = explode('|', $str_phone);
+        foreach($arr_phone as $val){
+            // print_r($val);
+            if(!$mysqli->query(
+                "INSERT INTO U_Contact(UserID, Contact) "
+                . " VALUES ('$new_user_id', '$val');")){
+                echo "phone number insert failed";
+            }
+
+        }
+        unset($val); // Remove reference to array variable
+
 
         print_r("User ID: " . $new_user_id);
 
@@ -112,6 +152,10 @@
 
         <label for="Password">Password: </label>
         <input type="password" name="Password" required>
+        <br>
+
+        <label for="PhoneNumber">Contact No (Separate multiple values with ','):</label>
+        <input type="text" name="PhoneNumber" required>
         <br>
 
         <input type="submit" value="submit">

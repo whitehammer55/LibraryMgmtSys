@@ -10,9 +10,9 @@ DROP TABLE IF EXISTS u_contact;
 DROP TABLE IF EXISTS b_author;
 CREATE TABLE Users(UserID int NOT NULL PRIMARY KEY, Password varchar(30), Email varchar(30), DOB date, FirstName varchar(30), LastName varchar(30));
 CREATE TABLE Employees(EmployeeID int NOT NULL PRIMARY KEY, Post varchar(30), FirstName varchar(30), LastName varchar(30), Email varchar(30), DOB date, Password varchar(30));
-CREATE TABLE U_Contact(Contact varchar(30) NOT NULL UNIQUE, UserID int REFERENCES Users(UserID));
-CREATE TABLE Books(BookID int NOT NULL PRIMARY KEY, ISBN varchar(30), Title varchar(100),Edition int, UserId int REFERENCES Users(UserID), DOI date, DOR date, reissue_count int, EmployeeID int REFERENCES Employees(EmployeeID));
-CREATE TABLE B_Author(BookID int REFERENCES Books(BookID), AuthorName varchar(50) UNIQUE);
+CREATE TABLE U_Contact(Contact varchar(30) NOT NULL, UserID int REFERENCES Users(UserID));
+CREATE TABLE Books(BookID int NOT NULL PRIMARY KEY, ISBN varchar(30), Title varchar(100), Edition int, UserId int REFERENCES Users(UserID), DOI date, DOR date, reissue_count int, EmployeeID int REFERENCES Employees(EmployeeID));
+CREATE TABLE B_Author(BookID int REFERENCES Books(BookID), AuthorName varchar(50));
 """
 
 # Connect

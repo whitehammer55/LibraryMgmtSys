@@ -69,7 +69,7 @@
                }
             </style>
         
-            <table>
+            <table class="index">
                 <tr>
                     <td> ID: </td>
                     <td> <?= $id ?> </td>
@@ -101,6 +101,32 @@
                     <td>Date of Birth:</td>
                     <td> <?= $row['DOB']?></td>
                 </tr>
+
+                <!-- TR for Contact Numbers -->
+                <?php 
+                if(isset($_SESSION['user'])){
+                ?>
+
+                <tr>
+                    <td>Phone Numbers:</td>
+                    <td>
+                        <?php 
+                        $result = $mysqli->query(
+                            "SELECT group_concat(u_contact.contact separator ', ') as 'phones' from u_contact join users on u_contact.userid = users.userid where users.userid = '$id' ;");
+                        if(!$result){
+                            echo " error in phone number";
+                        }
+                        $result->data_seek(0);
+                        $phone_row = $result->fetch_assoc();
+                        $str_phones = $phone_row['phones'];
+
+                        echo $str_phones;
+                        ?>
+                    </td>
+                </tr>
+                <?php 
+                }
+                ?>
 
             </table>
 
