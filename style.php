@@ -187,3 +187,19 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+/*Index CSS*/
+
+table {
+  counter-reset: rowNumber -1;
+}
+
+table tr {
+  counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+  content: counter(rowNumber);
+  min-width: 1em;
+  margin-right: 0.5em;
+}

@@ -29,6 +29,7 @@
             require_once 'common/nav-bar.php' ?>
     </div>
 
+    <div class="container-fluid">
     <div class="main-content">
 
         <?php
@@ -61,54 +62,55 @@
             $row = $result->fetch_assoc();
 
             ?>
-
-            <style type="text/css">
-               table, tr, td, th {
-                /* To get lines for the table, make pretty later */
-                border: 1px solid black;
-               }
-            </style>
         
             <table class="index">
+                <thead>
                 <tr>
-                    <td> ID: </td>
+                    <th> ID: </th>
                     <td> <?= $id ?> </td>
                 </tr>
-
+                </thead>
                 <!-- TR for Post -->
                 <?php
                 if(isset($_SESSION['emp'])){
                 ?>
                     <tr>
-                        <td>Post:</td>
+                        <th>Post:</th>
                         <td> <?= $row['Post']?></td>
                     </tr>
                 <?php
                 }
                 ?>
 
+                <thead>
                 <tr>
-                    <td>Full Name:</td>
+                    <th>Full Name:</th>
                     <td> <?= $row['FirstName'] . " " . $row['LastName'] ?></td>
                 </tr>
+                </thead>
 
+                <thead>
                 <tr>
-                    <td>Email:</td>
+                    <th>Email:</th>
                     <td> <?= $row['Email']?></td>
                 </tr>
+                </thead>
 
+                <thead>
                 <tr>
-                    <td>Date of Birth:</td>
+                    <th>Date of Birth:</th>
                     <td> <?= $row['DOB']?></td>
                 </tr>
+                </thead>
 
                 <!-- TR for Contact Numbers -->
                 <?php 
                 if(isset($_SESSION['user'])){
                 ?>
 
+                <thead>
                 <tr>
-                    <td>Phone Numbers:</td>
+                    <th>Phone Numbers:</th>
                     <td>
                         <?php 
                         $result = $mysqli->query(
@@ -124,6 +126,7 @@
                         ?>
                     </td>
                 </tr>
+                </thead>
                 <?php 
                 }
                 ?>
@@ -135,6 +138,6 @@
         ?>
 
     </div>
-    
+  </div>  
 </body>
 </html>

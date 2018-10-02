@@ -4,6 +4,10 @@
 <html>
 <head>
     <title>Sign Up</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script type="text/javascript">
         function validateForm() {
             
@@ -131,37 +135,76 @@
     } // if post request
     else{    
         ?>
+        <div class="container">
+            <div class="col-sm-10" style="width: 600px; margin-left: 250px; margin-top: 50px;">
 
-    <form name="register_form" action="<?= $_SERVER['PHP_SELF']?>" method="POST" onsubmit="return validateForm();">
+        <div class="jumbotron">
 
-        <label for="FirstName">First Name:</label>
-        <input type="text" name="FirstName" required>
-        <br>
+        <div class="form-group" style="margin-top: -50px;">
 
-        <label for="LastName">Last Name:</label>
-        <input type="text" name="LastName" required>
-        <br>
+            <h1 style="margin-left: 50px;">Sign Up</h1>
 
-        <label for="Email">Email:</label>
-        <input type="text" name="Email" required>
-        <br>
+<hr>
+    <form name="register_form" action="<?= $_SERVER['PHP_SELF']?>" method="POST" onsubmit="return validateForm();" class="form-horizontal" style="margin-left: 50px;">
 
-        <label for="DOB">Date of Birth: </label>
-        <input type="date" name="DOB" required>
-        <br>
+        <div class="form-group, input-group">
+        <p>First Name:
+        <input type="text" name="FirstName" required
+        class="form-control">
 
-        <label for="Password">Password: </label>
-        <input type="password" name="Password" required>
-        <br>
 
-        <label for="PhoneNumber">Contact No (Separate multiple values with ','):</label>
-        <input type="text" name="PhoneNumber" required>
-        <br>
 
-        <input type="submit" value="submit">
-        <br>
+
+    </p>
+    </div>
+        
+        <div class="form-group, input-group">
+        <p>Last Name:
+        <input type="text" name="LastName" required class="form-control">
+    </div>
+        
+        <div class="form-group, input-group">
+        <p>Email:
+        <input type="text" name="Email" required
+        class="form-control">
+
+
+
+    </p>
+    </div>
+        
+        <div class="form-group, input-group">
+        <p>Date of Birth: 
+        <input type="date" name="DOB" required
+        class="form-control">
+
+
+    </p>
+    </div>
+
+        <div class="form-group, input-group">
+        <p>Password: 
+        <input type="password" name="Password" required class="form-control">
+
+    </p>
+    </div>
+        
+        <div class="form-group, input-group">
+        <p>Contact No (Separate multiple values with ','):
+        <input type="text" name="PhoneNumber" required class="form-control" style="width: 205px;">
+    </p>
+    </div>
+        
+        <div class="form-group, input-group">
+            <p>
+        <input type="submit" value="Submit" class="form-control btn btn-danger btn-info" style="width: 205px;">
+    </p>
+        </div>
 
     </form>
+    </div>
+</div>
+</div>
     <?php
     } // if not post request
     ?>

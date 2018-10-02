@@ -18,7 +18,7 @@
         padding: 6px 8px 6px 8px;
         text-decoration: none;
         font-size: 25px;
-        color: #818181;
+        color: #000;
         text-align: center;
     }
 
