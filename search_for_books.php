@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.php">
 
 </head>
-<body>
+<body class="bg">
     <div class="header">
 
         <?php
@@ -29,14 +29,17 @@
             require_once 'common/nav-bar.php' ?>
     </div>
 
-    <div class="main-content">
-        
+    
+        <div class="main-content">
         <form name="form_book" method="post">
-            
-            <input type="text" name="search_query">
 
-            <input type="submit" value="submit"
-                onclick="
+            <div  class="form-group input-group btn-group btn-group-toggle" data-toggle="buttons">
+            <input type="text" name="search_query" class="form-control" style="width: 300px; border-radius: 15px; margin-left: 15px; margin-top: 15px;">
+
+            <input type="submit" value="Submit"
+                class="form-control btn btn-danger btn-info" style="width: 100px;background-color: #28a745;
+  border-color: #0AC92B; border-radius: 15px; margin-left: 15px;
+  margin-right: 15px; margin-top: 15px;" onclick="
                 // THIS ONCLICK VERIFIES THAT INPUTS ARE NOT EMPTY
 
                 if(document.form_book.search_query.value == ''){
@@ -47,7 +50,7 @@
                 if(document.form_book.search_field.value == ''){
                     alert('Choose a parameter to search from!');
                     return false; // to prevent form refresh
-                }">
+                }"></div>
             
             <br>
 
@@ -61,13 +64,22 @@
             $COL_BOOKID = "Books.BookID";
             $COL_AUTHOR = "B_Author.AuthorName"
             ?>
-
-            <input type="radio" name="search_field" value="<?= $COL_BOOKID ?>" id="<?= $COL_BOOKID ?>">BookID
+            
+            <label class="btn btn-success"  style="margin-left: 15px; margin-right: 15px;  margin-bottom:15px;border-radius: 15px;" >
+            <input type="radio" sname="search_field" value="<?= $COL_BOOKID ?>" id="<?= $COL_BOOKID ?>">BookID
+            </label>
+            <label class="btn btn-success" style="margin-right: 15px; border-radius: 15px; margin-bottom:15px;">
             <input type="radio" name="search_field" value="<?= $COL_ISBN ?>" id="<?= $COL_ISBN ?>">ISBN
+            </label>
+            <label class="btn btn-success" style="margin-right: 15px; border-radius: 15px; margin-bottom:15px;">
             <input type="radio" name="search_field" value="<?= $COL_TITLE ?>" id="<?= $COL_TITLE ?>">Title
+            </label>
+            <label class="btn btn-success" style="margin-right: 15px; border-radius: 15px; margin-bottom:15px;">
             <input type="radio" name="search_field" value="<?= $COL_AUTHOR ?>" id="<?= $COL_AUTHOR ?>">Author
-
+            </label>
+            </div>
         </form>
+        </div>
 
         <?php 
             if ($_SERVER['REQUEST_METHOD'] === 'POST'
@@ -119,21 +131,16 @@
                 $result = $mysqli->query($sql);
 
         ?>     
-
-        <style type="text/css">
-           table, tr, td, th {
-            /* To get lines for the table, make pretty later */
-            border: 1px solid black;
-           }
-        </style>
-
-        <table>
+<div class="table-content">
+        <table class="table table-borderless">
+            <thead>
             <tr>
-                <th>BookID</th>
-                <th>ISBN</th>
-                <th>Title</th>
-                <th>Author(s)</th>
+                <th scope="col">BookID</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author(s)</th>
             </tr>   
+            </thead>
         <?php 
         if($result->num_rows == 0){
             echo "<tr>" . "No Results Found!" . "</tr";
@@ -145,12 +152,14 @@
             $row = $result->fetch_assoc();
 
         ?>
+            <tbody>
             <tr>
             <td> <?= $row['BookID']  ?> </td>
             <td> <?= $row['ISBN']    ?> </td>
             <td> <?= $row['Title']   ?> </td>
             <td> <?= $row['authors'] ?> </td>
             </tr>
+            </tbody>
 
         <?php  
         } // end for

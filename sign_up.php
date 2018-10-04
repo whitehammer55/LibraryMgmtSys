@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.php">
     <script type="text/javascript">
         function validateForm() {
             
@@ -48,7 +49,7 @@
         }
     </script>
 </head>
-<body>
+<body style="background-color: #D8BFD8">
 
     <?php 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -136,21 +137,21 @@
     else{    
         ?>
         <div class="container">
-            <div class="col-sm-10" style="width: 600px; margin-left: 250px; margin-top: 50px;">
+            <div class="col-sm-10" style="width: 500px; margin-left: 300px; margin-top: 50px;">
 
         <div class="jumbotron">
 
         <div class="form-group" style="margin-top: -50px;">
 
-            <h1 style="margin-left: 50px;">Sign Up</h1>
+            <h1 style="margin-left: 125px;">Sign Up</h1>
 
 <hr>
     <form name="register_form" action="<?= $_SERVER['PHP_SELF']?>" method="POST" onsubmit="return validateForm();" class="form-horizontal" style="margin-left: 50px;">
 
-        <div class="form-group, input-group">
+        <div class="form-group input-group">
         <p>First Name:
         <input type="text" name="FirstName" required
-        class="form-control">
+        class="form-control" placeholder="Enter First Name" style="width: 300px;border-radius: 15px">
 
 
 
@@ -158,46 +159,47 @@
     </p>
     </div>
         
-        <div class="form-group, input-group">
+        <div class="form-group input-group">
         <p>Last Name:
-        <input type="text" name="LastName" required class="form-control">
+        <input type="text" name="LastName" required class="form-control" placeholder="Enter Last Name" style="width: 300px;border-radius: 15px">
     </div>
         
-        <div class="form-group, input-group">
+        <div class="form-group input-group">
         <p>Email:
         <input type="text" name="Email" required
-        class="form-control">
+        class="form-control" placeholder="Enter Email Address" style="width: 300px;border-radius: 15px">
 
 
 
     </p>
     </div>
         
-        <div class="form-group, input-group">
+        <div class="md-form form-group input-group date">
         <p>Date of Birth: 
         <input type="date" name="DOB" required
-        class="form-control">
+        class="form-control" placeholder="Enter Date in dd/mm/yyyy format" style="width: 300px;border-radius: 15px">
 
 
     </p>
     </div>
 
-        <div class="form-group, input-group">
+        <div class="form-group input-group">
         <p>Password: 
-        <input type="password" name="Password" required class="form-control">
+        <input type="password" name="Password" required class="form-control" placeholder="Enter Password" style="width: 300px;border-radius: 15px">
 
     </p>
     </div>
         
-        <div class="form-group, input-group">
-        <p>Contact No (Separate multiple values with ','):
-        <input type="text" name="PhoneNumber" required class="form-control" style="width: 205px;">
+        <div class="form-group input-group">
+        <p>Contact No:
+        <input type="text" name="PhoneNumber" required class="form-control" placeholder="Enter Contact No (Separated with ',')" style="width: 300px; border-radius: 15px">
     </p>
     </div>
         
-        <div class="form-group, input-group">
+        <div class="form-group input-group">
             <p>
-        <input type="submit" value="Submit" class="form-control btn btn-danger btn-info" style="width: 205px;">
+        <input type="submit" value="Submit" class="form-control btn btn btn-primary custom-btn" style="width: 300px; background-color: #7851A9;
+  border-color: #7851A9; border-radius: 15px">
     </p>
         </div>
 

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="style.php">
 
 </head>
-<body>
+<body class="bg">
     <div class="header">
 
         <?php
@@ -30,7 +30,7 @@
     </div>
 
     <div class="container-fluid">
-    <div class="main-content">
+    <div class="table-content">
 
         <?php
             $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -63,10 +63,10 @@
 
             ?>
         
-            <table class="index">
+            <table class="table table-borderless">
                 <thead>
                 <tr>
-                    <th> ID: </th>
+                    <th scope="col">  ID: </th>
                     <td> <?= $id ?> </td>
                 </tr>
                 </thead>
@@ -84,21 +84,21 @@
 
                 <thead>
                 <tr>
-                    <th>Full Name:</th>
+                    <th scope="col">  Full Name:</th>
                     <td> <?= $row['FirstName'] . " " . $row['LastName'] ?></td>
                 </tr>
                 </thead>
 
                 <thead>
                 <tr>
-                    <th>Email:</th>
+                    <th scope="col">  Email:</th>
                     <td> <?= $row['Email']?></td>
                 </tr>
                 </thead>
 
                 <thead>
                 <tr>
-                    <th>Date of Birth:</th>
+                    <th scope="col">  Date of Birth:</th>
                     <td> <?= $row['DOB']?></td>
                 </tr>
                 </thead>
@@ -110,7 +110,7 @@
 
                 <thead>
                 <tr>
-                    <th>Phone Numbers:</th>
+                    <th scope="col">  Phone Numbers:</th>
                     <td>
                         <?php 
                         $result = $mysqli->query(

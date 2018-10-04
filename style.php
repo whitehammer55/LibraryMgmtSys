@@ -14,192 +14,297 @@
 
 
 .header {
-    background-color: #17c;
+    background-color: #7CFC00;
+    border-radius: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
 }
 .main-content {
-    background-color: #17c;
-    margin-left: <?php echo (SIDE_NAV_WIDTH + 10) . 'px'; ?>;
-    margin-top: 10px;
+    background-color: #7CFC00;
+    margin-left: <?php echo (SIDE_NAV_WIDTH + 60) . 'px'; ?>;
+    margin-top: 30px;
+    border-radius: 15px;
+    margin-right: 30px;
     /* + 10 is provide gap between side bar and main content */
-    
+}
+.table-content {
+    background-color: white;
+    margin-left: <?php echo (SIDE_NAV_WIDTH + 60) . 'px'; ?>;
+    margin-top: 30px;
+    border-radius: 15px;
+    margin-right: 30px;
 }
 .nav-bar {
-    background-color: #17c;
+    background-color: #7CFC00;
     width: <?php echo SIDE_NAV_WIDTH . 'px'; ?>;
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     height: 560px; /* Full-height */
     z-index: 1;  /*Stay on top */
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-left: 30px;
+    border-radius: 15px;
 }
 
-/*LOGIN.PHP*/
-
- body {
-  background: #456;
-  font-family: sans-serif;
+.bg{
+  background-color: #C5E3BF ;
 }
 
-.login {
-  width: 400px;
-  margin: 16px auto;
-  font-size: 16px;
+/*Login Checkbox*/
+
+.checkbox {
+  padding-left: 20px;
 }
 
-/* Reset top and bottom margins from certain elements */
-.login-header,
-.login p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-/* The triangle form is achieved by a CSS hack */
-.login-triangle {
-  width: 0;
-  margin-right: auto;
-  margin-left: auto;
-  border: 12px solid transparent;
-  border-bottom-color: : #28d;    
-}
-
-.login-header {
-  background: #28d;
-  padding: 20px;
-  font-size: 1.4em;
-  font-weight: normal;
-  text-align: center;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-.login-container {
-  background: #ebebeb;
-  padding: 12px;
-}
-
-/* Every row inside .login-container is defined with p tags */
-.login p {
-  padding: 12px;
-}
-
-.login input {
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  border-width: 1px;
-  border-style: solid;
-  padding: 16px;
-  outline: 0;
-  font-family: inherit;
-  font-size: 0.95em;
-}
-
-.login input[type="text"],
-.login input[type="password"] {
-  background: #fff;
-  border-color: #bbb;
-  color: #555;
-}
-
-/* Text fields' focus effect */
-.login input[type="text"]:focus,
-.login input[type="password"]:focus {
-  border-color: #888;
-}
-
-.login input[type="submit"] {
-  background: #28d;
-  border-color: transparent;
-  color: #fff;
-  cursor: pointer;
-}
-
-.login input[type="submit"]:hover {
-  background: #17c;
-}
-
-/* Buttons' focus effect */
-.login input[type="submit"]:focus {
-  border-color: #05a;
-}
-
-/* Customize the label (the container) */
-.container {
-  display: block;
+.checkbox label {
+  display: inline-block;
+  vertical-align: middle;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 16px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  padding-left: 5px;
 }
 
-/* Hide the browser's default checkbox */
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #fff;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: #2196F3;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
+.checkbox label::before {
   content: "";
+  display: inline-block;
   position: absolute;
-  display: none;
+  width: 17px;
+  height: 17px;
+  left: 0;
+  margin-left: -20px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  background-color: #fff;
+  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
+.checkbox label::after {
+  display: inline-block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  top: 0;
+  margin-left: -20px;
+  padding-left: 3px;
+  padding-top: 1px;
+  font-size: 11px;
+  color: #555555;
 }
 
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+.checkbox input[type="checkbox"] {
+  opacity: 0;
+  z-index: 1;
 }
 
-/*Index CSS*/
-
-table {
-  counter-reset: rowNumber -1;
+.checkbox input[type="checkbox"]:focus + label::before {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 
-table tr {
-  counter-increment: rowNumber;
+.checkbox input[type="checkbox"]:checked + label::after {
+  font-family: 'FontAwesome';
+  content: "\f00c";
 }
 
-table tr td:first-child::before {
-  content: counter(rowNumber);
-  min-width: 1em;
-  margin-right: 0.5em;
+.checkbox input[type="checkbox"]:disabled + label {
+  opacity: 0.65;
+}
+
+.checkbox input[type="checkbox"]:disabled + label::before {
+  background-color: #eeeeee;
+  cursor: not-allowed;
+}
+
+.checkbox.checkbox-circle label::before {
+  border-radius: 50%;
+}
+
+.checkbox.checkbox-inline {
+  margin-top: 0;
+}
+
+.checkbox-primary input[type="checkbox"]:checked + label::before {
+  background-color: #428bca;
+  border-color: #428bca;
+}
+
+.checkbox-primary input[type="checkbox"]:checked + label::after {
+  color: #fff;
+}
+
+.checkbox-danger input[type="checkbox"]:checked + label::before {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.checkbox-danger input[type="checkbox"]:checked + label::after {
+  color: #fff;
+}
+
+.checkbox-info input[type="checkbox"]:checked + label::before {
+  background-color: #5bc0de;
+  border-color: #5bc0de;
+}
+
+.checkbox-info input[type="checkbox"]:checked + label::after {
+  color: #fff;
+}
+
+.checkbox-warning input[type="checkbox"]:checked + label::before {
+  background-color: #f0ad4e;
+  border-color: #f0ad4e;
+}
+
+.checkbox-warning input[type="checkbox"]:checked + label::after {
+  color: #fff;
+}
+
+.checkbox-success input[type="checkbox"]:checked + label::before {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+
+.checkbox-success input[type="checkbox"]:checked + label::after {
+  color: #fff;
+}
+
+.radio {
+  padding-left: 20px;
+}
+
+.radio label {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  padding-left: 5px;
+}
+
+.radio label::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  left: 0;
+  margin-left: -20px;
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+  background-color: #fff;
+  -webkit-transition: border 0.15s ease-in-out;
+  -o-transition: border 0.15s ease-in-out;
+  transition: border 0.15s ease-in-out;
+}
+
+.radio label::after {
+  display: inline-block;
+  position: absolute;
+  content: " ";
+  width: 11px;
+  height: 11px;
+  left: 3px;
+  top: 3px;
+  margin-left: -20px;
+  border-radius: 50%;
+  background-color: #555555;
+  -webkit-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+  transform: scale(0, 0);
+  -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+  -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+  -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+  transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+}
+
+.radio input[type="radio"] {
+  opacity: 0;
+  z-index: 1;
+}
+
+.radio input[type="radio"]:focus + label::before {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.radio input[type="radio"]:checked + label::after {
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.radio input[type="radio"]:disabled + label {
+  opacity: 0.65;
+}
+
+.radio input[type="radio"]:disabled + label::before {
+  cursor: not-allowed;
+}
+
+.radio.radio-inline {
+  margin-top: 0;
+}
+
+.radio-primary input[type="radio"] + label::after {
+  background-color: #428bca;
+}
+
+.radio-primary input[type="radio"]:checked + label::before {
+  border-color: #428bca;
+}
+
+.radio-primary input[type="radio"]:checked + label::after {
+  background-color: #428bca;
+}
+
+.radio-danger input[type="radio"] + label::after {
+  background-color: #d9534f;
+}
+
+.radio-danger input[type="radio"]:checked + label::before {
+  border-color: #d9534f;
+}
+
+.radio-danger input[type="radio"]:checked + label::after {
+  background-color: #d9534f;
+}
+
+.radio-info input[type="radio"] + label::after {
+  background-color: #5bc0de;
+}
+
+.radio-info input[type="radio"]:checked + label::before {
+  border-color: #5bc0de;
+}
+
+.radio-info input[type="radio"]:checked + label::after {
+  background-color: #5bc0de;
+}
+
+.radio-warning input[type="radio"] + label::after {
+  background-color: #f0ad4e;
+}
+
+.radio-warning input[type="radio"]:checked + label::before {
+  border-color: #f0ad4e;
+}
+
+.radio-warning input[type="radio"]:checked + label::after {
+  background-color: #f0ad4e;
+}
+
+.radio-success input[type="radio"] + label::after {
+  background-color: #5cb85c;
+}
+
+.radio-success input[type="radio"]:checked + label::before {
+  border-color: #5cb85c;
+}
+
+.radio-success input[type="radio"]:checked + label::after {
+  background-color: #5cb85c;
 }

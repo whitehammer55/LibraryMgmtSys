@@ -7,12 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Document</title>
 
     <link rel="stylesheet" type="text/css" href="style.php">
 
 </head>
-<body>
+<body class="bg">
     <div class="header">
 
         <?php
@@ -28,25 +29,20 @@
             // Refer: https://stackoverflow.com/a/36577021
             require_once 'common/nav-bar.php' ?>
     </div>
+    <div class="container-fluid">
+    <div class="table-content">
 
-    <div class="main-content">
-
-        <style type="text/css">
-           table, tr, td, th {
-            /* To get lines for the table, make pretty later */
-            border: 1px solid black;
-           }
-        </style>
-
-        <table>
+        <table class="table table-borderless">
+            <thead>
             <tr>
-                <th>BookID</th>
-                <th>ISBN</th>
-                <th>Title</th>
-                <th>Author(s)</th>
-                <th>DOI</th>
-                <th>DOR</th>
-            </tr>   
+                <th scope="col">BookID</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author(s)</th>
+                <th scope="col">DOI</th>
+                <th scope="col">DOR</th>
+            </tr>  
+            </thead> 
         <?php 
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -73,15 +69,16 @@
             $result->data_seek($i);
             $row = $result->fetch_assoc();
         ?>
-
-            <tr>
-            <td> <?= $row['BookID'] ?> </td>
-            <td> <?= $row['ISBN'] ?> </td>
-            <td> <?= $row['Title'] ?> </td>
-            <td> <?= $row['authors'] ?> </td>
-            <td> <?= $row['DOI'] ?> </td>
-            <td> <?= $row['DOR'] ?></td>
+            <tbody>
+            <tr>    
+            <td scope="row"> <?= $row['BookID'] ?> </td>
+            <td scope="row"> <?= $row['ISBN'] ?> </td>
+            <td scope="row"> <?= $row['Title'] ?> </td>
+            <td scope="row"> <?= $row['authors'] ?> </td>
+            <td scope="row"> <?= $row['DOI'] ?> </td>
+            <td scope="row"> <?= $row['DOR'] ?></td>
             </tr>
+            </tbody>
 
         <?php  
         } // end for
@@ -91,6 +88,7 @@
         ?>
         </table>
 
+    </div>
     </div>
     
 </body>
