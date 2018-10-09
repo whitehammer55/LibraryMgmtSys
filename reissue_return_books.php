@@ -95,9 +95,15 @@
         }// if post
         ?>
 
-
-    <input type="number" id="user_id"><br>
-    <button id="btn_search_books" 
+<div class="container-fluid">
+    <div class="form-group input-group">
+        <p>
+    <input type="number" id="user_id" style="width: 350px; border-radius: 15px; margin-top: 20px;" class="form-control">
+    </p>
+    </div>
+    <div class="form-group input-group">
+        <p>
+    <button class="form-control btn btn-primary custom-btn" style="width: 350px; border-radius: 15px; background-color: #001064; border-color: #001064;" id="btn_search_books" 
     onclick="
         var user_id = document.getElementById('user_id').value;
         if(user_id == ''){
@@ -108,7 +114,10 @@
         loadTableRows(user_id);
         // Populate the form_issue.table element with AJAX request
 
-    ">See books</button>
+    ">See books</button></p>
+</div>
+</div>
+</div>
 
     <script>
         // This block of code will make sure that 
@@ -176,30 +185,39 @@
             border: 1px solid black;
         }
     </style>
+    <div class="table-content">
+        <div class="container-fluid">
     <form name="form_issue" method="POST" action="<?= $_SERVER['PHP_SELF']?>"
-        id="form_for_reissue">
-        <table>
+        id="form_for_reissue" class="form-horizontal">
+        <table class="table table-borderless">
+            <thead>
             <tr>
-                <th>BookID</th>
-                <th>Title</th>
-                <th>Date of Issue</th>
-                <th>Date of Reissue</th>
-                <th>Reissue Count</th>
-                <th>Reissue?</th>
-                <th>Return?</th>
-                <th>Fine</th>
+                <th scope="col">BookID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Date of Issue</th>
+                <th scope="col">Date of Reissue</th>
+                <th scope="col">Reissue Count</th>
+                <th scope="col">Reissue?</th>
+                <th scope="col">Return?</th>
+                <th scope="col">Fine</th>
             </tr>
-
+            </thead>
             <!-- Data is added here via AJAX call -->
         </table>
 
-        <input type="submit" value="submit">
+        <div class="form-group input-group">
+            <p>
+        <input type="submit" value="Submit" style="width: 350px; border-radius: 15px; background-color: #001064; border-color: #001064;" class="form-control btn btn-primary custom-btn">
+        </p>
+        </div>
     </form>
+    </div>
+</div>
     <?php
     $mysqli->close();
     ?>
         
-    </div>
+    
     
 </body>
 </html>

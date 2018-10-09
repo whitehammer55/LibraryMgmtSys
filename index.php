@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.php">
 
 </head>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="container-fluid">
-    <div class="table-content">
+    <div class="index-content">
 
         <?php
             $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -63,7 +63,7 @@
 
             ?>
         
-            <table class="table table-borderless">
+            <table class="table table-borderless" >
                 <thead>
                 <tr>
                     <th scope="col">  ID: </th>
@@ -73,11 +73,12 @@
                 <!-- TR for Post -->
                 <?php
                 if(isset($_SESSION['emp'])){
-                ?>
+                ?><thead>
                     <tr>
-                        <th>Post:</th>
+                        <th scope="col">  Post:</th>
                         <td> <?= $row['Post']?></td>
                     </tr>
+                    </thead>
                 <?php
                 }
                 ?>

@@ -16,16 +16,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
 
     <link rel="stylesheet" type="text/css" href="style.php">
 
-</head><style type="text/css">
-	
-	table{
-		border-collapse: collapse;
-	}
-</style>
-<body>
+</head>
+<body class="bg">
     <div class="header">
 
         <?php
@@ -42,7 +39,8 @@
             require_once 'common/nav-bar.php' ?>
     </div>
 
-    <div class="main-content">
+                    <div class="container-fluid">
+                <div class="table-content">
     <?php 
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     	
@@ -98,70 +96,87 @@
         
 
         	?>
-            	<table border =1>
 
+            	<table class="table table-borderless">
 
+                    <thead>
             		<tr>
-            			<th>BookID</th>
-            			<th>ISBN</th>
-            			<th>Title</th>
-            			<th>Author Name</th>
-            			<th>Edition</th>
+                        
+            			<th scope="col">BookID</th>
+            			<th scope="col">ISBN</th>
+            			<th scope="col">Title</th>
+            			<th scope="col">Author Name</th>
+            			<th scope="col">Edition</th>
+                        
             		</tr>
+                    </thead>
 
+                    <tbody>
             		<tr>
-            			<td><?= $new_book   ?></td>
-            			<td><?= $ISBN       ?></td>
-            			<td><?= $title      ?></td>
-            			<td><?= $AuthorName ?></td>
-            			<td><?= $edition    ?></td>
-            		</tr>	            		
-            	</table>
+                        
+            			<td scope="row"><?= $new_book   ?></td>
+            			<td scope="row"><?= $ISBN       ?></td>
+            			<td scope="row"><?= $title      ?></td>
+            			<td scope="row"><?= $AuthorName ?></td>
+            			<td scope="row"><?= $edition    ?></td>
+                        
+            		</tr>
+                    </tbody>	            		
+            	
         	<?php
             $mysqli->close();
 
+
         } // if post
+
+
         else{
 			?>
-        <form name="add_books" action="<?= $_SERVER['PHP_SELF']?>" method="POST">
-            <table >
-                
-                <tr>
-                    <td>Enter the ISBN of the Book :
-                        <input type="number" name="ISBN" required>
-                    </td>
+                     </table>
+                </div>
+                </div>
 
-                </tr>
-                <tr>
-                    <td>Enter the Title of the Book :
-                        <input type="text" name="TITLE" required>
-                    </td>
+    <div class="main-content">
+        <div class="container-fluid">
+        <form name="add_books" action="<?= $_SERVER['PHP_SELF']?>" method="POST" class="form-horizontal">
 
-                </tr>
-                <tr>
-                    <td>Enter the Author of the Book :
-                        <input type="text" name="AuthorName" required>
-                    </td>
+                    <div class="form-group input-group">
+                    <p style="margin-left: 30px;">Enter the ISBN of the Book :
+                        <input type="number" class="form-control" name="ISBN" required style="width: 350px; border-radius: 15px; margin-top: 20px; margin-left: 10px;">
+                    </p>
+                    </div>
 
-                </tr>
-                <tr>
-                    <td>Enter the Edition of the Book :
-                        <input type="number" name="EDITION" required>
-                    </td>
+                    <div class="form-group input-group">
+                    <p style="margin-left: 30px;">Enter the Title of the Book :
+                        <input type="text" class="form-control" name="TITLE" required style="width: 350px; border-radius: 15px; margin-top: 20px; margin-left: 10px;">
+                    </p>
+                    </div>
 
-                </tr>
-                <tr>
-                    <td>
-                        <input type="submit" name="submit">
-                    </td>
+                    <div class="form-group input-group">
+                    <p style="margin-left: 30px;">Enter the Author of the Book :
+                        <input type="text" class="form-control" name="AuthorName" required style="width: 350px; border-radius: 15px; margin-top: 20px; margin-left: 10px;">
+                    </p>
+                </div>
 
-                </tr>
-            </table>
+                    <div class="form-group input-group">
+                    <p style="margin-left: 30px;">Enter the Edition of the Book :
+                        <input type="number" class="form-control" name="EDITION" required style="width: 350px; border-radius: 15px; margin-top: 20px; margin-left: 10px;">
+                    </p>
+                    </div>
+
+                        <div class="form-group input-group">
+                            <p>
+                        <input type="submit" name="submit" class="form-control btn btn-primary custom-btn" style="width: 350px; border-radius: 15px; background-color: #001064; border-color: #001064; margin-left: 40px;">
+                            </p>
+                        </div>
+
         </form>
             <?php
         }// else post
         ?>
-    </div>
+        </div>
+        </div>
+    
     
 </body>
 </html>

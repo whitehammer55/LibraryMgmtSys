@@ -55,7 +55,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         // assuming all form variables are set
 
-        echo "POSTED";
+        // echo "POSTED";
 
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -90,8 +90,11 @@
         unset($val); // Remove reference to array variable
 
 
-        print_r("User ID: " . $new_user_id);
+        ?>
+        
+        <p>User ID: <?= $new_user_id ?></p>
 
+        <?php
         $insert_sql = 
         "INSERT INTO Users(UserID, Password, Email, DOB, FirstName, LastName) "
         . " VALUES ('$new_user_id', '$password', '$email', '$dob', '$first_name', '$last_name');";
@@ -113,7 +116,7 @@
             }
 
             // https://stackoverflow.com/a/9989343
-            var seconds_left = 5;
+            var seconds_left = 12000;
             document.getElementById('timer-p').innerHTML = 
                     "You will be redirected to the login page in " + (seconds_left) + " seconds!";
                     
@@ -137,11 +140,11 @@
     else{    
         ?>
         <div class="container">
-            <div class="col-sm-10" style="width: 500px; margin-left: 300px; margin-top: 50px;">
+            <div class="col-sm-10" style="width: 550px; margin-left: 300px; margin-top: 50px;">
 
         <div class="jumbotron">
 
-        <div class="form-group" style="margin-top: -50px;">
+        <div class="form-group form-check" style="margin-top: -50px;">
 
             <h1 style="margin-left: 125px;">Sign Up</h1>
 
@@ -191,15 +194,15 @@
     </div>
         
         <div class="form-group input-group">
-        <p>Contact No:
-        <input type="text" name="PhoneNumber" required class="form-control" placeholder="Enter Contact No (Separated with ',')" style="width: 300px; border-radius: 15px">
+        <p>Contact No: (Separated with ',')
+        <input type="text" name="PhoneNumber" required class="form-control" placeholder="Enter Contact No" style="width: 300px; border-radius: 15px">
     </p>
     </div>
         
         <div class="form-group input-group">
             <p>
-        <input type="submit" value="Submit" class="form-control btn btn btn-primary custom-btn" style="width: 300px; background-color: #7851A9;
-  border-color: #7851A9; border-radius: 15px">
+        <input type="submit" value="Submit" class="form-control btn btn btn-primary custom-btn" style="width: 300px; background-color: #001064;
+  border-color: #001064; border-radius: 15px">
     </p>
         </div>
 

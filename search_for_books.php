@@ -8,9 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
     <link rel="stylesheet" type="text/css" href="style.php">
+        <style type="text/css">
+        table, tr, td, th {
+            border: 1px solid black;
 
+        }
+    </style>
 </head>
 <body class="bg">
     <div class="header">
@@ -31,14 +36,14 @@
 
     
         <div class="main-content">
-        <form name="form_book" method="post">
+        <form name="form_book" method="post" class="form-horizontal">
 
             <div  class="form-group input-group btn-group btn-group-toggle" data-toggle="buttons">
             <input type="text" name="search_query" class="form-control" style="width: 300px; border-radius: 15px; margin-left: 15px; margin-top: 15px;">
 
             <input type="submit" value="Submit"
-                class="form-control btn btn-danger btn-info" style="width: 100px;background-color: #28a745;
-  border-color: #0AC92B; border-radius: 15px; margin-left: 15px;
+                class="form-control btn btn-danger btn-info" style="width: 100px;background-color: #001064;
+  border-color: #001064; border-radius: 15px; margin-left: 15px;
   margin-right: 15px; margin-top: 15px;" onclick="
                 // THIS ONCLICK VERIFIES THAT INPUTS ARE NOT EMPTY
 
@@ -64,19 +69,25 @@
             $COL_BOOKID = "Books.BookID";
             $COL_AUTHOR = "B_Author.AuthorName"
             ?>
-            
-            <label class="btn btn-success"  style="margin-left: 15px; margin-right: 15px;  margin-bottom:15px;border-radius: 15px;" >
-            <input type="radio" sname="search_field" value="<?= $COL_BOOKID ?>" id="<?= $COL_BOOKID ?>">BookID
-            </label>
-            <label class="btn btn-success" style="margin-right: 15px; border-radius: 15px; margin-bottom:15px;">
-            <input type="radio" name="search_field" value="<?= $COL_ISBN ?>" id="<?= $COL_ISBN ?>">ISBN
-            </label>
-            <label class="btn btn-success" style="margin-right: 15px; border-radius: 15px; margin-bottom:15px;">
-            <input type="radio" name="search_field" value="<?= $COL_TITLE ?>" id="<?= $COL_TITLE ?>">Title
-            </label>
-            <label class="btn btn-success" style="margin-right: 15px; border-radius: 15px; margin-bottom:15px;">
-            <input type="radio" name="search_field" value="<?= $COL_AUTHOR ?>" id="<?= $COL_AUTHOR ?>">Author
-            </label>
+            <div class="form-group form-check" style="margin-bottom: 25px;">
+            <div class="container" >
+            <div class="custom-control custom-radio custom-control-inline form-group">
+            <input type="radio" name="search_field" value="<?= $COL_BOOKID ?>" id="<?= $COL_BOOKID ?>" class="form-control custom-control-input" >
+            <label for="<?= $COL_BOOKID ?>" class="custom-control-label">BookID</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline form-group">
+            <input type="radio" name="search_field" value="<?= $COL_ISBN ?>" id="<?= $COL_ISBN ?>" class="form-control custom-control-input" >
+            <label for="<?= $COL_ISBN ?>" class="custom-control-label">ISBN</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline form-group">
+            <input type="radio" name="search_field" value="<?= $COL_TITLE ?>" id="<?= $COL_TITLE ?>" class="form-control custom-control-input" >
+            <label for="<?= $COL_TITLE ?>" class="custom-control-label">Title</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline form-group">
+            <input type="radio" name="search_field" value="<?= $COL_AUTHOR ?>" id="<?= $COL_AUTHOR ?>" class="form-control custom-control-input" >
+            <label for="<?= $COL_AUTHOR ?>" class="custom-control-label">Author</label>
+            </div>
+            </div>
             </div>
         </form>
         </div>

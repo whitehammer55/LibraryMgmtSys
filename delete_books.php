@@ -40,23 +40,21 @@
         } 
 
         ?>
-        <form name='delete_books' method='POST'>
-             <table >
-                <tr>
-                    <td>
-                        <label for="BookID">Enter the BookID of the book :</label>
-                    </td>
-                    <td>
-                        <input type='number' name='BookID' required>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td colspan="2">
-                        <input type='submit' name='submit'>
-                    </td>
-                </tr>
-            </table>
+        <div class="main-content">
+            <div class="container-fluid">
+                  <form name='delete_books' method='POST' class="form-horizontal">
+                        <div class="form-group input-group">
+                        <p>Enter the BookID of the book :
+                        <input type="number" style="width: 350px; border-radius: 15px; margin-top: 20px;" class="form-control" name="BookID" required>
+                        </p>
+                        </div>
+                        <div class="form-group input-group">
+                            <p>
+                        <input type="submit" style="width: 350px; border-radius: 15px; background-color: #001064; border-color: #001064;" class="form-control btn btn-primary custom-btn" name="submit">
+                        </p>
+                        </div>
+                    </div>
+        </div>
         </form>
         <?php
 

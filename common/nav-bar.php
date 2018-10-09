@@ -18,22 +18,44 @@
         padding: 6px 8px 6px 8px;
         text-decoration: none;
         font-size: 25px;
-        color: #000;
+        color: #fff;
+        background-color: #283593;
         text-align: center;
+        
     }
 
     /* Change the link color on hover */
     li a:hover {
-        background-color: #555;
-        color: white;
+        color: #283593;
+        
+        background-color: white;
+      }
+
+  /*.affix {
+      top: 20px;
+  }
+  div.col-sm-9 div {
+      height: 250px;
+      font-size: 28px;
+  }
+  #section1 {color: #fff; background-color: #1E88E5;}
+  #section2 {color: #fff; background-color: #673ab7;}
+  #section3 {color: #fff; background-color: #ff9800;}
+  #section41 {color: #fff; background-color: #00bcd4;}
+  #section42 {color: #fff; background-color: #009688;}
+  
+  @media screen and (max-width: 810px) {
+    #section1, #section2, #section3, #section41, #section42  {
+        margin-left: 150px;
     }
-
-</style>
-
-<ul>
+  }*/
+    </style>
+<div class="container">
+  <div class="row">
+<nav">
+  <ul>
   <li><a href="index.php">Profile</a></li>
   <li><a href="search_for_books.php">Search</a></li>
-
   <?php 
 
   if(isset($_SESSION['user'])){
@@ -51,6 +73,7 @@
 
   ?>
   <li><a href="logout.php">Logout</a></li>
-
-
 </ul>
+</nav>
+</div>
+</div>

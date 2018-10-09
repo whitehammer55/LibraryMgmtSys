@@ -46,6 +46,8 @@ for($i = 0; $i < $result->num_rows; $i++){
         <td><?= $row['DOR'] ?></td>
         <td><?= $row['reissue_count'] ?></td>
         <td>
+            <div>
+                <div>
             <input type="checkbox" name="<?= $reissue_id ?>" value="1"
             <?php if ($row['reissue_count'] == 3
                      || date("Y-m-d") > $row['DOR']) {
@@ -55,7 +57,8 @@ for($i = 0; $i < $result->num_rows; $i++){
                 echo "disabled";
             }  
             ?>
-            >
+            ></div>
+            </div>
         </td>
         <td>
             <input type="checkbox" name="<?= $return_id ?>" value="1"

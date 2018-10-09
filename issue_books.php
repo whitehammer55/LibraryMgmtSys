@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="style.php">
 
 </head>
-<body>
+<body class="bg">
     <div class="header">
 
         <?php
@@ -40,25 +40,26 @@
         }
 
         ?>
-        
-        <form name="issue_books" method="POST">
-            <table>
-                <tr>
-                    <td>Enter the Book ID :
-                        <input type="number" name="BID" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Enter the Student ID :
-                        <input type="number" name="PID" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="submit" name="submit">
-                    </td>
-                </tr>
-            </table>
+        <div class="main-content">
+            <div class="container-fluid">
+        <form name="issue_books" method="POST" class="form-horizontal">
+            <div class="form-group input-group">
+                    <p">Enter the Book ID :
+                        <input type="number" style="width: 350px; border-radius: 15px; margin-top: 20px;" class="form-control" name="BID" required>
+                    </p>
+            </div>
+            <div class="form-group input-group">
+                    <p">Enter the Student ID :
+                        <input type="number" class="form-control" style="width: 350px; border-radius: 15px; margin-top: 20px;" name="PID" required>
+                    </p>
+            </div>
+            <div class="form-group input-group">
+                <p>
+                        <input type="submit" name="submit" class="form-control btn btn-primary custom-btn" style="width: 350px; border-radius: 15px; background-color: #001064; border-color: #001064;">
+                        </p>
+            </div>
+                        </div>
+        </div>
 
     <?php 
         if(isset($_POST['submit'])){
