@@ -75,64 +75,106 @@
           white-space: -moz-pre-wrap;
           white-space: -pre-wrap;
         }*/
-
+.row{
+                margin-left: 300px;
+                margin-top: 150px;
+           } 
 
         
 
-/*Login Checkbox*/
+/*Login Page*/
+            
+           .form-group.form-check.login{
+                margin-top: -50px;
+                width: 500px;
+           }
+           .login-header{
+                margin-left: 200px;
+           }
+           .form-horizontal.login{
+            margin-left: 80px;
+           }
+           .form-control.login{
+                width: 350px;
+                border-radius: 15px;
+           }
+           .form-control.btn.btn-primary.custom-btn.login{
+                width: 350px; 
+                border-radius: 15px; 
+                background-color: #001064; 
+                border-color: #001064; 
+           }
 
 
+/*Signup Page*/
 
-/*Button Ripple CSS*/
-*,
-*:after,
-*:before {
-  box-sizing: border-box;  
-}
-html {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+            .col-sm-10.signup{
+                width: 550px; 
+                margin-left: 300px; 
+                margin-top: 70px;
+            }
+            .signup-header{
+                margin-left: 125px;
+            }
+            .form-horizontal.signup{
+                margin-left: 50px;
+            }
+            .form-group.form-check.signup{
+                margin-top: -50px;
+            }
+            .form-control.signup{
+                width: 300px;
+                border-radius: 15px;
+            }
+            .form-control.date.signup{
+                width: 300px;
+                border-radius: 15px;                
+            }
+            .form-control.btn.btn-primary.custom-btn.signup{
+                width: 300px; 
+                background-color: #001064;
+                border-color: #001064; 
+                border-radius: 15px;  
+            }
 
-.c-ripple {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: transparent;
-}
+/*            delete_books page*/
 
-.c-ripple__circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .25);
-  .c-ripple.is-active & {
-    animation: a-ripple .4s ease-in;
-  }
-}
+            .form-control.del-bks{
+                width: 350px; 
+                border-radius: 15px; 
+                margin-top: 20px;
+            }
+            .form-control.btn.btn-primary.custom-btn.del-bks{
+                width: 350px; 
+                border-radius: 15px; 
+                background-color: #001064; border-color: #001064;
+            }
 
-/**
- * Animation: Ripple
- * --------------------------------------------------
- */
+            /*reissue/return books page*/
 
-@keyframes a-ripple {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-  }
-  100% {
-    width: 200%;
-    padding-bottom: 200%;
-    opacity: 0;
-  }
-}
+            .form-control.rrbks{
+                width: 350px; 
+                border-radius: 15px; 
+                margin-top: 20px;
+            }.form-control.btn.btn-primary.custom-btn.rrbks{
+                width: 350px; 
+                border-radius: 15px; 
+                background-color: #001064; 
+                border-color: #001064;
+            }
+
+/*            Add books page*/
+
+            .form-control.add-bks{
+                width: 350px; border-radius: 15px; margin-top: 20px; margin-left: 10px;
+            }
+            .form-control.btn.btn-primary.custom-btn.add-bks{
+                width: 350px; 
+                border-radius: 15px; 
+                background-color: #001064; 
+                border-color: #001064; 
+                margin-left: 40px;
+            }
+            .p.add-bks{
+                margin-left: 30px;
+            }

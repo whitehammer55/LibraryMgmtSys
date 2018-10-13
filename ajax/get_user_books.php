@@ -46,7 +46,7 @@ for($i = 0; $i < $result->num_rows; $i++){
         <td><?= $row['DOR'] ?></td>
         <td><?= $row['reissue_count'] ?></td>
         <td>
-            <div>
+            <div class="">
                 <div>
             <input type="checkbox" name="<?= $reissue_id ?>" value="1"
             <?php if ($row['reissue_count'] == 3
