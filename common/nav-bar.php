@@ -33,49 +33,68 @@
 
       }
 
-  /*.affix {
-      top: 20px;
-  }
-  div.col-sm-9 div {
-      height: 250px;
-      font-size: 28px;
-  }
-  #section1 {color: #fff; background-color: #1E88E5;}
-  #section2 {color: #fff; background-color: #673ab7;}
-  #section3 {color: #fff; background-color: #ff9800;}
-  #section41 {color: #fff; background-color: #00bcd4;}
-  #section42 {color: #fff; background-color: #009688;}
-  
-  @media screen and (max-width: 810px) {
-    #section1, #section2, #section3, #section41, #section42  {
-        margin-left: 150px;
+    .selected-a {
+        background-color: #0f2467;
+        border-radius: 15px;
     }
-  }*/
     </style>
 <div class="container">
   <div class="row">
-<nav">
+<nav>
+    <?php 
+    $dict = 
+        array(
+            "add_books.php" => "",
+            "books.php" => "",
+            "delete_books.php" => "",
+            "index.php" => "",
+            "issue_books.php" => "",
+            "login.php" => "",
+            "login_validation.php" => "",
+            "logout.php" => "",
+            "reissue_return_books.php" => "",
+            "search_for_books.php" => "",
+            "survey.php" => ""
+            );
+
+
+    // get the page name and use dict to set class to correct attribute
+    $page_name = basename($_SERVER['PHP_SELF']);
+
+    $dict[$page_name] = " class='selected-a' ";
+
+    ?>
   <ul>
-  <li><a href="index.php">Profile</a></li>
-  <li><a href="search_for_books.php">Search</a></li>
+  <li><a href="index.php" 
+        <?= $dict['index.php'] ?>           >Profile</a></li>
+  <li><a href="search_for_books.php" 
+        <?= $dict['search_for_books.php']?> >Search</a></li>
 
   <?php 
 
   if(isset($_SESSION['user'])){
     // TODO: If student then show this page
     // Use session data to determine if student or teacher
-      echo '<li><a href="books.php">Books</a></li>';
-
+    ?>
+    <li><a href="books.php">Books</a></li>
+    <?php
   }
   else if(isset($_SESSION['emp'])) {
     // If employee
-    echo '<li><a href="add_books.php">Add Books</a></li>';
-    echo '<li><a href="issue_books.php">Issue Books</a></li>';
-    echo '<li><a href="reissue_return_books.php">Reissue/Return</a></li>';
-    echo '<li><a href="delete_books.php">Delete Books</a></li>';
-    echo'<li><a href="survey.php">FeedBack</a></li>';
-  }
+    ?>
+    <li><a href="add_books.php"   <?= $dict['add_books.php'] ?>>
+        Add Books</a></li>
+    <li><a href="issue_books.php" <?= $dict['issue_books.php'] ?>>
+        Issue Books</a></li>
+    <li><a href="reissue_return_books.php" <?= $dict['reissue_return_books.php'] ?>>
+        Reissue/Return</a></li>
+    <li><a href="delete_books.php" <?= $dict['delete_books.php'] ?>>
+        Delete Books</a></li>
+    <li><a href="survey.php"       <?= $dict['survey.php'] ?>>
+        FeedBack</a></li>
 
+  <?php
+    }
   ?>
   <li><a href="logout.php">Logout</a></li>
 </ul>
