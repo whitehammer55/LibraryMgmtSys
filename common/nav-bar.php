@@ -30,17 +30,20 @@
         border-radius: 15px;
         background-color: #003366;
         text-decoration: none;
-
       }
+<<<<<<< HEAD
 
     .selected-a {
         background-color: #0f2467;
         border-radius: 15px;
     }
+=======
+>>>>>>> fix addbooks and searchbooks
     </style>
 <div class="container">
   <div class="row">
 <nav>
+<<<<<<< HEAD
     <?php 
     $dict = 
         array(
@@ -64,6 +67,8 @@
     $dict[$page_name] = " class='selected-a' ";
 
     ?>
+=======
+>>>>>>> fix addbooks and searchbooks
   <ul>
   <li><a href="index.php" 
         <?= $dict['index.php'] ?>           >Profile</a></li>

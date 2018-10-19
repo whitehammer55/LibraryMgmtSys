@@ -12,6 +12,9 @@
 
 ?>
 
+*{
+	font-family: helvetica;
+}
 
 .header {
     background-color: #283593;
@@ -31,9 +34,7 @@
     margin-left: <?php echo (SIDE_NAV_WIDTH + 60) . 'px'; ?>;
     margin-top: 30px;
     margin-right: 30px;
-
-    height: 400px;
-    overflow: auto;
+/*    overflow: auto;*/
 }
 .nav-bar {
     background-color: #283593;
@@ -44,14 +45,12 @@
     margin-top: 30px;
     margin-left: 30px;
 }
-
 .index-content{
     background-color: white;
     margin-left: <?php echo (SIDE_NAV_WIDTH + 60) . 'px'; ?>;
     margin-top: 30px;
     margin-right: 600px;
 }
-
 .bg{
   background-color: #f1f1f1 ;
 }
@@ -61,23 +60,12 @@
             table-layout: fixed;
             word-wrap: break-word;
             width: 69%;
-            /*white-space: -o-pre-wrap;
-          word-wrap: break-word;
-          white-space: pre-wrap;
-          white-space: -moz-pre-wrap;
-          white-space: -pre-wrap;*/
-        }
+}
 
-        /*td{
-          white-space: -o-pre-wrap;
-          word-wrap: break-word;
-          white-space: pre-wrap;
-          white-space: -moz-pre-wrap;
-          white-space: -pre-wrap;
-        }*/
+/*nav bar list position*/
 .row{
                 margin-left: 300px;
-                margin-top: 150px;
+                margin-top: 25px;
            } 
 
         
@@ -87,6 +75,7 @@
            .form-group.form-check.login{
                 margin-top: -50px;
                 width: 500px;
+
            }
            .login-header{
                 margin-left: 200px;
@@ -142,13 +131,22 @@
             .form-control.del-bks{
                 width: 350px; 
                 border-radius: 15px; 
-                margin-top: 20px;
+                margin-top: 20px; 
             }
+
             .form-control.btn.btn-primary.custom-btn.del-bks{
                 width: 350px; 
                 border-radius: 15px; 
-                background-color: #001064; border-color: #001064;
+                background-color: #001064; 
+                border-color: #001064; 
+
             }
+            .p.del-bks{
+                margin-left: 30px;
+                margin-top: 15px;
+                margin-bottom: 20px;
+            }
+
 
             /*reissue/return books page*/
 
@@ -166,7 +164,9 @@
 /*            Add books page*/
 
             .form-control.add-bks{
-                width: 350px; border-radius: 15px; margin-top: 20px; margin-left: 10px;
+                width: 350px; 
+                border-radius: 15px; 
+                margin-top: 20px; 
             }
             .form-control.btn.btn-primary.custom-btn.add-bks{
                 width: 350px; 
@@ -177,4 +177,40 @@
             }
             .p.add-bks{
                 margin-left: 30px;
+                margin-top: 15px;
             }
+
+/*<!--             Issue Books page -->*/
+            .form-control.ibks{
+                width: 350px; 
+                border-radius: 15px; 
+                margin-top: 20px;
+            }            
+            .form-control.btn.btn-primary.custom-btn.ibks{
+                width: 350px; 
+                border-radius: 15px; 
+                background-color: #001064; 
+                border-color: #001064;
+            }
+/*            search books page*/
+                .sfb{
+                    border: 0px solid black;
+                    table-layout: fixed;
+                    word-wrap: break-word;
+                    width: 69%
+                }
+                .form-control.sfb{
+                    width: 600px; 
+                    border-radius: 15px; 
+                    margin-left: 25px; 
+                    margin-top: 15px;
+                }
+                .form-control.btn.btn-primary.custom-btn.sfb{
+                    width: 320px; 
+                    background-color: #001064; 
+                    border-color: #001064; 
+                    border-radius: 15px; 
+                    margin-left: 315px; 
+                    margin-right: 15px; 
+                    margin-top: 15px;
+                }

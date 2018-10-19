@@ -10,26 +10,6 @@
         <title>Document</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
         <link rel="stylesheet" type="text/css" href="style.php">
-            <style type="text/css">
-                table, tr, td, th {
-                    border: 1px solid black;
-                }
-                .form-control.sfb{
-                    width: 300px; 
-                    border-radius: 15px; 
-                    margin-left: 15px; 
-                    margin-top: 15px;
-                }
-                .form-control.btn.btn-primary.custom-btn.sfb{
-                    width: 100px; 
-                    background-color: #001064; 
-                    border-color: #001064; 
-                    border-radius: 15px; 
-                    margin-left: 400px; 
-                    margin-right: 15px; 
-                    margin-top: 15px;
-                }
-        </style>
     </head>
     <body class="bg">
         <div class="header">
@@ -50,22 +30,30 @@
 
         
             <div class="main-content">
-                <form name="form_book" method="post" class="form-horizontal sfb">
+                <form name="form_book" method="post" class="form-horizontal">
 
-                    <div  class="form-group input-group sfb">
-                        <input type="text" name="search_query" class="form-control sfb">
-                        <input type="submit" value="Submit" class="form-control btn btn-primary custom-btn sfb" onclick="
-                        // THIS ONCLICK VERIFIES THAT INPUTS ARE NOT EMPTY
+                    <div  class="form-group input-group">
+                        <table class="sfb">
+                            <tr class="sfb">
+                                <th class="sfb">
+                                    <input type="text" name="search_query" class="form-control sfb">
+                                </th>
+                                <td class="sfb">
+                                    <input type="submit" value="Submit" class="form-control btn btn-primary custom-btn sfb" onclick="
+                                    // THIS ONCLICK VERIFIES THAT INPUTS ARE NOT EMPTY
 
-                        if(document.form_book.search_query.value == ''){
-                            alert('You need to enter a search query');
-                            return false; // to prevent form refresh
-                        }
+                                    if(document.form_book.search_query.value == ''){
+                                        alert('You need to enter a search query');
+                                        return false; // to prevent form refresh
+                                    }
 
-                        if(document.form_book.search_field.value == ''){
-                            alert('Choose a parameter to search from!');
-                            return false; // to prevent form refresh
-                        }">
+                                    if(document.form_book.search_field.value == ''){
+                                        alert('Choose a parameter to search from!');
+                                        return false; // to prevent form refresh
+                                    }">
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 
                     
@@ -162,6 +150,7 @@
                             <th scope="col">Author(s)</th>
                         </tr>   
                     </thead>
+                    <tbody>
                 <?php 
                 if($result->num_rows == 0){
                     echo "<tr>" . "No Results Found!" . "</tr";
@@ -173,14 +162,14 @@
                     $row = $result->fetch_assoc();
 
                 ?>
-                    <tbody>
+                    
                         <tr>
                             <td> <?= $row['BookID']  ?> </td>
                             <td> <?= $row['ISBN']    ?> </td>
                             <td> <?= $row['Title']   ?> </td>
                             <td> <?= $row['authors'] ?> </td>
                         </tr>
-                    </tbody>
+                    
 
                 <?php  
                 } // end for
@@ -188,7 +177,7 @@
                 $mysqli->close();
                 } // end if post
                 ?>
-
+                    </tbody>
                 </table>
             </div>
         

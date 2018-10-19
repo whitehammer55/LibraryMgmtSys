@@ -9,9 +9,6 @@
         <title>Document</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
         <link rel="stylesheet" type="text/css" href="style.php">
-        <style type="text/css">
-
-        </style>
     </head>
     <body class="bg">
         <div class="header">
@@ -30,64 +27,64 @@
                 require_once 'common/nav-bar.php' ?>
         </div>
         
+
+                <?php 
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                	
+                        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+                        if($mysqli->connect_errno){
+                           echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                           die;
+                        }
+
+                        $ISBN       = $_POST['ISBN'];
+                        $title      = $_POST['TITLE'];
+                        $AuthorName = $_POST['AuthorName'];
+                        $edition    = $_POST['EDITION'];
+
+                        $AuthorName = str_replace(' ', '', $AuthorName);
+
+                        $Auth_Array=explode(',', $AuthorName);
+                        
+                        $max         = $mysqli->query("select max(BookID) as 'max' from books;");
+                        $max->data_seek(0);
+                        $row         = $max->fetch_assoc();
+                        $total_books = $row['max'];
+                        $new_book    = $total_books+1;
+                        
+                        $result = $mysqli->query("Select * from books;");
+                        if(!$result){
+                            echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
+                        }
+
+                        if($result->num_rows != 0){  
+
+                            $r = $mysqli->query(
+                                " INSERT INTO Books (BookID, ISBN, Title, Edition) "
+                                . " VALUES ('$new_book', '$ISBN', '$title', '$edition');");
+                            if(!$r){
+                                echo "INSERT error";
+                            }
+
+                            foreach($Auth_Array as $item){
+                
+                                $r = $mysqli->query(
+                                    " INSERT INTO b_author (BookID, AuthorName) "
+                                    . " VALUES ('$new_book', '$item');");
+                                if(!$r){
+                                    echo "INSERT error";
+                                     }
+                        }
+
+                        } else {
+                            echo "BOOK ALREDY EXISTS!";
+                        }
+                    
+
+                    	?>
         <div class="container-fluid">
             <div class="table-content">
-        <?php 
-            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        	
-                $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-                if($mysqli->connect_errno){
-                   echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-                   die;
-                }
-
-                $ISBN       = $_POST['ISBN'];
-                $title      = $_POST['TITLE'];
-                $AuthorName = $_POST['AuthorName'];
-                $edition    = $_POST['EDITION'];
-
-                $AuthorName = str_replace(' ', '', $AuthorName);
-
-                $Auth_Array=explode(',', $AuthorName);
-                
-                $max         = $mysqli->query("select max(BookID) as 'max' from books;");
-                $max->data_seek(0);
-                $row         = $max->fetch_assoc();
-                $total_books = $row['max'];
-                $new_book    = $total_books+1;
-                
-                $result = $mysqli->query("Select * from books;");
-                if(!$result){
-                    echo "Error: (" . $mysqli->errno . ") " . $mysqli->error;
-                }
-
-                if($result->num_rows != 0){  
-
-                    $r = $mysqli->query(
-                        " INSERT INTO Books (BookID, ISBN, Title, Edition) "
-                        . " VALUES ('$new_book', '$ISBN', '$title', '$edition');");
-                    if(!$r){
-                        echo "INSERT error";
-                    }
-
-                    foreach($Auth_Array as $item){
-        
-                        $r = $mysqli->query(
-                            " INSERT INTO b_author (BookID, AuthorName) "
-                            . " VALUES ('$new_book', '$item');");
-                        if(!$r){
-                            echo "INSERT error";
-                             }
-                }
-
-                } else {
-                    echo "BOOK ALREDY EXISTS!";
-                }
-            
-
-            	?>
-
                 <table class="table table-borderless">
                     <thead>
                     	<tr>
@@ -121,8 +118,8 @@
             </div>
         </div>
 
-        <div class="main-content">
-            <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="main-content">
                 <form name="add_books" action="<?= $_SERVER['PHP_SELF']?>" method="POST" class="form-horizontal add-bks">
                     <div class="form-group input-group add-bks">
                         <p class="p add-bks">Enter the ISBN of the Book :
@@ -160,7 +157,5 @@
             ?>
             </div>
         </div>
-        
-        
     </body>
 </html>

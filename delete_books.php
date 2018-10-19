@@ -30,7 +30,7 @@
                 require_once 'common/nav-bar.php' ?>
         </div>
 
-        <div class="main-content">
+        <div class="container-fluid">
             <?php 
 
             $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -41,15 +41,15 @@
             } 
 
             ?>
-                <div class="container-fluid">
+                <div class="main-content">
                     <form name='delete_books' method='POST' class="form-horizontal">
                         <div class="form-group input-group del-bks">
-                            <p>Enter the BookID of the book :
-                                <input type="number" style="" class="form-control del-bks" name="BookID" required>
+                            <p class="p del-bks">Enter the BookID of the book :
+                                <input type="number" class="form-control del-bks" name="BookID" required>
                             </p>
                         </div>
                         <div class="form-group input-group del-bks">
-                            <p>
+                            <p class="p del-bks">
                                 <input type="submit" class="form-control btn btn-primary custom-btn del-bks" name="submit">
                             </p>
                         </div>

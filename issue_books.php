@@ -9,7 +9,6 @@
         <title>Document</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
         <link rel="stylesheet" type="text/css" href="style.php">
-
     </head>
     <body class="bg">
         <div class="header">
@@ -44,18 +43,18 @@
                 <div class="container-fluid">
                     <form name="issue_books" method="POST" class="form-horizontal">
                         <div class="form-group input-group">
-                            <p">Enter the Book ID :
-                                <input type="number" style="width: 350px; border-radius: 15px; margin-top: 20px;" class="form-control" name="BID" required>
+                            <p class="p ibks">Enter the Book ID :
+                                <input type="number" class="form-control ibks" name="BID" required>
                             </p>
                         </div>
                         <div class="form-group input-group">
-                            <p>Enter the Student ID :
-                                <input type="number" class="form-control" style="width: 350px; border-radius: 15px; margin-top: 20px;" name="PID" required>
+                            <p class="p ibks">Enter the Student ID :
+                                <input type="number" class="form-control ibks" name="PID" required>
                             </p>
                         </div>
                         <div class="form-group input-group">
-                            <p>
-                                <input type="submit" name="submit" class="form-control btn btn-primary custom-btn" style="width: 350px; border-radius: 15px; background-color: #001064; border-color: #001064;">
+                            <p class="p ibks">
+                                <input type="submit" name="submit" class="form-control btn btn-primary custom-btn ibks">
                             </p>
                         </div>
         <?php 

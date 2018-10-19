@@ -1,4 +1,4 @@
-<?php require 'common/global_constants.php'; ?>
+ <?php require 'common/global_constants.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
