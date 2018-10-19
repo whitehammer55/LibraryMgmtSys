@@ -19,7 +19,7 @@
 
 }
 .main-content {
-    background-color: #283593;
+    background-color: #6c757d;
     margin-left: <?php echo (SIDE_NAV_WIDTH + 60) . 'px'; ?>;
     margin-top: 30px;
     margin-right: 30px;

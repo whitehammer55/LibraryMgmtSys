@@ -26,9 +26,11 @@
 
     /* Change the link color on hover */
     li a:hover {
-        color: #283593;
-        
-        background-color: white;
+        color: white;
+        border-radius: 15px;
+        background-color: #003366;
+        text-decoration: none;
+
       }
 
   /*.affix {
@@ -56,12 +58,14 @@
   <ul>
   <li><a href="index.php">Profile</a></li>
   <li><a href="search_for_books.php">Search</a></li>
+
   <?php 
 
   if(isset($_SESSION['user'])){
     // TODO: If student then show this page
     // Use session data to determine if student or teacher
       echo '<li><a href="books.php">Books</a></li>';
+
   }
   else if(isset($_SESSION['emp'])) {
     // If employee
@@ -69,6 +73,7 @@
     echo '<li><a href="issue_books.php">Issue Books</a></li>';
     echo '<li><a href="reissue_return_books.php">Reissue/Return</a></li>';
     echo '<li><a href="delete_books.php">Delete Books</a></li>';
+    echo'<li><a href="survey.php">FeedBack</a></li>';
   }
 
   ?>
