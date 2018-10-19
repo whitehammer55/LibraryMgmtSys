@@ -8,6 +8,28 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.php">
         <title>Login</title>
+        <script type="text/javascript">
+            function validateForm(){
+                u_id = document.getElementById('u_id').value;
+                if(u_id == ""){
+                    alert("User ID field can't be empty.");
+                    return false;
+                }
+                if(! /^[\d]+$/.test(u_id)){
+                    // ensure u_id is numeric
+                    alert("User ID can only be numeric");
+                    return false;
+                }
+
+                u_pwd = document.getElementById('u_pwd').value;
+                if(u_pwd.length < 5){
+                    // pwd should be longer than 5
+                    alert("Password length should be more than 5");
+                    return false;
+                }
+                return true;
+            }
+        </script>
     </head>
     <body class="bg">
         <div class="container">
@@ -16,7 +38,8 @@
                     <div class="form-group form-check login">
                         <h1 class="login-header">Login</h1>
                         <hr>
-                        <form action="login_validation.php" name="form1" method="post" class="form-horizontal login">
+                        <form action="login_validation.php" name="form1" method="post" class="form-horizontal login"
+                        onsubmit="return validateForm();">
                 
                             <div class="form-group input-group login">
                                 <p>User ID:

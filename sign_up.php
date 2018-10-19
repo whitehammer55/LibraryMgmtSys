@@ -7,10 +7,30 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width = device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.php">
         <script type="text/javascript">
             function validateForm() {
+
+                // Check firstname
+                if(! /^[\w]+$/.test(document.register_form.FirstName.value)){
+                    // name is only letters
+                    alert("First Name should be only alphabets");
+                    return false;
+                }
+
+                // Check lastname
+                if(! /^[\w]+$/.test(document.register_form.LastName.value) ){
+                    // name is only letters
+                    alert("Last Name should be only alphabets");
+                    return false;
+                }
+
+                // Check for pwd
+                if( document.register_form.Password.value.length < 5){
+                    alert("Password length should be more than 5.");
+                    return false;
+                }
                 
                 // Check for email
                 if(! /[\w]+@[\w]+\.[\w]{3}/.test(document.register_form.Email.value)){
@@ -19,7 +39,16 @@
                     return false;
                 }
 
+                // Check for dob
+                today = new Date();
+                dob = new Date(document.register_form.DOB.value);
+                if( today.getFullYear() - dob.getFullYear() < 13 ){
+                    // age should be more than 13
+                    alert("Age should be more than 13");
+                    return false;
+                }
 
+                // Check for phone number
                 arr = [];
                 s_arr = document.register_form.PhoneNumber.value.split(',');
                 for(var i=0; i < s_arr.length; i++){
@@ -92,8 +121,6 @@
 
             ?>
             
-            <p>User ID: <?= $new_user_id ?></p>
-
             <?php
             $insert_sql = 
             "INSERT INTO Users(UserID, Password, Email, DOB, FirstName, LastName) "
