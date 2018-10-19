@@ -143,7 +143,7 @@
                 }
 
                 // https://stackoverflow.com/a/9989343
-                var seconds_left = 12000;
+                var seconds_left = 10;
                 document.getElementById('timer-p').innerHTML = 
                         "You will be redirected to the login page in " + (seconds_left) + " seconds!";
                         

@@ -42,6 +42,7 @@
 
                     if(isset($_SESSION['user'])){
                         $id = $_SESSION['user'];
+                    
                         $sql = "SELECT UserID, FirstName, LastName, Email, DOB FROM Users WHERE UserID ='$id' ";
                     }
                     elseif (isset($_SESSION['emp'])) {
@@ -60,6 +61,10 @@
 
                     $result->data_seek(0);
                     $row = $result->fetch_assoc();
+                     $_SESSION['firstName']=$row['FirstName'];
+                     $_SESSION['lastName']=$row['LastName'];
+                     $_SESSION['email']=$row['Email'];
+                     
 
                     ?>
             
