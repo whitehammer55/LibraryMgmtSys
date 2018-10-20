@@ -103,22 +103,22 @@
 
                             1.What was your first impression when you entered the website?
                             <p>
-                                <input type='text' name="q1" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required>
+                                <textarea type='text' name="q1" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required></textarea> 
                             </p>
 
                             2. How did you first hear about us?
                             <p>
-                                <input type="text" name="q2" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required>
+                                <textarea type="text" name="q2" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required></textarea> 
                             </p>
 
                             3. Is there anything missing on this page?
                             <p>
-                                <input type="text" name="q3" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required>
+                                <textarea type="text" name="q3" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required></textarea> 
                             </p>
                             
                             4. How likely are you to recommend us to a friend or colleague?
                             <p>
-                                <input type="text" name="q4" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required>
+                                <textarea type="text" name="q4" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required></textarea> 
                             </p>
 
 
