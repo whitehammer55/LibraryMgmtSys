@@ -1,7 +1,7 @@
 
 <h1>HEADER</h1>
 <?php 
-print_r($_SESSION);
+
 
 $session_set = isset($_SESSION['user']) or isset($_SESSION['emp']);
 

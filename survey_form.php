@@ -32,7 +32,7 @@
 
                                                 
                                                 else{
-                                                        echo "<script>alert('Done');
+                                                        echo "
                                                                 window.location.href='survey.php';
                                                                 </script>";
    

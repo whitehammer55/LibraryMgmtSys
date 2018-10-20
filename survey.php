@@ -20,8 +20,17 @@
 
     <link rel="stylesheet" type="text/css" href="style.php">
     <style type="text/css">
-        
-        
+
+    .main-content {
+        background-color: #E2E2E5;
+    }
+    hr{ 
+      height: 1px;
+    
+      background-color: #0007A0;
+      border: none;
+    }
+
 
     </style>
 
@@ -65,11 +74,7 @@
                         
                         $bool = $mysqli->query($sql);
 
-                        // if(!$bool){
-                        //     echo "error ";
-                        //     die;
-                        // }
-
+                        
 
                         if($bool->num_rows == 0 ){
                             ?>
@@ -133,13 +138,13 @@
 
 
 
-                                    if(! $result = $mysqli->query("select * from survey where user_id = 123;" )){
+                                    if(! $result = $mysqli->query("select * from survey where user_id='" . $_SESSION['user'] . "';" )){
                                                echo "Query Error!";
                                             }
                                              $result->data_seek(0);
                                             $row = $result->fetch_assoc();
+
                                             
-                                             
 
                              ?>
                         
@@ -147,10 +152,34 @@
                     <table class="table table-borderless" >
                         <thead>
                             <tr>
-                                <th scope="col">1.What was your first impression when you entered the website? </th>
-                                <td> <?= $row['answer1'] ?> </td>
+                                <th scope="col">1.What was your first impression when you entered the website? <br><hr><?= $row['answer1'] ?></th>
                             </tr>
                         </thead>
+                    </table>
+
+                    <table class="table table-borderless" >
+                        <thead>
+                            <tr>
+                                <th scope="col">2. How did you first hear about us? <br><hr><?= $row['answer2'] ?></th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <table class="table table-borderless" >
+                        <thead>
+                            <tr>
+                                <th scope="col">3. Is there anything missing on this page? <br><hr><?= $row['answer3'] ?></th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <table class="table table-borderless" >
+                        <thead>
+                            <tr>
+                                <th scope="col">4. How likely are you to recommend us to a friend or colleague? <br><hr><?= $row['answer4'] ?></th>
+                            </tr>
+                        </thead>
+                    </table>
                         <!-- TR for Post -->
                         
 

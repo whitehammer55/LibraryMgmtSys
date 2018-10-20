@@ -53,6 +53,7 @@
             "logout.php" => "",
             "reissue_return_books.php" => "",
             "search_for_books.php" => "",
+            "survey_result.php" => "",
             "survey.php" => ""
             );
 
@@ -77,6 +78,8 @@
     // Use session data to determine if student or teacher
     ?>
     <li><a href="books.php">Books</a></li>
+    <li><a href="survey.php"       <?= $dict['survey.php'] ?>>
+        FeedBack</a></li>
     <?php
   }
   else if(isset($_SESSION['emp'])) {
@@ -90,8 +93,10 @@
         Reissue/Return</a></li>
     <li><a href="delete_books.php" <?= $dict['delete_books.php'] ?>>
         Delete Books</a></li>
-    <li><a href="survey.php"       <?= $dict['survey.php'] ?>>
-        FeedBack</a></li>
+
+    <li><a href="survey_result.php" <?= $dict['survey_result.php'] ?>>
+        Survey Result</a></li>    
+    
 
   <?php
     }
