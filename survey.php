@@ -30,6 +30,7 @@
       background-color: #0007A0;
       border: none;
     }
+    
 
 
     </style>
@@ -74,12 +75,17 @@
                         
                         $bool = $mysqli->query($sql);
 
+
+
+
                         
 
                         if($bool->num_rows == 0 ){
                             ?>
                             <table>
                                 <form name="survey" method="POST" action="survey_form.php" >
+
+
             
                         
                             <p>Your UserID :

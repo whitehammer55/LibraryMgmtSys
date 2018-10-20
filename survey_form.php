@@ -12,17 +12,20 @@
 
                                 
 
-                                $UID = $_POST['UID'];
+                                $UID = $_SESSION['user'];
+                                
                                 $q1 = $_POST['q1'];
                                 $q2 = $_POST['q2'];
                                 $q3 = $_POST['q3'];
                                 $q4 = $_POST['q4'];
+                                echo $q4;
 
                                 
 
                             
-                                $insert_sql =  "INSERT INTO survey(user_id, answer1, answer2, answer3, answer4) "
-                                                . " VALUES ('$UID', '$q1', '$q2', '$q3', '$q4');";
+
+
+                                 $insert_sql ="insert into survey(user_id,answer1,answer2,answer3,answer4)values('$UID','$q1','$q2','$q3','$q4');";                
 
 
 

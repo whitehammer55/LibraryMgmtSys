@@ -19,7 +19,11 @@
     
       background-color: #0007A0;
       border: none;
-    }     
+    } 
+    td{
+        font-family: 'RobotoRegular',arial;
+        color: #1C1313;
+    }    
 
 
     </style>
@@ -90,15 +94,15 @@
 
                                             
                                                         <tr>
-                                                             <th > <?= $row['user_id'] ?></th>
+                                                             <td > <?= $row['user_id'] ?></td>
 
-                                                            <th > <?= $row['answer1'] ?></th>
+                                                            <td > <?= $row['answer1'] ?></td>
 
-                                                            <th > <?= $row['answer2'] ?></th>
+                                                            <td > <?= $row['answer2'] ?></td>
 
-                                                            <th > <?= $row['answer3'] ?></th>
+                                                            <td > <?= $row['answer3'] ?></td>
 
-                                                            <th ><?= $row['answer4'] ?></th>
+                                                            <td ><?= $row['answer4'] ?></td>
                                                 
                                                         </tr>
                                                     
