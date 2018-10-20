@@ -129,25 +129,25 @@
                             <table class="table table-borderless" >
                                 <thead>
                                     <tr>
-                                        <th scope="col">1.What was your first impression when you entered the website? <br><hr><?= $row['answer1'] ?></th>
+                                        <th scope="col"><p>1.What was your first impression when you entered the website? <br><hr><?= $row['answer1'] ?></p>/th>
                                     </tr>
                                 </thead>
                             
                                 <thead>
                                     <tr>
-                                        <th scope="col">2. How did you first hear about us? <br><hr><?= $row['answer2'] ?></th>
+                                        <th scope="col"><p>2. How did you first hear about us? <br><hr><?= $row['answer2'] ?></p></th>
                                     </tr>
                                 </thead>
                             
                                 <thead>
                                     <tr>
-                                        <th scope="col">3. Is there anything missing on this page? <br><hr><?= $row['answer3'] ?></th>
+                                        <th scope="col"><p>3. Is there anything missing on this page? <br><hr><?= $row['answer3'] ?></p></th>
                                     </tr>
                                 </thead>
 
                                 <thead>
                                     <tr>
-                                        <th scope="col">4. How likely are you to recommend us to a friend or colleague? <br><hr><?= $row['answer4'] ?></th>
+                                        <th scope="col"><p>4. How likely are you to recommend us to a friend or colleague? <br><hr><?= $row['answer4'] ?></p></th>
                                     </tr>
                                 </thead>
                             </table>
