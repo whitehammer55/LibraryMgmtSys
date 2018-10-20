@@ -83,18 +83,18 @@
             
                         
                             <p>Your UserID :
-                                <input type="number" value ="<?PHP echo $_SESSION['user']; ?>" name="UID" style='width: 150px; border-radius: 15px; margin-top: 20px; 'required>
+                                <input type="number" value ="<?PHP echo $_SESSION['user']; ?>" name="UID" style='width: 150px; border-radius: 15px; margin-top: 20px; 'required disabled>
                             </p>
                     
                         
                             <p> First Name :
-                                <input type="text" value ="<?PHP echo $_SESSION['firstName']; ?>" name="firstname" style='width: 150px; border-radius: 15px; margin-top: 20px;' required>
+                                <input type="text" value ="<?PHP echo $_SESSION['firstName']; ?>" name="firstname" style='width: 150px; border-radius: 15px; margin-top: 20px;' required disabled>
                                 Last Name:
-                                <input type="text" value ="<?PHP echo $_SESSION['lastName']; ?>" name="lastname" style='width: 150px; border-radius: 15px; margin-top: 20px;' required>
+                                <input type="text" value ="<?PHP echo $_SESSION['lastName']; ?>" name="lastname" style='width: 150px; border-radius: 15px; margin-top: 20px;' required disabled>
                             </p>
 
                             <p>Email :
-                                <input type="text" value ="<?PHP echo $_SESSION['email']; ?>" name="email" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required>
+                                <input type="text" value ="<?PHP echo $_SESSION['email']; ?>" name="email" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required disabled>
                             </p>
 
                             Survey Questions :

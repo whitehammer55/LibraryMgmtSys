@@ -147,6 +147,33 @@ INSERT INTO `employees` VALUES (201,'Head Librarian','Hermione','Granger','emp1@
 UNLOCK TABLES;
 
 --
+-- Table structure for table `survey`
+--
+
+DROP TABLE IF EXISTS `survey`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `survey` (
+  `user_id` int(11) NOT NULL,
+  `answer1` text,
+  `answer2` text,
+  `answer3` text,
+  `answer4` text,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `survey`
+--
+
+LOCK TABLES `survey` WRITE;
+/*!40000 ALTER TABLE `survey` DISABLE KEYS */;
+INSERT INTO `survey` VALUES (101,'The website is good , quite impressed with the functionality the Library Mgmt site gives me to handle my books ',' I heard about this site from our college library notice board',' Well, i have most of the functionality i would need ,so i dont think there is anything missing from the site',' Quite likely!!'),(102,'The GUI is pretty good , updated with options i would want to handle the library services ',' The librarian made me notice of this site','As of for now ,no!. There is nothing i would need ,i would be excited for future updates',' Very much likely');
+/*!40000 ALTER TABLE `survey` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `u_contact`
 --
 
@@ -206,4 +233,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-20 13:05:04
+-- Dump completed on 2018-10-20 13:51:38
