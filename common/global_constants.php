@@ -1,5 +1,5 @@
 <?php
-define("SIDE_NAV_WIDTH", 250);
+define("SIDE_NAV_WIDTH", 185);
 
 define("DB_HOST", "localhost");
 define("DB_USER", "root");

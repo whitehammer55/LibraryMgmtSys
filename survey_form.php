@@ -9,9 +9,6 @@
                            die;
                         }
 
-
-                                
-
                                 $UID = $_POST['UID'];
                                 $q1 = $_POST['q1'];
                                 $q2 = $_POST['q2'];

@@ -73,7 +73,7 @@
 /*Login Page*/
             
            .form-group.form-check.login{
-                margin-top: -50px;
+                margin-top: 50px;
                 width: 500px;
 
            }

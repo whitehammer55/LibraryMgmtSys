@@ -20,22 +20,28 @@
 
     <link rel="stylesheet" type="text/css" href="style.php">
     <style type="text/css">
-
-    .main-content {
-        background-color: #E2E2E5;
-    }
-    hr{ 
-      height: 1px;
-    
-      background-color: #0007A0;
-      border: none;
-    }
-
-
+            .form-control.survey{
+                width: 350px; 
+                border-radius: 15px; 
+                margin-top: 20px; 
+            }
+            .form-control.btn.btn-primary.custom-btn.survey{
+                width: 350px; 
+                border-radius: 15px; 
+                background-color: #001064; 
+                border-color: #001064; 
+            }
+            .p.survey{
+                margin-left: 30px;
+                margin-top: 15px;
+            }
+            .surveyhead{
+                margin-left: 80px;
+            }
     </style>
 
 </head>
-<body>
+<body class="bg">
     <div class="header">
 
         <?php
@@ -52,84 +58,76 @@
             require_once 'common/nav-bar.php' ?>
     </div>
 
-    <div class="main-content">
+    <div class="container-fluid">
         <div class="main-content">
-            
-            <div class ='style'>
-                
+                <?php 
 
-                
-
-                        <?php 
-
-                         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
                         if($mysqli->connect_errno){
                            echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                            die;
                         }
                           
-                         
                         $sql = "select user_id from survey where user_id='" . $_SESSION['user'] . "';" ;
                         
                         $bool = $mysqli->query($sql);
 
-                        
-
                         if($bool->num_rows == 0 ){
                             ?>
-                            <table>
-                                <form name="survey" method="POST" action="survey_form.php" >
-            
-                        
-                            <p>Your UserID :
-                                <input type="number" value ="<?PHP echo $_SESSION['user']; ?>" name="UID" style='width: 150px; border-radius: 15px; margin-top: 20px; 'required disabled>
-                            </p>
-                    
-                        
-                            <p> First Name :
-                                <input type="text" value ="<?PHP echo $_SESSION['firstName']; ?>" name="firstname" style='width: 150px; border-radius: 15px; margin-top: 20px;' required disabled>
-                                Last Name:
-                                <input type="text" value ="<?PHP echo $_SESSION['lastName']; ?>" name="lastname" style='width: 150px; border-radius: 15px; margin-top: 20px;' required disabled>
-                            </p>
-
-                            <p>Email :
-                                <input type="text" value ="<?PHP echo $_SESSION['email']; ?>" name="email" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required disabled>
-                            </p>
-
-                            Survey Questions :
-                            <hr>
-
-
-                            1.What was your first impression when you entered the website?
-                            <p>
-                                <textarea type='text' name="q1" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required></textarea> 
-                            </p>
-
-                            2. How did you first hear about us?
-                            <p>
-                                <textarea type="text" name="q2" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required></textarea> 
-                            </p>
-
-                            3. Is there anything missing on this page?
-                            <p>
-                                <textarea type="text" name="q3" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required></textarea> 
-                            </p>
-                            
-                            4. How likely are you to recommend us to a friend or colleague?
-                            <p>
-                                <textarea type="text" name="q4" style='width: 350px; border-radius: 15px; margin-top: 20px; 'required></textarea> 
-                            </p>
-
-
-                            
-                            <p>
-                                <input type="submit" name="submit" value ='submit'class="form-control btn btn-primary custom-btn" style="width: 350px; border-radius: 15px; background-color: #001064; border-color: #001064;">
-                            </p>
-                        
-                         </form>   
-
-                            </table>
+                            <form name="survey" method="POST" action="survey_form.php" class="form-horizontal survey">
+                                <div class="form-group input-group survey">                                
+                                    <p class="p survey">Your UserID :
+                                        <input type="number" class="form-control survey" value ="<?PHP echo $_SESSION['user']; ?>" name="UID" required disabled>
+                                    </p>
+                                </div>
+                                <div class="form-group input-group survey">                                
+                                    <p class="p survey"> First Name :
+                                        <input type="text" class="form-control survey" value ="<?PHP echo $_SESSION['firstName']; ?>" name="firstname" required disabled>
+                                    </p>
+                                </div>
+                                <div class="form-group input-group survey">
+                                    <p class="p survey">Last Name:
+                                        <input type="text" class="form-control survey" value ="<?PHP echo $_SESSION['lastName']; ?>" name="lastname" required disabled>
+                                    </p>
+                                </div>
+                                <div class="form-group input-group survey">
+                                    <p class="p survey">Email :
+                                        <input type="text" class="form-control survey" value ="<?PHP echo $_SESSION['email']; ?>" name="email" required disabled>
+                                    </p>
+                                </div>
+                                <hr>
+                                    <h3 class="surveyhead">Survey Questions</h3>
+                                <hr>
+                                <div class="form-group input-group survey">
+                                    <p class="p survey">1.What was your first impression when you entered the website?
+                                    
+                                        <textarea type='text' class="form-control survey" name="q1" required></textarea> 
+                                    </p>
+                                </div>
+                                <div class="form-group input-group survey">
+                                    <p class="p survey">2. How did you first hear about us?
+                                    
+                                        <textarea type="text" class="form-control survey" name="q2" required></textarea> 
+                                    </p>
+                                </div>
+                                <div class="form-group input-group survey">
+                                    <p class="p survey">3. Is there anything missing on this page?
+                                    
+                                        <textarea type="text" class="form-control survey" name="q3" required></textarea> 
+                                    </p>
+                                <div class="form-group input-group survey">     
+                                    <p class="p survey">4. How likely are you to recommend us to a friend or colleague?
+                                    
+                                        <textarea type="text" class="form-control survey" name="q4" required></textarea> 
+                                    </p>
+                                </div>
+                                <div class="form-group input-group survey">
+                                    <p class="p survey">
+                                        <input type="submit" name="submit" value ='Submit' class="form-control btn btn-primary custom-btn survey">
+                                    </p>
+                                </div>
+                            </form>   
                             <?php
                         }// not submitted before
                         else {
