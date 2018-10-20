@@ -68,8 +68,11 @@
                 margin-top: 25px;
            } 
 
-        
-
+/*Login Validation Page*/
+			.login-validation{
+				margin-left: 170px;
+				margin-top: 100px;
+			}
 /*Login Page*/
             
            .form-group.form-check.login{
@@ -161,6 +164,7 @@
                 margin-left: 30px;
                 margin-top: 15px;
                 margin-bottom: 20px;
+                color: white;
             }
 
 
@@ -194,6 +198,7 @@
             .p.add-bks{
                 margin-left: 30px;
                 margin-top: 15px;
+                color: white;
             }
 
 /*<!--             Issue Books page -->*/
@@ -211,6 +216,7 @@
             .p.ibks{
             	margin-left: 30px;
             	margin-top: 15px;
+            	color: white;
             }
 /*            search books page*/
                 .sfb{
@@ -224,6 +230,9 @@
                     border-radius: 15px; 
                     margin-left: 25px; 
                     margin-top: 15px;
+                }
+                .custom-control-label{
+                	color: white;
                 }
                 .form-control.btn.btn-primary.custom-btn.sfb{
                     width: 320px; 
@@ -249,6 +258,7 @@
                 .p.survey{
                     margin-left: 30px;
                     margin-top: 15px;
+                    color: white;
                 }
                 .surveyhead{
                     margin-left: 80px;

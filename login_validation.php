@@ -1,3 +1,5 @@
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.php">
 <?php
     require_once 'common/global_constants.php';
 
@@ -51,7 +53,7 @@
 
         } //else end
 
-        echo "$valid_login";
+        // echo "$valid_login";
        return $valid_login;
     }// end function isLoginCredentialsValid
 
@@ -91,7 +93,17 @@
                 setcookie('user_type', $type, time() + 60*60*7);
             }  
 
-            echo "HELLO, " . $userid . "<br>";
+            echo "<body class='bg'>
+                    <div class='container'>
+                        <div class='row col-sm-10'>
+                            <div>
+                                <div class='form-group form-check login'>
+                                    <h1 class='login-validation'>HELLO, $userid !!</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </body>";
 
 
             // Send user to index.php
