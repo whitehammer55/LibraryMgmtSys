@@ -14,10 +14,10 @@
 
                                 $UID = $_SESSION['user'];
                                 
-                                $q1 = $_POST['q1'];
-                                $q2 = $_POST['q2'];
-                                $q3 = $_POST['q3'];
-                                $q4 = $_POST['q4'];
+                                $q1 = str_replace(' ', '', $_POST['q1']);
+                                $q2 = str_replace(' ', '', $_POST['q2']);
+                                $q3 = str_replace(' ', '', $_POST['q3']);
+                                $q4 = str_replace(' ', '', $_POST['q4']);
                                 echo $q4;
 
                                 
