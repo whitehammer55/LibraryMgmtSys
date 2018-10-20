@@ -1,6 +1,7 @@
 import MySQLdb
 import json
 import datetime as dt
+import os
 
 ddl_create = """
 DROP TABLE IF EXISTS users ;
@@ -8,11 +9,13 @@ DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS u_contact;
 DROP TABLE IF EXISTS b_author;
+DROP TABLE IF EXISTS bonny;
 CREATE TABLE Users(UserID int NOT NULL PRIMARY KEY, Password varchar(30), Email varchar(30), DOB date, FirstName varchar(30), LastName varchar(30));
 CREATE TABLE Employees(EmployeeID int NOT NULL PRIMARY KEY, Post varchar(30), FirstName varchar(30), LastName varchar(30), Email varchar(30), DOB date, Password varchar(30));
 CREATE TABLE U_Contact(Contact varchar(30) NOT NULL, UserID int REFERENCES Users(UserID));
 CREATE TABLE Books(BookID int NOT NULL PRIMARY KEY, ISBN varchar(30), Title varchar(100), Edition int, UserId int REFERENCES Users(UserID), DOI date, DOR date, reissue_count int, EmployeeID int REFERENCES Employees(EmployeeID));
 CREATE TABLE B_Author(BookID int REFERENCES Books(BookID), AuthorName varchar(50));
+CREATE TABLE bonny(user_id int PRIMARY KEY, answer1 text, answer2 text, answer3 text, answer4 text);
 """
 
 # Connect
@@ -163,6 +166,25 @@ def c_table_employees(filename):
     print("COMMIT;")
     conn.commit()
 
+def c_table_responses(filename):
+    '''Insert responses'''
+    insert_fmt = \
+    """INSERT INTO bonny(user_id, answer1, answer2, answer3, answer4)
+    VALUES ('{}', '{}', '{}', '{}', '{}');"""
+
+    with open(filename) as f:
+        for res in json.load(f):
+            cmd = insert_fmt.format(
+                res['user'],
+                res['answer1'], res['answer2'],
+                res['answer3'], res['answer4'])
+
+            print('Inserting: {:5d}\'s response'.format(res['user']))
+            cursor.execute(cmd)
+
+    print("COMMIT;")
+    conn.commit()
+
 
 def main():
     
@@ -201,7 +223,16 @@ def main():
     c_table_employees('json/employees.json')
     print()
 
+    # INSERT RESPONSES
+    print("INSERT RESPONSES")
+    c_table_responses('json/responses.json')
+    print()
+
 
 if __name__ == '__main__':
     main()
     conn.close()
+
+    # Create dump.sql file in the repo
+    print("Generate dump.sql")
+    os.popen(" \"C:\\xampp\\mysql\\bin\\mysqldump.exe\" -u root wdl > \"dump.sql\" ")
