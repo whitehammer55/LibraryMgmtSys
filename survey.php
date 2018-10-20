@@ -12,6 +12,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -146,47 +147,120 @@
                                             
 
                              ?>
-                        
+
+                            $bool = $mysqli->query($sql);
+
+                            if($bool->num_rows == 0 ){
+                                ?>
+                                <form name="survey" method="POST" action="survey_form.php" class="form-horizontal survey">
+                                    <div class="form-group input-group survey">                                
+                                        <p class="p survey">Your UserID :
+                                            <input type="number" class="form-control survey" value ="<?PHP echo $_SESSION['user']; ?>" name="UID" required disabled>
+                                        </p>
+                                    </div>
+                                    <div class="form-group input-group survey">                                
+                                        <p class="p survey"> First Name :
+                                            <input type="text" class="form-control survey" value ="<?PHP echo $_SESSION['firstName']; ?>" name="firstname" required disabled>
+                                        </p>
+                                    </div>
+                                    <div class="form-group input-group survey">
+                                        <p class="p survey">Last Name:
+                                            <input type="text" class="form-control survey" value ="<?PHP echo $_SESSION['lastName']; ?>" name="lastname" required disabled>
+                                        </p>
+                                    </div>
+                                    <div class="form-group input-group survey">
+                                        <p class="p survey">Email :
+                                            <input type="text" class="form-control survey" value ="<?PHP echo $_SESSION['email']; ?>" name="email" required disabled>
+                                        </p>
+                                    </div>
+                                    <hr>
+                                        <h3 class="surveyhead">Survey Questions</h3>
+                                    <hr>
+                                    <div class="form-group input-group survey">
+                                        <p class="p survey">1.What was your first impression when you entered the website?
+                                        
+                                            <textarea type='text' class="form-control survey" name="q1" required></textarea> 
+                                        </p>
+                                    </div>
+                                    <div class="form-group input-group survey">
+                                        <p class="p survey">2. How did you first hear about us?
+                                        
+                                            <textarea type="text" class="form-control survey" name="q2" required></textarea> 
+                                        </p>
+                                    </div>
+                                    <div class="form-group input-group survey">
+                                        <p class="p survey">3. Is there anything missing on this page?
+                                        
+                                            <textarea type="text" class="form-control survey" name="q3" required></textarea> 
+                                        </p>
+                                    <div class="form-group input-group survey">     
+                                        <p class="p survey">4. How likely are you to recommend us to a friend or colleague?
+                                        
+                                            <textarea type="text" class="form-control survey" name="q4" required></textarea> 
+                                        </p>
+                                    </div>
+                                    <div class="form-group input-group survey">
+                                        <p class="p survey">
+                                            <input type="submit" name="submit" value ='Submit' class="form-control btn btn-primary custom-btn survey">
+                                        </p>
+                                    </div>
+                                </form>   
+            </div>
+                                <?php
+                            }// not submitted before
+                            else {
+
+                                ?><?php 
+
+
+
+                                        if(! $result = $mysqli->query("select * from survey where user_id='" . $_SESSION['user'] . "';" )){
+                                                   echo "Query Error!";
+                                                }
+                                                 $result->data_seek(0);
+                                                $row = $result->fetch_assoc();
+
+                                                
+
+                                 ?>
                             
-                    <table class="table table-borderless" >
-                        <thead>
-                            <tr>
-                                <th scope="col">1.What was your first impression when you entered the website? <br><hr><?= $row['answer1'] ?></th>
-                            </tr>
-                        </thead>
-                    </table>
+                        <div class="table-content">        
+                            <table class="table table-borderless" >
+                                <thead>
+                                    <tr>
+                                        <th scope="col">1.What was your first impression when you entered the website? <br><hr><?= $row['answer1'] ?></th>
+                                    </tr>
+                                </thead>
+                            
+                                <thead>
+                                    <tr>
+                                        <th scope="col">2. How did you first hear about us? <br><hr><?= $row['answer2'] ?></th>
+                                    </tr>
+                                </thead>
+                            
+                                <thead>
+                                    <tr>
+                                        <th scope="col">3. Is there anything missing on this page? <br><hr><?= $row['answer3'] ?></th>
+                                    </tr>
+                                </thead>
 
-                    <table class="table table-borderless" >
-                        <thead>
-                            <tr>
-                                <th scope="col">2. How did you first hear about us? <br><hr><?= $row['answer2'] ?></th>
-                            </tr>
-                        </thead>
-                    </table>
-
-                    <table class="table table-borderless" >
-                        <thead>
-                            <tr>
-                                <th scope="col">3. Is there anything missing on this page? <br><hr><?= $row['answer3'] ?></th>
-                            </tr>
-                        </thead>
-                    </table>
-
-                    <table class="table table-borderless" >
-                        <thead>
-                            <tr>
-                                <th scope="col">4. How likely are you to recommend us to a friend or colleague? <br><hr><?= $row['answer4'] ?></th>
-                            </tr>
-                        </thead>
-                    </table>
-                        <!-- TR for Post -->
-                        
-
-
-
-                            <?php 
+                                <thead>
+                                    <tr>
+                                        <th scope="col">4. How likely are you to recommend us to a friend or colleague? <br><hr><?= $row['answer4'] ?></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                            <!-- TR for Post -->
+>>>>>>> test
                             
 
+
+
+                                <?php 
+                                
+
+<<<<<<< HEAD
                         }// submitted before
                          ?>
                    

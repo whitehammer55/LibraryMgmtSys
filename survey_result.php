@@ -106,21 +106,33 @@
                                                 
                                                         </tr>
                                                     
-                                                
+                                                    $array=$row;
+                                                    ?>
+
+                                                    <table class="table table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th > <?= $row['user_id'] ?></th>
+                                                                <th > <?= $row['answer1'] ?></th>
+                                                                <th > <?= $row['answer2'] ?></th>
+                                                                <th > <?= $row['answer3'] ?></th>
+                                                                <th ><?= $row['answer4'] ?></th>
+                                                            </tr>
+                                                        </thead>     
+                                                    </table>
+
+                                                    <?php  
 
 
-                                                <?php  
-
-
-                                            }
+                                                }
 
 
 
 
 
-         ?>
+             ?>
 
-    </div>
-    
-</body>
+        </div>
+        
+    </body>
 </html>

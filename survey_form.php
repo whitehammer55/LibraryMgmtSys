@@ -9,17 +9,17 @@
                            die;
                         }
 
-                                $UID = $_POST['UID'];
-                                $q1 = $_POST['q1'];
-                                $q2 = $_POST['q2'];
-                                $q3 = $_POST['q3'];
-                                $q4 = $_POST['q4'];
+                                $UID = $_SESSION['user'];
+                                $q1 = str_replace(' ', '', $_POST['q1']);
+                                $q2 = str_replace(' ', '', $_POST['q2']);
+                                $q3 = str_replace(' ', '', $_POST['q3']);
+                                $q4 = str_replace(' ', '', $_POST['q4']);
+
 
                                 
 
                             
-                                $insert_sql =  "INSERT INTO survey(user_id, answer1, answer2, answer3, answer4) "
-                                                . " VALUES ('$UID', '$q1', '$q2', '$q3', '$q4');";
+                                $insert_sql =  "insert into survey(user_id, answer1, answer2, answer3, answer4)values('$UID','$q1','$q2','$q3','$q4');";
 
 
 

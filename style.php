@@ -208,6 +208,10 @@
                 background-color: #001064; 
                 border-color: #001064;
             }
+            .p.ibks{
+            	margin-left: 30px;
+            	margin-top: 15px;
+            }
 /*            search books page*/
                 .sfb{
                     border: 0px solid black;
@@ -229,4 +233,23 @@
                     margin-left: 315px; 
                     margin-right: 15px; 
                     margin-top: 15px;
+                }
+/*                Survey Page*/
+                .form-control.survey{
+                    width: 350px; 
+                    border-radius: 15px; 
+                    margin-top: 20px; 
+                }
+                .form-control.btn.btn-primary.custom-btn.survey{
+                    width: 350px; 
+                    border-radius: 15px; 
+                    background-color: #001064; 
+                    border-color: #001064; 
+                }
+                .p.survey{
+                    margin-left: 30px;
+                    margin-top: 15px;
+                }
+                .surveyhead{
+                    margin-left: 80px;
                 }
