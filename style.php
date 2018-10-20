@@ -97,6 +97,22 @@
 
 /*Signup Page*/
 
+            .signup_success_div_p{
+                width: 40%;
+                margin: auto;
+                position: relative;
+                padding: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+
+
+                text-align: center;
+                background-color: #f1f1f4;
+                font-size: 1.5em;
+                border: 1px solid #f1f1e1;
+                border-radius: 10px;
+            }
+
             .col-sm-10.signup{
                 width: 550px; 
                 margin-left: 300px; 

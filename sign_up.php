@@ -132,10 +132,11 @@
 
             ?>
 
-            <p>You have successfully registered!</p>
-            <p>Your UserID is <?= $new_user_id ?>!</p>
-
-            <p id="timer-p"></p>
+            <div class="signup_success_div_p">
+                <p>You have successfully registered!</p>
+                <p>Your UserID is <?= $new_user_id ?>!</p>
+                <p id="timer-p"></p>
+            </div>
 
             <script type="text/javascript">
                 function redirect(){
@@ -143,7 +144,7 @@
                 }
 
                 // https://stackoverflow.com/a/9989343
-                var seconds_left = 10;
+                var seconds_left = 1000;
                 document.getElementById('timer-p').innerHTML = 
                         "You will be redirected to the login page in " + (seconds_left) + " seconds!";
                         
