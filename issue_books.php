@@ -27,32 +27,31 @@
                 require_once 'common/nav-bar.php' ?>
         </div>
 
-        <div class="main-content">
-            
-        <?php 
+        <div class="container-fluid">
+                <div class="main-content">           
+                    <?php 
 
-            $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-            if($mysqli->connect_errno){
-               echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-               die;
-            }
+                        if($mysqli->connect_errno){
+                           echo "Failure to connect : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                           die;
+                        }
 
-            ?>
-            <div class="main-content">
-                <div class="container-fluid">
-                    <form name="issue_books" method="POST" class="form-horizontal">
-                        <div class="form-group input-group">
+                        ?>
+
+                    <form name="issue_books" method="POST" class="form-horizontal ibks">
+                        <div class="form-group input-group ibks">
                             <p class="p ibks">Enter the Book ID :
                                 <input type="number" class="form-control ibks" name="BID" required>
                             </p>
                         </div>
-                        <div class="form-group input-group">
+                        <div class="form-group input-group ibks">
                             <p class="p ibks">Enter the Student ID :
                                 <input type="number" class="form-control ibks" name="PID" required>
                             </p>
                         </div>
-                        <div class="form-group input-group">
+                        <div class="form-group input-group ibks">
                             <p class="p ibks">
                                 <input type="submit" name="submit" class="form-control btn btn-primary custom-btn ibks">
                             </p>
@@ -126,6 +125,5 @@
                     </form>
                 </div>
             </div>
-        </div>
     </body>
 </html>
