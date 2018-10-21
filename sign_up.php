@@ -3,12 +3,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Sign Up</title>
+        <title>Library Management system | SignUp</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width = device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.php">
+        <style type="text/css">
+            .signup-validation{
+                width: 500px;
+                height: 180px;
+                margin: auto;
+                position: relative;
+                padding: 10px;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                background-color: grey;
+                font-size: 1.5em;
+                border: 1px solid grey;
+                border-radius: 10px;
+                margin-top: 100px;
+                margin-bottom: 100px;
+                color: #fff;
+            }
+        </style>
         <script type="text/javascript">
             function validateForm() {
 
@@ -132,11 +151,16 @@
 
             ?>
 
-            <div class="signup_success_div_p">
-                <p>You have successfully registered!</p>
-                <p>Your UserID is <?= $new_user_id ?>!</p>
-                <p id="timer-p"></p>
-            </div>
+
+                            
+                                <div class='signup-validation'>
+                                    <h3 class="textcolor">You have successfully registered! </h3>
+                                    <h3 class="textcolor">Your UserID is <?= $new_user_id ?>!</h3>
+                                    <h3 class="textcolor" id="timer-p"></h3>
+                                </div>
+                        
+
+
 
             <script type="text/javascript">
                 function redirect(){

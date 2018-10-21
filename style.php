@@ -29,18 +29,40 @@
 
     /* + 10 is provide gap between side bar and main content */
 }
+.main-content.add-bks{
+    background-color: #6c757d;
+    margin-left: <?php echo (SIDE_NAV_WIDTH + 60) . 'px'; ?>;
+    margin-top: 30px;
+    margin-right: 30px;
+    width: 1100px;
+    height: 460px;
+    overflow: auto;
+}
 .table-content {
     background-color: white;
     margin-left: <?php echo (SIDE_NAV_WIDTH + 60) . 'px'; ?>;
     margin-top: 30px;
     margin-right: 30px;
+    width: 1100px;
+    height: 290px;
+    overflow: auto;
+}
+.table-content.survey {
+    background-color: white;
+    margin-left: <?php echo (SIDE_NAV_WIDTH + 60) . 'px'; ?>;
+    margin-top: 30px;
+    margin-right: 30px;
+    width: 1100px;
+    height: 460px;
+    overflow: auto;
 /*    overflow: auto;*/
+
 }
 .nav-bar {
     background-color: #283593;
     width: <?php echo SIDE_NAV_WIDTH . 'px'; ?>;
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    height: 560px; /* Full-height */
+    height: 460px; /* Full-height */
     /*z-index: 1;*/  /*Stay on top */
     margin-top: 30px;
     margin-left: 30px;
@@ -67,7 +89,22 @@
                 margin-left: 300px;
                 margin-top: 25px;
            } 
+/*           Signup Validation*/
+            .signup_success_div_p {
+                width: 40%;
+                margin: auto;
+                position: relative;
+                padding: 10px;
+                top: 50%;
+                transform: translateY(-50%);
 
+
+                text-align: center;
+                background-color: #f1f1f4;
+                font-size: 1.5em;
+                border: 1px solid #f1f1e1;
+                border-radius: 10px;
+            }
 /*Login Validation Page*/
 			.login-validation{
 				margin-left: 170px;
@@ -231,9 +268,7 @@
                     margin-left: 25px; 
                     margin-top: 15px;
                 }
-                .custom-control-label{
-                	color: white;
-                }
+              		
                 .form-control.btn.btn-primary.custom-btn.sfb{
                     width: 320px; 
                     background-color: #001064; 

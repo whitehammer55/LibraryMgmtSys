@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
+        <title>Library Management system | Add Books</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
         <link rel="stylesheet" type="text/css" href="style.php">
     </head>
@@ -119,7 +119,7 @@
         </div>
 
         <div class="container-fluid">
-            <div class="main-content">
+            <div class="main-content add-bks">
                 <form name="add_books" action="<?= $_SERVER['PHP_SELF']?>" method="POST" class="form-horizontal add-bks">
                     <div class="form-group input-group add-bks">
                         <p class="p add-bks">Enter the ISBN of the Book :

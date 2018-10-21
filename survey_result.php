@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Library Management system | Survey Result</title>
 
     <link rel="stylesheet" type="text/css" href="style.php">
 
@@ -29,7 +29,7 @@
             require_once 'common/nav-bar.php' ?>
     </div>
 
-    <div class="table-content">
+    <div class="table-content survey">
         <?php 
 
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
