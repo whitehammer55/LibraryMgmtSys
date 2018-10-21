@@ -17,6 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
+
         <link rel="stylesheet" type="text/css" href="style.php">
     </head>
     <body class="bg">
@@ -126,28 +127,31 @@
                                  ?>
                             
                         <div class="table-content">        
-                            <table class="table table-borderless" >
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><p>1.What was your first impression when you entered the website? <br><hr><?= $row['answer1'] ?></p>/th>
+                            <table class="table table-borderless sfb" >
+                                <thead class="sfb">
+                                    <tr class="sfb">
+                                        <th class="sfb" scope="col">1.What was your first impression when you entered the website? <br><hr><?= $row['answer1'] ?></th>
                                     </tr>
                                 </thead>
-                            
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><p>2. How did you first hear about us? <br><hr><?= $row['answer2'] ?></p></th>
+                            </table>
+                            <table class="table table-borderless sfb" >
+                                <thead class="sfb">
+                                    <tr class="sfb">
+                                        <th class="sfb" scope="col">2. How did you first hear about us? <br><hr><?= $row['answer2'] ?></th>
                                     </tr>
                                 </thead>
-                            
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><p>3. Is there anything missing on this page? <br><hr><?= $row['answer3'] ?></p></th>
+                            </table>
+                            <table class="table table-borderless sfb" >
+                                <thead class="sfb">
+                                    <tr class="sfb">
+                                        <th class="sfb" scope="col">3. Is there anything missing on this page? <br><hr><?= $row['answer3'] ?></th>
                                     </tr>
                                 </thead>
-
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><p>4. How likely are you to recommend us to a friend or colleague? <br><hr><?= $row['answer4'] ?></p></th>
+                            </table>
+                            <table class="table table-borderless sfb" >
+                                <thead class="sfb">
+                                    <tr class="sfb">
+                                        <th class="sfb" scope="col">4. How likely are you to recommend us to a friend or colleague? <br><hr><?= $row['answer4'] ?></th>
                                     </tr>
                                 </thead>
                             </table>
