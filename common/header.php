@@ -1,5 +1,25 @@
 
-<h1>HEADER</h1>
+<style type="text/css">
+   h1{
+        font-family: 'RobotoRegular',arial;
+
+
+        
+
+  }
+
+h1 a{
+  text-decoration: none !important;
+  color: black;
+}
+ h1 a:hover {
+    color: #000000 !important;
+}
+
+</style>
+<br>
+
+<h1><a id="head" href="index.php" >Library Management</a></h1>
 <?php 
 
 
